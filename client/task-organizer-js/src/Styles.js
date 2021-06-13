@@ -8,8 +8,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 1,
     color: "black",
+    paddingLeft: theme.spacing(1)
   },
   toolbar: {
     backgroundColor: "white",
@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
   menuDropDown: {
     color: "black",
     fontSize: "14px", 
+  },
+  test: {
+    backgroundColor: "black",
+    border: "1px solid black",
   },
 }));
 
