@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'orange',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -18,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   menuDropDown: {
     color: "black",
     fontSize: "14px", 
-  }
+  },
 }));
 
 export default useStyles;
