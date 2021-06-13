@@ -1,22 +1,18 @@
-import { CssBaseline, Typography, AppBar, Toolbar, Button, IconButton, MenuIcon, Menu, MenuItem} from '@material-ui/core';
+import { CssBaseline, Typography, AppBar, Toolbar} from '@material-ui/core';
 import GridOnIcon from '@material-ui/icons/GridOn';
 import useStyles from './Styles';
 import { useState } from 'react';
+import DropDownMenu from './components/Nav/DropDownMenu';
 
 const App = () => {
 
   const classes = useStyles();
 
-  const [anchorEl, setAnchorEl] = useState(null);
+  // TODO: Make the logo and typography beside it a link to the nellakproject.com/
+  // TODO: Make the typography stack beside the logo
+  // TODO: Make everything fit in the second third of the screen
+  // TODO: Get the values for the drop-downs from somewhere else instead of hardcoding it 
 
-  const handleClick = (e) => {
-    setAnchorEl(e.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  // TODO: Extract the Drop-down menu logic into another component
   return ( 
     <>
       <CssBaseline/>
@@ -27,21 +23,19 @@ const App = () => {
               <Typography variant="h6" className={classes.title}>
                 Task Organizer   
               </Typography>
-              <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                Features
-              </Button>
-              <Menu
-                id="Features"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-                >
-                  <MenuItem onClick={handleClose}>Intuitive Interface</MenuItem>
-                  <MenuItem onClick={handleClose}>Multiple Views</MenuItem>
-                  <MenuItem onClick={handleClose}>Schedule Tasks</MenuItem>
-                  <MenuItem onClick={handleClose}>Share Tasks with others</MenuItem>
-              </Menu>
+              
+              <DropDownMenu buttonName="Features" items={ [
+                {name:"Intuitive Interface",link:"https://www.google.com/"},
+                {name:"Multiple Views",link:"https://www.google.com/"},
+                {name:"Schedule tasks",link:"https://www.google.com/"},
+                {name:"Share tasks with others",link:"https://www.google.com/"}]} />
+
+              <DropDownMenu buttonName="Tutorials" items={ [
+                {name:"Getting Started",link:"https://www.google.com/"},
+                {name:"How to make Threads",link:"https://www.google.com/"},
+                {name:"How to Schedule tasks",link:"https://www.google.com/"},
+                {name:"More Guides",link:"https://www.google.com/"}]} />
+              
 
             </Toolbar>
           </AppBar>
