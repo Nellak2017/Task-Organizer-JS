@@ -42,7 +42,7 @@ const Navbar = () => {
             <NavbarContainer>
                 <NavLogo to='/'>
                     <NavIcon />
-                    <span style={{width:"10px",paddingLeft:"5px"}}>Task Organizer</span>
+                    <span style={{width:"10px",paddingLeft:"5px"}}>TASK ORGANIZER</span>
                 </NavLogo>
 
                 <MobileIcon onClick={handleClick}>
