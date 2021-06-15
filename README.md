@@ -24,8 +24,8 @@ To use _Task-Organizer-JS_, it is as simple as visiting [Nellakproject](https://
 Project is created with:
 * MongoDB version: 
 * Express version:
-* React version:
-* NodeJS version:
+* React version: 17.0.2
+* NodeJS version: 14.15.0
 
 ## License
 _Task-Organizer-JS_ is [MIT licensed.](https://opensource.org/licenses/MIT)
