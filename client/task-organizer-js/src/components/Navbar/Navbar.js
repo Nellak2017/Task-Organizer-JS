@@ -6,7 +6,8 @@ import {
     Nav, 
     NavbarContainer, 
     NavLogo, 
-    NavIcon, 
+    NavIcon,
+    LogoWords, 
     MobileIcon,
     NavMenu,
     NavItem,
@@ -21,6 +22,7 @@ const Navbar = () => {
     const[button,setButton] = useState(true);
 
     const handleClick = () => setClick(!click);
+    const closeMobileMenu = () => {setClick(false);};
 
     const showButton = () => {
         if(window.innerWidth <= 960){
@@ -40,15 +42,21 @@ const Navbar = () => {
         <IconContext.Provider value={{color: '#fff'}}>
         <Nav>
             <NavbarContainer>
-                <NavLogo to='/'>
+                <NavLogo to='/' onClick={closeMobileMenu}>
                     <NavIcon />
-                    <span style={{width:"10px",paddingLeft:"5px"}}>TASK ORGANIZER</span>
+                    <LogoWords>TASK ORGANIZER</LogoWords>
                 </NavLogo>
 
                 <MobileIcon onClick={handleClick}>
                     {click ? <FaTimes/> : <FaBars/>}
                 </MobileIcon>
                 <NavMenu onClick={handleClick} click={click}>
+                    <NavItem>
+                        <NavLinks to='/'>
+                            Home
+                        </NavLinks>
+                    </NavItem>
+
                     <NavItem>
                         <NavLinks to='/Tutorials'>
                             Tutorials
