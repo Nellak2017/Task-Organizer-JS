@@ -26,7 +26,7 @@ export const homeObjTwo = {
     description:
       "If you need a way to quickly write down a list of tasks, the todo list view is right for you. Task Organizer can auto generate todo lists from other views, taking into account each task's priority and task dependencies, so you don't have to write out a todo list yourself.",
     buttonLabel: 'Learn More',
-    img: require('../../images/svg-4-todo.svg').default,
+    img: require('../../images/svg-2-todo.svg').default,
     alt: 'Thread View SVG',
     start: ''
   };
@@ -43,7 +43,7 @@ export const homeObjThree = {
     description:
       "Instead of having one traditional todo list, you can divide your tasks into different threads to make things more manageable. Keep your todo lists organized by using the Thread View.",
     buttonLabel: 'Learn More',
-    img: require('../../images/svg-2-thread.svg').default,
+    img: require('../../images/svg-3-thread.svg').default,
     alt: 'Thread View SVG',
     start: ''
   };
@@ -62,7 +62,7 @@ export const homeObjThree = {
     description:
       "It is easy to lose sight of the bigger picture by looking at todo lists. Keep your goals in sight by using the Timeline View.",
     buttonLabel: 'Learn More',
-    img: require('../../images/svg-5-timeline.svg').default,
+    img: require('../../images/svg-4-timeline.svg').default,
     alt: 'Timeline View SVG',
     start: ''
   };
@@ -79,7 +79,7 @@ export const homeObjThree = {
     description:
       "It can be tiring to write down the same tasks you have over and over again. Schedule your tasks by using the Calendar View.",
     buttonLabel: 'Learn More',
-    img: require('../../images/svg-6-calendar.svg').default,
+    img: require('../../images/svg-5-calendar.svg').default,
     alt: 'Thread View SVG',
     start: ''
   };
