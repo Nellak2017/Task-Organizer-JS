@@ -1,43 +1,36 @@
 import { useState, useEffect } from 'react';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { IconContext } from 'react-icons/lib';
+import { SidebarData } from '../../pages/OrganizerMain/Data';
 import {
-    StyledSideNav,
-    SideNavContainer,
-    NavLogo,
-    NavIcon,
-    LogoWords
+    OrganizerMainNav,
+    MenuBars,
+    NavMenu,
+    NavMenuItems,
+    NavbarToggle,
+    NavText
 } from './SideNav.elements.js';
 
 const SideNav = () => {
 
-    const[click,setClick] = useState(false);
-    const[button,setButton] = useState(true);
+    const [sidebar, setSidebar] = useState(false);
 
-    const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => {setClick(false);};
+    const showSidebar = () => setSidebar(!sidebar);
 
-    const showButton = () => {
-        if(window.innerWidth <= 960){
-            setButton(false);
-        } else{
-            setButton(true);
-        }
-    }
-
-    useEffect(() =>{
-        showButton()
-    }, []);
+    // TODO: How can you make the nav be a nav-menu active or nav-menu based on conditional??
 
     return ( 
-        <StyledSideNav>
-            <SideNavContainer>
-                <NavLogo to='/' oncClick={closeMobileMenu}>
-                <NavIcon />
-                    <LogoWords>TASK ORGANIZER</LogoWords>
-                </NavLogo>
-
+        <>
+            <IconContext.Provider value={{color: '#fff'}}>
+                <OrganizerMainNav>
+                  <MenuBars to="#">
+                    <FaIcons.FaBars onClick={showSidebar} />
+                  </MenuBars>
+                </OrganizerMainNav>
                 
-            </SideNavContainer>
-        </StyledSideNav>
+            </IconContext.Provider>
+        </>
      );
 }
  
