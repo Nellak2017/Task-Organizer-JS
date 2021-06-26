@@ -1,9 +1,11 @@
-// import your components
-// import your data
+import { SideNav } from "../../components";
+import { SidebarData } from "./Data";
+
 
 const OrganizerMain = () => {
     return ( 
         <>
+        <SideNav />
         </>
      );
 }
