@@ -14,12 +14,10 @@ const App = () => {
     <Router>
           <GlobalStyle/>
           <ScrollToTop />
-          <SideNav/>
           <Switch>
-            <Route path="/" exact component={Home}></Route>
+            <Route path="/" exact component={OrganizerMain}></Route>
 
           </Switch>
-          <Footer/>
     </Router>
    );
 }
