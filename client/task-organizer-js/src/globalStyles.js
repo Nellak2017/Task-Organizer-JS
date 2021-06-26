@@ -9,6 +9,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+span {
+    margin-left: 16px;
+}
+
 `;
 
 export const Container = styled.div`
