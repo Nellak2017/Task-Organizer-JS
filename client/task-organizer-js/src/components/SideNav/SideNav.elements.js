@@ -3,49 +3,73 @@ import {Container} from '../../globalStyles';
 import GridOnIcon from '@material-ui/icons/GridOn';
 import {Link} from 'react-router-dom';
 
-export const StyledSideNav = styled.nav`
-    background: #101522;
-    display: flex;
-    flex-direction: column;
-    height: 100%; // either this or 100vh
-    width: 12rem;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    z-index: 999; // This is the top element
 
+export const OrganizerMainNav = styled.nav`
+    background-color: #060b26;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+`;
+
+export const MenuBars = styled(Link)`
+    margin-left: 2rem;
+    font-size: 2rem;
+    background: none;
+`;
+
+export const NavMenu = styled.nav`
+    background-color: #060b26;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -100%;
+    transition: 850ms;
 
-    border: 1px solid red;
+    &.active{
+        left: 0;
+        transition: 350ms;
+    }
 `;
 
-export const SideNavContainer = styled(Container)`
-    display: flex;
-    flex-direction: column;
+export const NavMenuItems = styled.ul`
     width: 100%;
-    height: 100%;
-    justify-content: flex-start;
-
-    ${Container}
 `;
 
-export const NavLogo = styled(Link)`
+export const NavbarToggle = styled.li`
+    background-color: #060b26;
+    width: 100%;
+    height: 80px;
     display: flex;
+    justify-content: start;
     align-items: center;
-    color: white;
-    justify-self: flex-start;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 1rem;
 `;
 
-export const NavIcon = styled(GridOnIcon)`
-    font-size: 2rem !Important;
-`;
+export const NavText = styled.li`
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
 
-export const LogoWords = styled.span`
-    padding-left: .5rem; 
-`;
+    & a {
+        text-decoration: none;
+        color: #f5f5f5;
+        font-size: 18px;
+        width: 95%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        border-radius: 4px;
+    }
 
+    & a:hover {
+        background-color: #1a83ff;
+    }
+`;
+ 
