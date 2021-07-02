@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons/lib';
 import { SidebarData } from '../../pages/OrganizerMain/Data';
 import {
     OrganizerMainNav,
     MenuBars,
+    NavLogo,
+    NavIcon,
+    LogoWords,
     NavMenu,
     NavMenuItems,
-    NavbarToggle,
     NavText
 } from './SideNav.elements.js';
 
@@ -18,17 +19,35 @@ const SideNav = () => {
 
     const showSidebar = () => setSidebar(!sidebar);
 
-    // TODO: How can you make the nav be a nav-menu active or nav-menu based on conditional??
+    // TODO: Simplify logic by using DRY priciples
+    // TODO: Put Nav Logo into the Data file so client can easily change it
 
     return ( 
         <>
-            <IconContext.Provider value={{color: '#fff'}}>
-                <OrganizerMainNav>
-                  <MenuBars to="#">
-                    <FaIcons.FaBars onClick={showSidebar} />
-                  </MenuBars>
-                </OrganizerMainNav>
-                
+            <IconContext.Provider value={{color: '#fff', size:'3rem'}}>
+            <OrganizerMainNav>
+                <MenuBars to='#'>
+                    <FaIcons.FaBars onClick={showSidebar}/>
+                </MenuBars>
+            </OrganizerMainNav>    
+            <NavMenu className={sidebar ? "active" : ""}>
+                <NavMenuItems onClick={showSidebar}>
+                    <NavLogo to='/'>
+                        <NavIcon />
+                        <LogoWords>Thread Organizer</LogoWords>
+                    </NavLogo>
+                    {SidebarData.map((item, index) => {
+                        return(
+                            <NavText key={index} className={item.cName}>
+                                {item.icon}
+                                <MenuBars to={item.path}>
+                                <span>{item.title}</span>
+                                </MenuBars>
+                            </NavText>
+                        );
+                    })} 
+                </NavMenuItems>
+            </NavMenu>   
             </IconContext.Provider>
         </>
      );
