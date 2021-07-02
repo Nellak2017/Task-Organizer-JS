@@ -1,9 +1,7 @@
-import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
-import * as GrIcons from 'react-icons/gr';
 import * as RiIcons from 'react-icons/ri';
 import * as MdIcons from 'react-icons/md';
+import * as CgIcons from 'react-icons/cg';
 
 
 export const SidebarData = [
@@ -16,7 +14,7 @@ export const SidebarData = [
   {
     title: 'Templates',
     path: '/templates',
-    icon: <GrIcons.GrTemplate />,
+    icon: <CgIcons.CgTemplate />,
     cName: 'nav-text'
   },
   {
@@ -46,7 +44,7 @@ export const SidebarData = [
   {
     title: 'Timelines',
     path: '/timelines',
-    icon: <IoIcons.IoMdHelpCircle />,
+    icon: <MdIcons.MdTimeline />,
     cName: 'nav-text'
   },
   {
@@ -58,7 +56,7 @@ export const SidebarData = [
   {
     title: 'Gantts',
     path: '/gantts',
-    icon: <IoIcons.IoMdHelpCircle />,
+    icon: <RiIcons.RiBarChartHorizontalFill />,
     cName: 'nav-text'
   },
   
