@@ -15,8 +15,8 @@ const App = () => {
           <GlobalStyle/>
           <ScrollToTop />
           <Switch>
-            <Route path="/" exact component={OrganizerMain}></Route>
-
+            <Route path="/" exact component={Home}></Route>
+            <Route path="/OrganizerMain" exact component={OrganizerMain}></Route>
           </Switch>
     </Router>
    );
