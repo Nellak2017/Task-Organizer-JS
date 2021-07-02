@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import {Container} from '../../globalStyles';
 import GridOnIcon from '@material-ui/icons/GridOn';
 import {Link} from 'react-router-dom';
 
-
+// This is the horizontal nav bar
 export const OrganizerMainNav = styled.nav`
     background-color: #060b26;
     height: 80px;
@@ -16,8 +15,37 @@ export const MenuBars = styled(Link)`
     margin-left: 2rem;
     font-size: 2rem;
     background: none;
+    color: #f5f5f5 !Important;
 `;
 
+// This is the container for the logo and the logo text
+export const NavLogo = styled(Link)`
+    color: white;
+    justify-self: flex-start;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+`;
+
+// This is the Logo for my App 
+export const NavIcon = styled(GridOnIcon)`
+    font-size: 3rem !Important; 
+    color: #f5f5f5;
+    margin-left: 1rem;
+    margin-bottom: 0rem;
+`;
+// This is the Logo text for my App
+export const LogoWords = styled.span`
+    margin-left: 2.5rem;
+    font-size: 1.5rem;
+    background: none;
+    color: #f5f5f5;
+    padding-top: .5rem;
+`;
+
+// This is the vertical nav bar
 export const NavMenu = styled.nav`
     background-color: #060b26;
     width: 250px;
@@ -39,22 +67,14 @@ export const NavMenuItems = styled.ul`
     width: 100%;
 `;
 
-export const NavbarToggle = styled.li`
-    background-color: #060b26;
-    width: 100%;
-    height: 80px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-`;
-
 export const NavText = styled.li`
     display: flex;
     justify-content: start;
     align-items: center;
-    padding: 8px 0px 8px 16px;
+    padding: .5rem 0px .5rem 1.4rem;
     list-style: none;
     height: 60px;
+    color: white;
 
     & a {
         text-decoration: none;
