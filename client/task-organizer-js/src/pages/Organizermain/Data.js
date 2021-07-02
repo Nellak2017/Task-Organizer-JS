@@ -7,7 +7,7 @@ import * as CgIcons from 'react-icons/cg';
 export const SidebarData = [
   {
     title: 'Home',
-    path: '/',
+    path: '/OrganizerMain',
     icon: <AiIcons.AiOutlineHome />,
     cName: 'nav-text'
   },
@@ -60,4 +60,13 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   
+];
+
+export const NavbarData = [
+  {
+    title: 'Home',
+    path: '/',
+    icon: <AiIcons.AiOutlineHome />,
+    cName: 'nav-text'
+  }
 ];
