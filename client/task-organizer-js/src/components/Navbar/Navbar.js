@@ -69,6 +69,12 @@ const Navbar = () => {
                         </NavLinks>
                     </NavItem>
 
+                    <NavItem>
+                        <NavLinks to='/OrganizerMain'>
+                            App
+                        </NavLinks>
+                    </NavItem>
+
                     <NavItemBtn>
                         {button ? (
                             <NavBtnLink to='/sign-up'>
