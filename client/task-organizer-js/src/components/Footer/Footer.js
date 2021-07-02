@@ -1,12 +1,6 @@
 import {FaFacebook, FaLinkedin, FaGithub} from 'react-icons/fa'
-import { Button } from '../../globalStyles';
 import {
     FooterContainer,
-    FooterSubscription,
-    FooterSubHeading,
-    FooterSubText,
-    Form,
-    FormInput,
     FooterLinksContainer,
     FooterLinksWrapper,
     FooterLinksItems,
