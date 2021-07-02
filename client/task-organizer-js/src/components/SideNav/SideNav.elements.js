@@ -7,8 +7,42 @@ export const OrganizerMainNav = styled.nav`
     background-color: #060b26;
     height: 80px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #f5f5f5;
+
+    
+`;
+
+export const OrganizerMainNavElementContainer = styled.ul`
+    display: flex;
     justify-content: start;
     align-items: center;
+    height: 80px;
+    background: none;
+
+   
+`;
+
+export const OrganizerMainNavElement = styled.li`
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: .5rem 0px .5rem 1.4rem;
+    list-style: none;
+    height: 100%;
+    color: white;
+
+    
+`;
+
+export const SearchBar = styled.input.attrs( () => ({
+    type: 'text'
+})
+)`
+border-radius: .5rem;
+width: 10rem;
+height: 2rem;
 `;
 
 export const MenuBars = styled(Link)`
