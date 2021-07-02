@@ -41,6 +41,11 @@ export const NavIcon = styled(GridOnIcon)`
     font-size: 3rem !Important; 
 `;
 
+export const LogoWords = styled.span`
+    width: 10px;
+    padding-left: 5px;
+`;
+
 export const MobileIcon = styled.div`
 
     display: none;
