@@ -9,8 +9,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-span {
-    margin-left: 16px;
+a {
+    text-decoration: none;
 }
 
 `;
