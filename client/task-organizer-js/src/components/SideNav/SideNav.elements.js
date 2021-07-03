@@ -10,8 +10,6 @@ export const OrganizerMainNav = styled.nav`
     justify-content: space-between;
     align-items: center;
     color: #f5f5f5;
-
-    
 `;
 
 export const OrganizerMainNavElementContainer = styled.ul`
@@ -20,8 +18,6 @@ export const OrganizerMainNavElementContainer = styled.ul`
     align-items: center;
     height: 80px;
     background: none;
-
-   
 `;
 
 export const OrganizerMainNavElement = styled.li`
@@ -32,17 +28,28 @@ export const OrganizerMainNavElement = styled.li`
     list-style: none;
     height: 100%;
     color: white;
-
-    
 `;
 
-export const SearchBar = styled.input.attrs( () => ({
-    type: 'text'
-})
-)`
-border-radius: .5rem;
-width: 10rem;
-height: 2rem;
+export const TabName = styled.span`
+    margin-left: 2.5rem;
+    font-size: 1.5rem;
+    background: none;
+    color: #f5f5f5;
+    padding-top: .5rem;
+    margin-bottom: 1rem; 
+    font-size: 2rem;
+
+    &.expanded{
+        transition-timing-function: linear; 
+        transition: 450ms;
+        margin-left: 11rem;
+    }
+
+    &.collapsed{
+        transition-timing-function: linear; 
+        transition: 350ms;
+        margin-left: 2rem;
+    }
 `;
 
 export const MenuBars = styled(Link)`
@@ -50,6 +57,10 @@ export const MenuBars = styled(Link)`
     font-size: 2rem;
     background: none;
     color: #f5f5f5 !Important;
+
+    &:hover {
+        border-bottom: 2px solid #1a83ff;
+    }
 `;
 
 // This is the container for the logo and the logo text
@@ -61,6 +72,10 @@ export const NavLogo = styled(Link)`
     font-size: 1rem;
     display: flex;
     align-items: center;
+
+    &:hover {
+        border-bottom: 2px solid #1a83ff;
+    }
 `;
 
 // This is the Logo for my App 
