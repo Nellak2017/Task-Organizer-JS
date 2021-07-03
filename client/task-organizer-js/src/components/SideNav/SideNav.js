@@ -1,12 +1,14 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
-import { SidebarData, NavbarData } from '../../pages/OrganizerMain/Data';
+import SearchBar from '../SearchBar/SearchBar.js';
+import { SidebarData, NavbarData, SearchBarTestData } from '../../pages/OrganizerMain/Data';
 import {
     OrganizerMainNav,
     OrganizerMainNavElementContainer,
     OrganizerMainNavElement,
-    SearchBar, 
+    TabName, 
     MenuBars,
     NavLogo,
     NavIcon,
@@ -22,11 +24,12 @@ const SideNav = () => {
 
     const showSidebar = () => setSidebar(!sidebar);
 
+    const location = useLocation(); // tell the route name by location.pathname
+
     // TODO: Simplify logic by using DRY priciples
     // TODO: Put Nav Logo into the Data file so client can easily change it
     // TODO: Update the Search Bar to make it more modern and connect to DB
     // TODO: Add the Profile picture logo and the User id in the horiz Nav
-    // TODO: Get Rid of the Red Borders when done using them for design
 
     return ( 
         <>
@@ -35,26 +38,18 @@ const SideNav = () => {
                 <OrganizerMainNavElementContainer>
                     <OrganizerMainNavElement>
                         <MenuBars to='#'>
-                            <FaIcons.FaBars onClick={showSidebar}/>
+                            <FaIcons.FaBars onClick={showSidebar} size={'2rem'}/>
                         </MenuBars>
 
-                        <LogoWords style={
-                            sidebar ? {transitionTimingFunction: "linear", transition: "550ms", marginLeft:"10.5rem", fontSize: "2rem"} : 
-                            {transitionTimingFunction: "linear", transition: "350ms", marginLeft:"2rem", fontSize: "2rem"}
-                            }>
-                            Home
-                        </LogoWords>
+                        <TabName className={sidebar ? 'expanded' : 'collapsed'}>
+                            {location.pathname == '/OrganizerMain' ? 'Home': location.pathname.replace('/','')}
+                        </TabName>
                     </OrganizerMainNavElement>
                 </OrganizerMainNavElementContainer>
 
                 <OrganizerMainNavElementContainer>
                     <OrganizerMainNavElement>
-                        <SearchBar 
-                        value="Foo bar"
-                        id="OrganizerMainSearchBar"
-                        placeholder="Foo"
-                        name="OrganizerMainSearchBar"
-                        ></SearchBar>
+                        <SearchBar placeholder='Search' data={SearchBarTestData}/> 
                     </OrganizerMainNavElement>
 
                 </OrganizerMainNavElementContainer>
@@ -64,7 +59,7 @@ const SideNav = () => {
                 <NavMenuItems onClick={showSidebar}>
                     <NavLogo to='/'>
                         <NavIcon />
-                        <LogoWords>Thread Organizer</LogoWords>
+                        <LogoWords>Task Organizer</LogoWords>
                     </NavLogo>
                     {SidebarData.map((item, index) => {
                         return(
