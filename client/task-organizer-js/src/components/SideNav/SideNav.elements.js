@@ -4,12 +4,16 @@ import {Link} from 'react-router-dom';
 
 // This is the horizontal nav bar
 export const OrganizerMainNav = styled.nav`
-    background-color: #060b26;
+    background-color: rgba(34,39,46,1);
     height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: #f5f5f5;
+    border-radius: 1rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom: 1px solid rgba(68,76,86,.5);
 `;
 
 export const OrganizerMainNavElementContainer = styled.ul`
@@ -57,6 +61,7 @@ export const MenuBars = styled(Link)`
     font-size: 2rem;
     background: none;
     color: #f5f5f5 !Important;
+    
 
     &:hover {
         border-bottom: 2px solid #1a83ff;
@@ -66,14 +71,20 @@ export const MenuBars = styled(Link)`
 // This is the container for the logo and the logo text
 export const NavLogo = styled(Link)`
     color: white;
+    background-color: rgba(34,39,46,1);
     justify-self: flex-start;
     cursor: pointer;
     text-decoration: none;
     font-size: 1rem;
     display: flex;
     align-items: center;
+    border-top: 0;
+    border-bottom: 1px solid rgba(68,76,86,.5);
+    height: 5rem;
 
     &:hover {
+        transition-timing-function: linear; 
+        transition: 350ms;
         border-bottom: 2px solid #1a83ff;
     }
 `;
@@ -96,7 +107,7 @@ export const LogoWords = styled.span`
 
 // This is the vertical nav bar
 export const NavMenu = styled.nav`
-    background-color: #060b26;
+    background-color: rgba(16,21,34,1);
     width: 250px;
     height: 100vh;
     display: flex;
@@ -105,6 +116,9 @@ export const NavMenu = styled.nav`
     top: 0;
     left: -100%;
     transition: 850ms;
+    border-radius: 1rem;
+    border-right: 2px solid rgba(68,76,86,.5);
+    border-bottom: 1px solid rgba(68,76,86,.5);
 
     &.active{
         left: 0;
@@ -124,6 +138,9 @@ export const NavText = styled.li`
     list-style: none;
     height: 60px;
     color: white;
+    border: 1px solid rgba(68,76,86,.5);
+    border-right: 0;
+    border-top: 0;
 
     & a {
         text-decoration: none;
