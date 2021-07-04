@@ -31,6 +31,7 @@ const SideNav = () => {
     // TODO: Put Nav Logo into the Data file so client can easily change it
     // TODO: Update the Search Bar to make it more modern and connect to DB
     // TODO: Highlight what tab you are on
+    // TODO: Make this Mobile Responsive
 
     return ( 
         <>
@@ -39,11 +40,11 @@ const SideNav = () => {
                 <OrganizerMainNavElementContainer>
                     <OrganizerMainNavElement>
                         <MenuBars to='#'>
-                            <FaIcons.FaBars onClick={showSidebar} size={'2rem'}/>
+                            <FaIcons.FaBars className="icon" onClick={showSidebar} size={'2rem'}/>
                         </MenuBars>
 
                         <TabName className={sidebar ? 'expanded' : 'collapsed'}>
-                            {location.pathname == '/OrganizerMain' ? 'Home': location.pathname.replace('/','')}
+                            {location.pathname === '/OrganizerMain' ? 'Home': location.pathname.replace('/','')}
                         </TabName>
                     </OrganizerMainNavElement>
                 </OrganizerMainNavElementContainer>
