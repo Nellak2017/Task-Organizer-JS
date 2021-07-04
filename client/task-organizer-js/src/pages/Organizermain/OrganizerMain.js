@@ -1,11 +1,10 @@
-import { SideNav } from "../../components";
-import { SidebarData } from "./Data";
-
+import { SideNav, InfoSummary} from "../../components";
 
 const OrganizerMain = () => {
     return ( 
         <>
         <SideNav />
+        <InfoSummary />
         </>
      );
 }
