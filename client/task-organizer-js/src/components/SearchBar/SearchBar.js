@@ -50,7 +50,7 @@ const SearchBar = ({ placeholder, data }) => {
                         value={wordEntered}
                         onChange={handleFilter}
                     />
-                    {filteredData.length != 0 && (
+                    {filteredData.length !== 0 && (
                         <DataResult>
                             {filteredData.slice(0, 15).map((value, key) => {
                                 return (
