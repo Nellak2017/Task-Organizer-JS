@@ -62,15 +62,18 @@ export const SidebarData = [
   
 ];
 
-export const NavbarData = [
-  {
-    title: 'Home',
-    path: '/',
-    icon: <AiIcons.AiOutlineHome />,
-    cName: 'nav-text'
-  }
-];
+// Add Navbar data in future versions if needed
 
+// This is dummy profile data that is supposed to be fetched
+export const ProfileData = [
+  {
+    picture: 'https://pbs.twimg.com/profile_images/1240639017768701954/88-dgMc5_400x400.jpg',
+    username: "Connor Keenum",
+    profileLink: "/Users/Connor Keenum"
+  }
+]
+
+// This is dummy search data that is supposed to be fetched 
 export const SearchBarTestData = [
   {
     "author": "Chinua Achebe",
