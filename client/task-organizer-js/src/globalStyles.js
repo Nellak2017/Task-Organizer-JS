@@ -13,6 +13,10 @@ a {
     text-decoration: none;
 }
 
+body {
+    background-color: rgba(16,21,34,1);
+}
+
 `;
 
 export const Container = styled.div`
