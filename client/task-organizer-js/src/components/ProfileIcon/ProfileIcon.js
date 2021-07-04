@@ -4,16 +4,22 @@ import {
     ProfileName
 } from './ProfileIcon.elements.js';
 
-
-const ProfileIcon = ({data}) => {
+//TODO: Add Data Validation for the username when adding the route
+const ProfileIcon = ({ data }) => {
     return (
         <>
-            <ProfileContainer>
-                <ProfilePicture src={'https://pbs.twimg.com/profile_images/1240639017768701954/88-dgMc5_400x400.jpg'}/>
-                <ProfileName>Connor Keenum dddd</ProfileName>
-            </ProfileContainer> 
+            {data.map((value, key) => {
+                return (
+                    <ProfileContainer to={"/Users/" + value.username}>
+                        <ProfilePicture alt={value.username+" Picture"} src={value.picture} />
+                        <ProfileName>{value.username}</ProfileName>
+                    </ProfileContainer>
+                );
+            }
+            )
+            }
         </>
-     );
+    );
 }
- 
+
 export default ProfileIcon;
