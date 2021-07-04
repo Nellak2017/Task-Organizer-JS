@@ -1,29 +1,31 @@
 import styled from 'styled-components';
 
-// TODO: Remove extraneous code
-
 export const SearchInputs = styled.div`
     display: flex;
     align-items: center;
+    position: relative;
 `;
 
 export const Search = styled.div`
 
     & input {
-        background-color: white;
+        background-color: rgba(22,32,68,1);
         border: 0;
-        border-radius: 2px;
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-        font-size: 18px;
-        padding: 15px;
+        border-radius: 1rem;
+        font-size: 1.2rem;
+        padding: .75rem;
         margin-right: 1rem;
-        height: 30px;
-        width: 300px;
+        height: 1.9rem;
+        width: 20rem;
+        color: #f5f5f5 !important;
     }
 
     & input:focus {
         outline: none;
+    }
+
+    & input:hover {
+        border: #1a83ff 1px solid;
     }
 
     & a {
@@ -49,22 +51,31 @@ export const SearchIconClassContainer = styled.div`
 
     &:hover {
         color: #1a83ff !important;
+        cursor: pointer;
     }
+
     & .searchicon:hover {
         color: #1a83ff !important;
     }
 `;
 
 export const DataResult = styled.div`
-    margin-top: 5px;
-    width: 300px;
-    height: 200px;
+    position: absolute;
+    top: 2.5rem;
+    right: 4.75rem;  
+    width: 15rem;
+    height: 15rem;
+    border-radius: 1rem;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow: hidden;
     overflow-y: auto;
 
-    &.dataItem{
+    &::-webkit-scrollbar { 
+        width: 0 !important 
+    }
+
+    & .dataItem{
         width: 100%;
         height: 50px;
         display: flex;
