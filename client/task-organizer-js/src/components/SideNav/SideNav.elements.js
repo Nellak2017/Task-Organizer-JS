@@ -63,8 +63,9 @@ export const MenuBars = styled(Link)`
     color: #f5f5f5 !Important;
     
 
-    &:hover {
-        border-bottom: 2px solid #1a83ff;
+    & .icon:hover {
+        transition: 350ms;
+        color: #1a83ff !Important;
     }
 `;
 
@@ -79,7 +80,7 @@ export const NavLogo = styled(Link)`
     display: flex;
     align-items: center;
     border-top: 0;
-    border-bottom: 1px solid rgba(68,76,86,.5);
+    border-bottom: 2px solid rgba(68,76,86,.5);
     height: 5rem;
 
     &:hover {
