@@ -5,9 +5,6 @@ import Home from './pages/HomePage/Home';
 import OrganizerMain from './pages/OrganizerMain/OrganizerMain';
 import ScrollToTop from './components/ScrollToTop';
 
-// TODO: Remove SideNav from the main page, and put in Navbar
-// TODO: Finish up SideNav, SideNav.elements, OrganizerMain.js, and Data.js from \OrganizerMain
-
 const App = () => {
 
   return ( 
