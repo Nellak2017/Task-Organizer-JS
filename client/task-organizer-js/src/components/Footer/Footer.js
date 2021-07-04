@@ -53,13 +53,13 @@ const Footer = () => {
                         Nellak2017 © 2021
                     </WebsiteRights>
                     <SocialIcons>
-                        <SocialIconLink href='https://www.facebook.com/connor.keenum' target="_blank" aria-label="Facebook">
+                        <SocialIconLink rel="noopener" href='https://www.facebook.com/connor.keenum' target="_blank" aria-label="Facebook">
                             <FaFacebook />
                         </SocialIconLink>
-                        <SocialIconLink href='https://github.com/Nellak2017' target="_blank" aria-label="GitHub">
+                        <SocialIconLink rel="noopener" href='https://github.com/Nellak2017' target="_blank" aria-label="GitHub">
                             <FaGithub />
                         </SocialIconLink>
-                        <SocialIconLink href='https://www.linkedin.com/in/connor-keenum/' target="_blank" aria-label="LinkedIn">
+                        <SocialIconLink rel="noopener" href='https://www.linkedin.com/in/connor-keenum/' target="_blank" aria-label="LinkedIn">
                             <FaLinkedin />
                         </SocialIconLink>
                     </SocialIcons>
