@@ -3,7 +3,8 @@ import { useLocation } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import SearchBar from '../SearchBar/SearchBar.js';
-import { SidebarData, NavbarData, SearchBarTestData } from '../../pages/OrganizerMain/Data';
+import ProfileIcon from '../ProfileIcon/ProfileIcon.js';
+import { SidebarData, ProfileData, SearchBarTestData } from '../../pages/OrganizerMain/Data';
 import {
     OrganizerMainNav,
     OrganizerMainNavElementContainer,
@@ -29,7 +30,7 @@ const SideNav = () => {
     // TODO: Simplify logic by using DRY priciples
     // TODO: Put Nav Logo into the Data file so client can easily change it
     // TODO: Update the Search Bar to make it more modern and connect to DB
-    // TODO: Add the Profile picture logo and the User id in the horiz Nav
+    // TODO: Highlight what tab you are on
 
     return ( 
         <>
@@ -50,6 +51,7 @@ const SideNav = () => {
                 <OrganizerMainNavElementContainer>
                     <OrganizerMainNavElement>
                         <SearchBar placeholder='Search' data={SearchBarTestData}/> 
+                        <ProfileIcon data={ProfileData}/>
                     </OrganizerMainNavElement>
 
                 </OrganizerMainNavElementContainer>
