@@ -9,8 +9,8 @@ export const SearchInputs = styled.div`
 export const Search = styled.div`
 
     & input {
-        background-color: rgba(22,32,68,1);
-        border: 0;
+        background-color: rgba(16,21,34,1);
+        border: 1px solid rgba(68,76,86,.5);
         border-radius: 1rem;
         font-size: 1.2rem;
         padding: .75rem;
@@ -25,6 +25,7 @@ export const Search = styled.div`
     }
 
     & input:hover {
+        transition: 350ms;
         border: #1a83ff 1px solid;
     }
 
@@ -50,11 +51,13 @@ export const SearchIconClassContainer = styled.div`
     color: white;
 
     &:hover {
+        transition: 350ms;
         color: #1a83ff !important;
         cursor: pointer;
     }
 
     & .searchicon:hover {
+        transition: 350ms;
         color: #1a83ff !important;
     }
 `;
@@ -63,7 +66,7 @@ export const DataResult = styled.div`
     position: absolute;
     top: 2.5rem;
     right: 4.75rem;  
-    width: 15rem;
+    max-width: 15rem;
     height: 15rem;
     border-radius: 1rem;
     background-color: white;
