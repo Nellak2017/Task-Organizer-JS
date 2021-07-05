@@ -10,6 +10,10 @@ import { IconContext } from 'react-icons/lib';
 import * as BiIcons from 'react-icons/bi';
 import CloseIcon from "@material-ui/icons/Close";
 
+// TODO: Fix the Search result box Style Errors
+// TODO: Fix the bug where you can't X out if the search is not in the DB
+// TODO: Get rid of the small x in the right side of the search result
+
 const SearchBar = ({ placeholder, data }) => {
 
     const [filteredData, setFilteredData] = useState([]);
