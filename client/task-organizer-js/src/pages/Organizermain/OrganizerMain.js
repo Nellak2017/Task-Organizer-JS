@@ -1,10 +1,10 @@
-import { SideNav, InfoSummary} from "../../components";
+import { SideNav, InfoSummary, TableContent } from "../../components";
 
 const OrganizerMain = () => {
     return ( 
         <>
         <SideNav />
-        <InfoSummary />
+        <InfoSummary MyComponent={TableContent} />
         </>
      );
 }
