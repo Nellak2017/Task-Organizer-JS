@@ -55,11 +55,6 @@ export const SearchIconClassContainer = styled.div`
         color: #1a83ff !important;
         cursor: pointer;
     }
-
-    & .searchicon:hover {
-        transition: 350ms;
-        color: #1a83ff !important;
-    }
 `;
 
 export const DataResult = styled.div`
