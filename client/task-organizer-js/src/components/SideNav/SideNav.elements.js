@@ -61,12 +61,6 @@ export const MenuBars = styled(Link)`
     font-size: 2rem;
     background: none;
     color: #f5f5f5 !Important;
-    
-
-    & .icon:hover {
-        transition: 350ms;
-        color: #1a83ff !Important;
-    }
 `;
 
 // This is the container for the logo and the logo text
