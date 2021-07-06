@@ -17,6 +17,12 @@ body {
     background-color: rgba(16,21,34,1);
 }
 
+.icon:hover {
+        transition: 350ms;
+        color: #1a83ff !important;
+        cursor: pointer;
+}
+
 `;
 
 export const Container = styled.div`
