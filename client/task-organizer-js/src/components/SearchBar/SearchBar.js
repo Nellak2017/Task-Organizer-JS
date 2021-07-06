@@ -13,6 +13,7 @@ import CloseIcon from "@material-ui/icons/Close";
 // TODO: Fix the Search result box Style Errors
 // TODO: Fix the bug where you can't X out if the search is not in the DB
 // TODO: Get rid of the small x in the right side of the search result
+// TODO: Assign Key to each value in map
 
 const SearchBar = ({ placeholder, data }) => {
 
@@ -41,9 +42,9 @@ const SearchBar = ({ placeholder, data }) => {
         <IconContext.Provider value={{ color: '#fff', size: '2rem' }}>
             <Search>
                 <SearchInputs>
-                    <SearchIconClassContainer className="searchicon" >
+                    <SearchIconClassContainer className="icon" >
                         {filteredData.length === 0 ? (
-                            <BiIcons.BiSearch className="searchicon" />
+                            <BiIcons.BiSearch className="icon" />
                         ) : (
                             <CloseIcon onClick={clearInput} className="clearBtn" />
                         )}
