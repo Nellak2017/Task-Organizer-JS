@@ -11,7 +11,6 @@ import * as BiIcons from 'react-icons/bi';
 
 // TODO: Map from Data Source to Produce Correct Table Data
 // TODO: Fix the onClick error where all boxes are clicked at once (Maybe Use effect?)
-// TODO: Look at the Parent container's Collapse function.. it isn't collapsing
 // TODO: Make Drag and Drop feature where you can drag and drop columns in place
 // TODO: Gray out stuff when completed
 
