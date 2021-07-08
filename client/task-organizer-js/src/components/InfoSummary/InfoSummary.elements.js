@@ -11,8 +11,6 @@ export const SummaryContainer = styled.div`
     margin: 3rem 0 1rem 0;
     font-size: 2rem;
 
-    //border: 1px solid red;
-
     & .icon {
         margin-right: 1rem;
     }
@@ -38,7 +36,6 @@ export const SummaryDropDownContainer = styled.span`
     flex-direction: row;
     align-items: center;
     padding-bottom: .25rem;
-    //border: 1px solid green;
 `;
 
 export const SummaryDropDownItem = styled.span`
@@ -64,15 +61,35 @@ const ExpandingAnimation = keyframes`
 
 const CollapsingAnimation = keyframes`
     0% { opacity: 1; min-height: 10rem;}
-    100% { opacity: 0; min-height: 0; padding: 0; margin: 0 0 0 20rem;}
+    100% { opacity: 0; min-height: 0; padding: 0; margin: 0 0 0 20rem;
+}
+`;
+
+const NestedComponentAnimationFix = `
+transition-timing-function: linear; 
+transition: 400ms;
+border: 0; 
+height: 0 !important;
+padding: 0 !important; 
+font-size: 0;
 `;
 
 // The place where the Threads or Pertinent todos or whatever go
 export const SummaryInfoCollapsable = styled.section`
+    
     animation-name: ${props => props.expanded ?
         ExpandingAnimation :
         CollapsingAnimation
     };
+
+    & *{
+        ${props => props.expanded ?
+        "transition-timing-function: linear; transition: 200ms;":NestedComponentAnimationFix
+        };
+        
+    }
+    display: flex;
+    align-items: stretch;
     animation-duration: 500ms;
     animation-fill-mode: both;
     font-size: 1rem;
