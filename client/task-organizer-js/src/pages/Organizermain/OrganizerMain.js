@@ -1,9 +1,11 @@
 import { SideNav, InfoSummary, TableContent } from "../../components";
 
+// TODO: Add Media Queries for Responsive Design
 const OrganizerMain = () => {
     return ( 
         <>
         <SideNav />
+        <InfoSummary MyComponent={TableContent} />
         <InfoSummary MyComponent={TableContent} />
         </>
      );
