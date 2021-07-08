@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// TODO: Try out different colors for the text for highlighting
 export const TaskTable = styled.table`
     color: #fff;
     text-align: left;
@@ -26,7 +27,7 @@ export const TaskTable = styled.table`
     & td[data-content="Open"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
     & td[data-content="Waiting"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
     & td[data-content="Closed"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
-    & .due[data-content*="Today at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
+    & .due[data-content*="Today at"] span{color: black; background-color: rgba(255,199,206);}
     & .due[data-content*="Tomorrow at"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
     & .due[data-content*="in"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
 `;
