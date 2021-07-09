@@ -68,21 +68,64 @@ export const SidebarData = [
 // TODO: have a date / time format used in the data source
 // TODO: have standard method for dealing with periodicity
 export const TableContentData = [
+  
   {
-    task: 'Take out the Trash',
-    due: 'Today at 9 pm',
+    task: 'Testosterone Supplement',
+    due: 'Today at 5:00 pm',
     priority: 'Low',
     status: 'Open',
-    periodicity: '2 * week',
-    id: '1'
+    periodicity: '3 * week',
   },
   {
-    task: 'Do the laundry',
-    due: 'Today at 6 pm',
-    priority: 'Medium',
+    task: 'Gym',
+    due: 'Today at 5:00 pm',
+    priority: 'High',
     status: 'Open',
-    periodicity: '1 * week'
-  }
+    periodicity: '1 * day',
+  },
+  {
+    task: 'Shower',
+    due: 'Today at 5:30 pm',
+    priority: 'High',
+    status: 'Open',
+    periodicity: '1 * week',
+  },
+  {
+    task: 'Hygiene',
+    due: 'Today at 5:30 pm',
+    priority: 'High',
+    status: 'Open',
+    periodicity: '1 * week',
+  },
+  {
+    task: 'Github (20 contribs)',
+    due: 'Today at 6:00 pm',
+    priority: 'High',
+    status: 'Open',
+    periodicity: '1 * day',
+  },
+  {
+    task: 'Relax until Triana',
+    due: 'Today at 6:30 pm',
+    priority: 'Low',
+    status: 'Open',
+    periodicity: '3 * week',
+  },
+  {
+    task: 'Get Triana',
+    due: 'Today at 7:00 pm',
+    priority: 'High',
+    status: 'Open',
+    periodicity: '3 * week',
+  },
+  {
+    task: 'Eat with Triana',
+    due: 'Today at 7:35 pm',
+    priority: 'High',
+    status: 'Open',
+    periodicity: '3 * week',
+  },
+ 
 ];
 
 // This is dummy Grid Content data that is supposed to be fetched
