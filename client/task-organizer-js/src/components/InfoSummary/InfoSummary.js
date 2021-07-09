@@ -8,6 +8,7 @@ import {
 } from './InfoSummary.elements.js';
 import { IconContext } from 'react-icons/lib';
 import * as GoIcons from 'react-icons/go';
+import { TableContentData } from "../../pages/OrganizerMain/Data";
 
 // TODO: With the Data, map the Data to the Components like in the other components
 // TODO: Rename the Styled Compnents to be more semantic, this is a CSS Collapsable,w/content
@@ -42,10 +43,10 @@ const InfoSummary = ({MyComponent}) => {
                     {
                         click ?
                             <SummaryInfoCollapsable expanded>
-                                <MyComponent/>
+                                <MyComponent data={TableContentData}/>
                             </SummaryInfoCollapsable> :
                             <SummaryInfoCollapsable >
-                                <MyComponent/>
+                                <MyComponent data={TableContentData}/>
                             </SummaryInfoCollapsable>
                     }
                 </SummaryContainer>
