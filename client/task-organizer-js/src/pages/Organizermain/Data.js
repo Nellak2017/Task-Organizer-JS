@@ -64,6 +64,29 @@ export const SidebarData = [
 
 // Add Navbar data in future versions if needed
 
+// This is dummy Table Content data that is supposed to be fetched
+// TODO: have a date / time format used in the data source
+// TODO: have standard method for dealing with periodicity
+export const TableContentData = [
+  {
+    task: 'Take out the Trash',
+    due: 'Today at 9 pm',
+    priority: 'Low',
+    status: 'Open',
+    periodicity: '2 * week',
+    id: '1'
+  },
+  {
+    task: 'Do the laundry',
+    due: 'Today at 6 pm',
+    priority: 'Medium',
+    status: 'Open',
+    periodicity: '1 * week'
+  }
+];
+
+// This is dummy Grid Content data that is supposed to be fetched
+
 // This is dummy profile data that is supposed to be fetched
 export const ProfileData = [
   {
