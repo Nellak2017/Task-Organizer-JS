@@ -21,6 +21,8 @@ export const TaskTable = styled.table`
         border-radius: 1rem;
     }
 
+
+    // TODO: Add Highlighting for the Status of "Processing" to be light blue
     & td[data-content="Low"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
     & td[data-content="Medium"] span{color: rgba(156,114,88); background-color:rgba(255,235,156);}
     & td[data-content="High"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
