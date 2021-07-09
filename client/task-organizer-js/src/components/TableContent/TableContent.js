@@ -10,11 +10,13 @@ import * as BiIcons from 'react-icons/bi';
 // BiCheckboxChecked is used for the checkbox when clicked
 
 // TODO: Map from Data Source to Produce Correct Table Data
+// TODO: import a Date and Time handler for the Todo Due data. Don't store data as like "Tonight at 9" store like 7/9/2021/2100 or something like that
 // TODO: Fix the onClick error where all boxes are clicked at once (Maybe Use effect?)
+// TODO: Figure out how to assign a key to each item in the mapping
 // TODO: Make Drag and Drop feature where you can drag and drop columns in place
 // TODO: Gray out stuff when completed
 
-const TableContent = () => {
+const TableContent = ( {data} ) => {
     const [click, setClick] = useState(false);
 
     const handleClick = () => setClick(!click);
@@ -31,24 +33,22 @@ const TableContent = () => {
                         <TaskTableHeader>Status</TaskTableHeader>
                         <TaskTableHeader>Periodicity</TaskTableHeader>
                     </TaskTableRow>
-                    <TaskTableRow>
-                        <TaskTableData className="iconTd">{click ? <BiIcons.BiCheckboxChecked className="icon" onClick={handleClick}/> 
-                        : <BiIcons.BiCheckbox className="icon" onClick={handleClick}/>}</TaskTableData>
-                        <TaskTableData >Take Out Trash</TaskTableData>
-                        <TaskTableData className="due" data-content="Today at 9 pm" > <span>Today at 9 pm</span></TaskTableData>
-                        <TaskTableData data-content="Low"><span>Low</span></TaskTableData>
-                        <TaskTableData data-content="Open"><span>Open</span></TaskTableData>
-                        <TaskTableData >2 * week</TaskTableData>
-                    </TaskTableRow>
-                    <TaskTableRow>
-                        <TaskTableData className="iconTd">{click ? <BiIcons.BiCheckboxChecked className="icon" onClick={handleClick}/> 
-                        : <BiIcons.BiCheckbox className="icon" onClick={handleClick}/>}</TaskTableData>
-                        <TaskTableData>Do Laundry</TaskTableData>
-                        <TaskTableData className="due" data-content="Today at 6 pm"><span>Today at 6 pm</span></TaskTableData>
-                        <TaskTableData data-content="Medium"><span>Medium</span></TaskTableData>
-                        <TaskTableData data-content="Open"><span>Open</span></TaskTableData>
-                        <TaskTableData>1 * week</TaskTableData>
-                    </TaskTableRow>
+
+                    {data.map((value, key) => {
+                        return(
+                            <TaskTableRow key={key}>
+                                <TaskTableData className="iconTd">{click ? <BiIcons.BiCheckboxChecked className="icon" onClick={handleClick}/> 
+                                : <BiIcons.BiCheckbox className="icon" onClick={handleClick}/>}</TaskTableData>
+
+                                <TaskTableData data-content={value.task}>{value.task}</TaskTableData>
+                                <TaskTableData className="due" data-content={value.due}><span>{value.due}</span></TaskTableData>
+                                <TaskTableData data-content={value.priority}><span>{value.priority}</span></TaskTableData>
+                                <TaskTableData data-content={value.status}><span>{value.status}</span></TaskTableData>
+                                <TaskTableData data-content={value.periodicity}>{value.periodicity}</TaskTableData>
+                            </TaskTableRow>
+                        );
+                    })
+                    }
                 </TaskTable>
             </IconContext.Provider>
         </>
