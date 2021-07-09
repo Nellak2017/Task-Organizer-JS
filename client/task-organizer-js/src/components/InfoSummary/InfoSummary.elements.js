@@ -71,7 +71,7 @@ transition: 400ms;
 border: 0; 
 height: 0 !important;
 padding: 0 !important; 
-font-size: 0;
+font-size: 0 !important;
 `;
 
 // The place where the Threads or Pertinent todos or whatever go
