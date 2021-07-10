@@ -10,7 +10,7 @@ const ProfileIcon = ({ data }) => {
         <>
             {data.map((value, key) => {
                 return (
-                    <ProfileContainer to={"/Users/" + value.username}>
+                    <ProfileContainer to={"/Users/" + value.username} key={key}>
                         <ProfilePicture alt={value.username+" Picture"} src={value.picture} />
                         <ProfileName>{value.username}</ProfileName>
                     </ProfileContainer>
