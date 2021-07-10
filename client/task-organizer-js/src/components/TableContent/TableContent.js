@@ -7,6 +7,8 @@ import {
 } from './TableContent.elements.js';
 import { IconContext } from 'react-icons/lib';
 import * as BiIcons from 'react-icons/bi';
+//import moment from 'moment';
+import FormatDue from '../../lib/moment/FormatDue.js';
 // BiCheckboxChecked is used for the checkbox when clicked
 
 // TODO: Fix the onClick error where all boxes are clicked at once (Maybe Use effect?)
@@ -41,7 +43,7 @@ const TableContent = ( {data} ) => {
                                 : <BiIcons.BiCheckbox className="icon" onClick={handleClick}/>}</TaskTableData>
 
                                 <TaskTableData data-content={value.task}>{value.task}</TaskTableData>
-                                <TaskTableData className="due" data-content={value.due}><span>{value.due}</span></TaskTableData>
+                                <TaskTableData className="due" data-content={FormatDue(value.due)}><span>{FormatDue(value.due)}</span></TaskTableData>
                                 <TaskTableData data-content={value.priority}><span>{value.priority}</span></TaskTableData>
                                 <TaskTableData data-content={value.status}><span>{value.status}</span></TaskTableData>
                                 <TaskTableData data-content={value.periodicity}>{value.periodicity}</TaskTableData>
