@@ -18,7 +18,7 @@ import FormatDue from '../../lib/moment/FormatDue.js';
 // TODO: Gray out stuff when completed
 // TODO: Add logic for see all
 
-const TableContent = ( {data} ) => {
+const TableContent = ({ data }) => {
     const [click, setClick] = useState(false);
 
     const handleClick = () => setClick(!click);
@@ -27,30 +27,34 @@ const TableContent = ( {data} ) => {
         <>
             <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
                 <TaskTable>
-                    <TaskTableRow>
-                        <p></p>
-                        <TaskTableHeader>Task</TaskTableHeader>
-                        <TaskTableHeader>Due</TaskTableHeader>
-                        <TaskTableHeader>Priority</TaskTableHeader>
-                        <TaskTableHeader>Status</TaskTableHeader>
-                        <TaskTableHeader>Periodicity</TaskTableHeader>
-                    </TaskTableRow>
+                    <thead>
+                        <TaskTableRow>
+                            <td><p></p></td>
+                            <TaskTableHeader>Task</TaskTableHeader>
+                            <TaskTableHeader>Due</TaskTableHeader>
+                            <TaskTableHeader>Priority</TaskTableHeader>
+                            <TaskTableHeader>Status</TaskTableHeader>
+                            <TaskTableHeader>Periodicity</TaskTableHeader>
+                        </TaskTableRow>
+                    </thead>
 
-                    {data.map((value, key) => {
-                        return(
-                            <TaskTableRow key={data.id}>
-                                <TaskTableData className="iconTd">{click ? <BiIcons.BiCheckboxChecked className="icon" onClick={handleClick}/> 
-                                : <BiIcons.BiCheckbox className="icon" onClick={handleClick}/>}</TaskTableData>
+                    <tbody>
+                        {data.map((value, key) => {
+                            return (
+                                <TaskTableRow key={key}>
+                                    <TaskTableData className="iconTd">{click ? <BiIcons.BiCheckboxChecked className="icon" onClick={handleClick} />
+                                        : <BiIcons.BiCheckbox className="icon" onClick={handleClick} />}</TaskTableData>
 
-                                <TaskTableData data-content={value.task}>{value.task}</TaskTableData>
-                                <TaskTableData className="due" data-content={FormatDue(value.due)}><span>{FormatDue(value.due)}</span></TaskTableData>
-                                <TaskTableData data-content={value.priority}><span>{value.priority}</span></TaskTableData>
-                                <TaskTableData data-content={value.status}><span>{value.status}</span></TaskTableData>
-                                <TaskTableData data-content={value.periodicity}>{value.periodicity}</TaskTableData>
-                            </TaskTableRow>
-                        );
-                    })
-                    }
+                                    <TaskTableData data-content={value.task}>{value.task}</TaskTableData>
+                                    <TaskTableData className="due" data-content={FormatDue(value.due)}><span>{FormatDue(value.due)}</span></TaskTableData>
+                                    <TaskTableData data-content={value.priority}><span>{value.priority}</span></TaskTableData>
+                                    <TaskTableData data-content={value.status}><span>{value.status}</span></TaskTableData>
+                                    <TaskTableData data-content={value.periodicity}>{value.periodicity}</TaskTableData>
+                                </TaskTableRow>
+                            );
+                        })
+                        }
+                    </tbody>
                 </TaskTable>
             </IconContext.Provider>
         </>
