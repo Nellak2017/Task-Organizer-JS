@@ -9,11 +9,12 @@ import { IconContext } from 'react-icons/lib';
 import * as BiIcons from 'react-icons/bi';
 // BiCheckboxChecked is used for the checkbox when clicked
 
+// TODO: Fix the onClick error where all boxes are clicked at once (Maybe Use effect?)
 // TODO: Figure out how to assign a key to each item in the mapping
 // TODO: import a Date and Time handler for the Todo Due data. Don't store data as like "Tonight at 9" store like 7/9/2021/2100 or something like that
-// TODO: Fix the onClick error where all boxes are clicked at once (Maybe Use effect?)
-// TODO: Make Drag and Drop feature where you can drag and drop columns in place
+// TODO: Make Drag and Drop feature where you can drag and drop rows in place
 // TODO: Gray out stuff when completed
+// TODO: Add logic for see all
 
 const TableContent = ( {data} ) => {
     const [click, setClick] = useState(false);
@@ -35,7 +36,7 @@ const TableContent = ( {data} ) => {
 
                     {data.map((value, key) => {
                         return(
-                            <TaskTableRow key={key}>
+                            <TaskTableRow key={data.id}>
                                 <TaskTableData className="iconTd">{click ? <BiIcons.BiCheckboxChecked className="icon" onClick={handleClick}/> 
                                 : <BiIcons.BiCheckbox className="icon" onClick={handleClick}/>}</TaskTableData>
 
