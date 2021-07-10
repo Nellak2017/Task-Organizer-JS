@@ -70,6 +70,12 @@ export const SidebarData = [
 export const InfoSummaryData = [
   {
     title: 'High Priority Tasks',
+    icon: 'None',
+    iconComponent: 'None',
+    text: 'See All'
+  },
+  {
+    title: 'Grid',
     icon: <RiIcons.RiTodoLine className="icon"/>,
     iconComponent: 'None',
     text: ''
