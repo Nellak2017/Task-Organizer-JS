@@ -42,8 +42,10 @@ export const SummaryDropDownItem = styled.span`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     font-size: 1rem;
+    max-height: 2rem;
+    overflow: hidden;
 
     &:hover {
         transition: 350ms;
