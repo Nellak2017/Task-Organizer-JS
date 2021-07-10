@@ -31,13 +31,13 @@ export const SidebarData = [
   },
   {
     title: 'Todo View',
-    path: '/Todo View',
+    path: '/TodoView',
     icon: <RiIcons.RiTodoLine/>,
     cName: 'nav-text'
   },
   {
     title: 'Threads',
-    path: '/Threads',
+    path: '/ThreadView',
     icon: <RiIcons.RiStackLine />,
     cName: 'nav-text'
   },
@@ -70,62 +70,21 @@ export const SidebarData = [
 export const TableContentData = [
   
   {
-    task: 'Testosterone Supplement',
-    due: 'Today at 5:00 pm',
-    priority: 'Low',
-    status: 'Open',
-    periodicity: '3 * week',
-  },
-  {
-    task: 'Gym',
-    due: 'Today at 5:00 pm',
-    priority: 'High',
-    status: 'Open',
-    periodicity: '1 * day',
-  },
-  {
-    task: 'Shower',
-    due: 'Today at 5:30 pm',
-    priority: 'High',
-    status: 'Open',
-    periodicity: '1 * week',
-  },
-  {
-    task: 'Hygiene',
-    due: 'Today at 5:30 pm',
-    priority: 'High',
-    status: 'Open',
-    periodicity: '1 * week',
-  },
-  {
     task: 'Github (20 contribs)',
     due: 'Today at 6:00 pm',
     priority: 'High',
     status: 'Open',
     periodicity: '1 * day',
+    id: '0'
   },
   {
-    task: 'Relax until Triana',
+    task: 'Relax',
     due: 'Today at 6:30 pm',
     priority: 'Low',
     status: 'Open',
-    periodicity: '3 * week',
-  },
-  {
-    task: 'Get Triana',
-    due: 'Today at 7:00 pm',
-    priority: 'High',
-    status: 'Open',
-    periodicity: '3 * week',
-  },
-  {
-    task: 'Eat with Triana',
-    due: 'Today at 7:35 pm',
-    priority: 'High',
-    status: 'Open',
-    periodicity: '3 * week',
-  },
- 
+    periodicity: '7 * week',
+    id: '1'
+  }
 ];
 
 // This is dummy Grid Content data that is supposed to be fetched
