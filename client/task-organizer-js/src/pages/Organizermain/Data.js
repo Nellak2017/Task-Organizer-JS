@@ -2,7 +2,6 @@ import * as AiIcons from 'react-icons/ai';
 import * as RiIcons from 'react-icons/ri';
 import * as MdIcons from 'react-icons/md';
 import * as CgIcons from 'react-icons/cg';
-//import moment from 'moment';
 import {MakeDue} from '../../lib/moment/FormatDue.js';
 
 export const SidebarData = [
