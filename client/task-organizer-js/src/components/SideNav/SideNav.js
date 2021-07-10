@@ -9,7 +9,7 @@ import {
     OrganizerMainNav,
     OrganizerMainNavElementContainer,
     OrganizerMainNavElement,
-    TabName, 
+    TabName,
     MenuBars,
     NavLogo,
     NavIcon,
@@ -33,52 +33,52 @@ const SideNav = () => {
     // TODO: Highlight what tab you are on
     // TODO: Make this Mobile Responsive
 
-    return ( 
+    return (
         <>
-            <IconContext.Provider value={{color: '#fff', size:'3rem'}}>
-            <OrganizerMainNav>
-                <OrganizerMainNavElementContainer>
-                    <OrganizerMainNavElement>
-                        <MenuBars to='#'>
-                            <FaIcons.FaBars className="icon" onClick={showSidebar} size={'2rem'}/>
-                        </MenuBars>
+            <IconContext.Provider value={{ color: '#fff', size: '3rem' }}>
+                <OrganizerMainNav>
+                    <OrganizerMainNavElementContainer>
+                        <OrganizerMainNavElement>
+                            <MenuBars to='#'>
+                                <FaIcons.FaBars className="icon" onClick={showSidebar} size={'2rem'} />
+                            </MenuBars>
 
-                        <TabName className={sidebar ? 'expanded' : 'collapsed'}>
-                            {location.pathname === '/OrganizerMain' ? 'Home': location.pathname.replace('/','')}
-                        </TabName>
-                    </OrganizerMainNavElement>
-                </OrganizerMainNavElementContainer>
+                            <TabName className={sidebar ? 'expanded' : 'collapsed'}>
+                                {location.pathname === '/OrganizerMain' ? 'Home' : location.pathname.replace('/', '')}
+                            </TabName>
+                        </OrganizerMainNavElement>
+                    </OrganizerMainNavElementContainer>
 
-                <OrganizerMainNavElementContainer>
-                    <OrganizerMainNavElement>
-                        <SearchBar placeholder='Search' data={SearchBarTestData}/> 
-                        <ProfileIcon data={ProfileData}/>
-                    </OrganizerMainNavElement>
+                    <OrganizerMainNavElementContainer>
+                        <OrganizerMainNavElement>
+                            <SearchBar placeholder='Search' data={SearchBarTestData} />
+                            <ProfileIcon data={ProfileData} />
+                        </OrganizerMainNavElement>
 
-                </OrganizerMainNavElementContainer>
+                    </OrganizerMainNavElementContainer>
 
-            </OrganizerMainNav>    
-            <NavMenu className={sidebar ? "active" : ""}>
-                <NavMenuItems onClick={showSidebar}>
-                    <NavLogo to='/'>
-                        <NavIcon />
-                        <LogoWords>Task Organizer</LogoWords>
-                    </NavLogo>
-                    {SidebarData.map((item, index) => {
-                        return(
-                            <NavText key={index}>
-                                {item.icon}
-                                <MenuBars style={location.pathname === item.path ?  {backgroundColor: '#1a83ff'} : {}} to={item.path}>
-                                <span>{item.title}</span>
-                                </MenuBars>
-                            </NavText>
-                        );
-                    })} 
-                </NavMenuItems>
-            </NavMenu>   
+                </OrganizerMainNav>
+                <NavMenu className={sidebar ? "active" : ""}>
+                    <NavMenuItems onClick={showSidebar}>
+                        <NavLogo to='/'>
+                            <NavIcon />
+                            <LogoWords>Task Organizer</LogoWords>
+                        </NavLogo>
+                        {SidebarData.map((item, index) => {
+                            return (
+                                <NavText key={index}>
+                                    {item.icon}
+                                    <MenuBars style={location.pathname === item.path ? { backgroundColor: '#1a83ff' } : {}} to={item.path}>
+                                        <span>{item.title}</span>
+                                    </MenuBars>
+                                </NavText>
+                            );
+                        })}
+                    </NavMenuItems>
+                </NavMenu>
             </IconContext.Provider>
         </>
-     );
+    );
 }
- 
+
 export default SideNav;
