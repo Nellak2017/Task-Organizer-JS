@@ -2,7 +2,8 @@ import * as AiIcons from 'react-icons/ai';
 import * as RiIcons from 'react-icons/ri';
 import * as MdIcons from 'react-icons/md';
 import * as CgIcons from 'react-icons/cg';
-
+//import moment from 'moment';
+import {MakeDue} from '../../lib/moment/FormatDue.js';
 
 export const SidebarData = [
   {
@@ -71,15 +72,15 @@ export const TableContentData = [
   
   {
     task: 'Github (20 contribs)',
-    due: 'Today at 6:00 pm',
+    due: MakeDue(0,18,30),
     priority: 'High',
-    status: 'Open',
+    status: 'Processing',
     periodicity: '1 * day',
     id: '0'
   },
   {
     task: 'Relax',
-    due: 'Today at 6:30 pm',
+    due: MakeDue(0,6,30),
     priority: 'Low',
     status: 'Open',
     periodicity: '7 * week',
