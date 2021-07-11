@@ -1,0 +1,1 @@
+// put your data components in here, like your component for see all or for the icon on the grid info summary component
