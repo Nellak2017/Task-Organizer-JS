@@ -94,7 +94,8 @@ export const TableContentData = [
     priority: 'High',
     status: 'Processing',
     periodicity: '1 * day',
-    id: '0'
+    id: '0',
+    completed: false
   },
   {
     task: 'Relax',
@@ -102,7 +103,8 @@ export const TableContentData = [
     priority: 'Low',
     status: 'Open',
     periodicity: '7 * week',
-    id: '1'
+    id: '1',
+    completed: false
   }
 ];
 
