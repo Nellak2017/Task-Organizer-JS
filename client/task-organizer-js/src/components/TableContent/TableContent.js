@@ -7,21 +7,25 @@ import {
 } from './TableContent.elements.js';
 import { IconContext } from 'react-icons/lib';
 import * as BiIcons from 'react-icons/bi';
-//import moment from 'moment';
 import FormatDue from '../../lib/moment/FormatDue.js';
-// BiCheckboxChecked is used for the checkbox when clicked
 
-// TODO: Fix the onClick error where all boxes are clicked at once (Maybe Use effect?)
-// TODO: Figure out how to assign a key to each item in the mapping
-// TODO: import a Date and Time handler for the Todo Due data. Don't store data as like "Tonight at 9" store like 7/9/2021/2100 or something like that
 // TODO: Make Drag and Drop feature where you can drag and drop rows in place
 // TODO: Gray out stuff when completed
 // TODO: Add logic for see all
+// TODO: Research e.preventDefault()
+// TODO: Reserach ..data , see also: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 
 const TableContent = ({ data }) => {
-    const [click, setClick] = useState(false);
 
-    const handleClick = () => setClick(!click);
+    const [tasks, setTasks] = useState([...data]);
+
+    const completeTask = (e, index) => {
+        e.preventDefault(); 
+        const newTasks = [...tasks];
+        const status = newTasks[index].status; // get original status
+        newTasks[index].status = status !== "Completed" ? "Completed" : "Processing"; // change to opposite of original status
+        setTasks(newTasks);
+    };
 
     return (
         <>
@@ -29,7 +33,7 @@ const TableContent = ({ data }) => {
                 <TaskTable>
                     <thead>
                         <TaskTableRow>
-                            <td><p></p></td>
+                            <td></td>
                             <TaskTableHeader>Task</TaskTableHeader>
                             <TaskTableHeader>Due</TaskTableHeader>
                             <TaskTableHeader>Priority</TaskTableHeader>
@@ -39,11 +43,11 @@ const TableContent = ({ data }) => {
                     </thead>
 
                     <tbody>
-                        {data.map((value, key) => {
+                        {tasks.map((value, key) => {
                             return (
                                 <TaskTableRow key={key}>
-                                    <TaskTableData className="iconTd">{click ? <BiIcons.BiCheckboxChecked className="icon" onClick={handleClick} />
-                                        : <BiIcons.BiCheckbox className="icon" onClick={handleClick} />}</TaskTableData>
+                                    <TaskTableData className="iconTd">{tasks[key].status === "Completed" ? <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
+                                        : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />}</TaskTableData>
 
                                     <TaskTableData data-content={value.task}>{value.task}</TaskTableData>
                                     <TaskTableData className="due" data-content={FormatDue(value.due)}><span>{FormatDue(value.due)}</span></TaskTableData>
