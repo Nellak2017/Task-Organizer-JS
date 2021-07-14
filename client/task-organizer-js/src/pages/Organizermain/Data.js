@@ -72,13 +72,17 @@ export const InfoSummaryData = [
     title: 'High Priority Tasks',
     icon: 'None',
     iconComponent: 'None',
-    text: 'See All'
+    text: 'See All',
+    dataType: 'TableContentData',
+    componentType: 'TableContent'
   },
   {
     title: 'Grid',
     icon: <RiIcons.RiTodoLine className="icon"/>,
     iconComponent: 'None',
-    text: ''
+    text: '',
+    dataType: 'GridContentData',
+    componentType: 'GridContent'
   }
 ];
 
@@ -106,6 +110,20 @@ export const TableContentData = [
     id: '1',
     completed: false
   }
+];
+
+
+// This is the dummy Grid Content Data that is supposed to be fetched
+// TODO: figure out how to calculate and pass in the data from the DB
+export const GridContentData = [
+  
+  {
+    thread: 'College',
+    taskCount: '3',
+    subThreadCount: '2',
+    priority: 'Low'
+  }
+
 ];
 
 // This is dummy Grid Content data that is supposed to be fetched
