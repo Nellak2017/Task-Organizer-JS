@@ -98,8 +98,25 @@ export const GridContentData = [
     taskCount: '3',
     subThreadCount: '2',
     priority: 'Low'
+  },
+  {
+    thread: 'Domestic',
+    taskCount: '3',
+    subThreadCount: '2',
+    priority: 'Medium'
+  },
+  {
+    thread: 'Experience',
+    taskCount: '3',
+    subThreadCount: '2',
+    priority: 'High'
+  },
+  {
+    thread: 'Relationships',
+    taskCount: '3',
+    subThreadCount: '2',
+    priority: 'Low'
   }
-
 ];
 
 // Add Navbar data in future versions if needed
@@ -117,7 +134,7 @@ export const InfoSummaryData = [
     component: ({data}) => {return <TableContent data={data}/>}
   },
   {
-    title: 'Grid',
+    title: 'Thread Summary',
     icon: <RiIcons.RiTodoLine className="icon"/>,
     iconComponent: 'None',
     text: '',
