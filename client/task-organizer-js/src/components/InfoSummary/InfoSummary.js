@@ -15,7 +15,7 @@ import * as GoIcons from 'react-icons/go';
 //       see: https://www.tutorialsplane.com/react-pass-component-as-prop-with-props-example/
 // TODO: put this https://www.tutorialsplane.com/react-pass-component-as-prop-with-props-example/ in MEM.DEV
 
-const InfoSummary = ({ MyComponent, Data, ComponentData }) => {
+const InfoSummary = ({ MyComponent, Data }) => {
 
     const [click, setClick] = useState(true);
 
@@ -55,10 +55,10 @@ const InfoSummary = ({ MyComponent, Data, ComponentData }) => {
                     {
                         click ?
                             <SummaryInfoCollapsable expanded>
-                                <MyComponent data={ComponentData} />
+                                <MyComponent data={Data[0].data} />
                             </SummaryInfoCollapsable> :
                             <SummaryInfoCollapsable >
-                                <MyComponent data={ComponentData} />
+                                <MyComponent data={Data[0].data} />
                             </SummaryInfoCollapsable>
                     }
                 </SummaryContainer>
