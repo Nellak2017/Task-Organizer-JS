@@ -3,23 +3,32 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { RiFileChart2Fill } from 'react-icons/ri';
 import {
     TaskGrid,
-    TaskGridItem
+    TaskGridItem,
+    ThreadName,
+    ThreadContent
 } from './GridContent.elements.js';
 
-const GridContent = ({data}) => {
-    return ( 
+// TODO: Drag and Drop
+// TODO: Overflow hidden ellipsis
+// TODO: + Button to add a new Blank thread (Figure out how that will work)
+// TODO: Make the style look better (ask other for design help on this one)
+
+
+const GridContent = ({ data }) => {
+    return (
         <TaskGrid>
             {data.map((item, key) => {
-                return(
-                    <TaskGridItem key={key} to={item.thread}>
-                    <p>{'Task Count: '}{item.taskCount}</p>
-                    <p>{'SubThreads: '}{item.subThreadCount}</p>
-                    <p>{'Priority: '}{item.priority}</p>
-                </TaskGridItem>
+                return (
+                    <TaskGridItem key={key} to={item.thread} data-content={item.priority}>
+                        <ThreadName>{item.thread}</ThreadName>
+                        <ThreadContent><strong>{item.taskCount}</strong>{' Tasks '}</ThreadContent>
+                        <ThreadContent><strong>{item.subThreadCount}</strong>{' Sub-Threads '}</ThreadContent>
+                        <ThreadContent><strong>{item.priority}</strong>{' Priority '}</ThreadContent>
+                    </TaskGridItem>
                 )
             })}
         </TaskGrid>
-     );
+    );
 }
- 
+
 export default GridContent;
