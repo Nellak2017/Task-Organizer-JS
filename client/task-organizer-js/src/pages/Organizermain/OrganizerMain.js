@@ -1,18 +1,14 @@
-import { SideNav, InfoSummary, TableContent, GridContent } from "../../components";
-import { InfoSummaryData, TableContentData, GridContentData } from "../../pages/OrganizerMain/Data";
+import { SideNav, InfoSummary } from "../../components";
+import { InfoSummaryData } from "../../pages/OrganizerMain/Data";
 // TODO: Add Media Queries for Responsive Design
-// TODO: Find out how to pass props to components passed as props
-// TODO: Find out how to pass the component alias in as a prop so you can have 1 map for all components, otherwise you will need to re-write InfoSummary Component many times passing in new props each time...
-
+// NOTE: MAKE SURE TO PASS COMPONENTS OF THE FORM ({props}) => {return <Component props={props}>} FROM Data TO MyComponent SO NO ERRORS OCCUR! IT TOOK 3 HOURS OF DEBUGGING TO FIGURE OUT NOT TO PASS OBJECTS BUT COMPONENTS TO THIS PROP!
 const OrganizerMain = () => {
     return ( 
         <>
         <SideNav />
-        {InfoSummaryData.map( (value,key) => {
+        {InfoSummaryData.map((value,key) => {
             return (
-                <>
-                <InfoSummary key={key} MyComponent={GridContent} Data={[value]} ComponentData={GridContentData}/>
-                </>
+                <InfoSummary key={key} MyComponent={value.component} Data={[value]}/>
             );
         })
         }
