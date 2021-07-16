@@ -10,11 +10,13 @@ const GridContent = ({data}) => {
     return ( 
         <TaskGrid>
             {data.map((item, key) => {
-                <TaskGridItem key={key}>
+                return(
+                    <TaskGridItem key={key} to={item.thread}>
                     <p>{'Task Count: '}{item.taskCount}</p>
                     <p>{'SubThreads: '}{item.subThreadCount}</p>
                     <p>{'Priority: '}{item.priority}</p>
                 </TaskGridItem>
+                )
             })}
         </TaskGrid>
      );
