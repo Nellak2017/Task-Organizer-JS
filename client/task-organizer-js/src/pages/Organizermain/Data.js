@@ -3,6 +3,7 @@ import * as RiIcons from 'react-icons/ri';
 import * as MdIcons from 'react-icons/md';
 import * as CgIcons from 'react-icons/cg';
 import { MakeDue } from '../../lib/moment/FormatDue.js';
+import { TableContent, GridContent } from "../../components";
 
 export const SidebarData = [
   {
@@ -62,31 +63,6 @@ export const SidebarData = [
   
 ];
 
-// Add Navbar data in future versions if needed
-
-// This is the Data for an InfoSummary
-// This will let you customize the Icon and 
-// the iconComponent that comes out on Hover
-export const InfoSummaryData = [
-  {
-    title: 'High Priority Tasks',
-    icon: 'None',
-    iconComponent: 'None',
-    text: 'See All',
-    dataType: 'TableContentData',
-    componentType: 'TableContent'
-  },
-  {
-    title: 'Grid',
-    icon: <RiIcons.RiTodoLine className="icon"/>,
-    iconComponent: 'None',
-    text: '',
-    dataType: 'GridContentData',
-    componentType: 'GridContent'
-  }
-];
-
-
 // This is dummy Table Content data that is supposed to be fetched
 // TODO: have a date / time format used in the data source
 // TODO: have standard method for dealing with periodicity
@@ -125,6 +101,31 @@ export const GridContentData = [
   }
 
 ];
+
+// Add Navbar data in future versions if needed
+
+// This is the Data for an InfoSummary
+// This will let you customize the Icon and 
+// the iconComponent that comes out on Hover
+export const InfoSummaryData = [
+  {
+    title: 'High Priority Tasks',
+    icon: 'None',
+    iconComponent: 'None',
+    text: 'See All',
+    data: TableContentData,
+    component: ({data}) => {return <TableContent data={data}/>}
+  },
+  {
+    title: 'Grid',
+    icon: <RiIcons.RiTodoLine className="icon"/>,
+    iconComponent: 'None',
+    text: '',
+    data: GridContentData,
+    component: ({data}) => {return <GridContent data={data}/>}
+  }
+];
+
 
 // This is dummy Grid Content data that is supposed to be fetched
 
