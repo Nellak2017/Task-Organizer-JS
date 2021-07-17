@@ -5,14 +5,16 @@ import {
     TaskGrid,
     TaskGridItem,
     ThreadName,
-    ThreadContent
+    ThreadContent,
+    TaskGridAdd
 } from './GridContent.elements.js';
 
 // TODO: Drag and Drop
 // TODO: Overflow hidden ellipsis
 // TODO: + Button to add a new Blank thread (Figure out how that will work)
 // TODO: Make the style look better (ask other for design help on this one)
-
+// TODO: Order the Threads by priority
+// TODO: Add Right Click Options
 
 const GridContent = ({ data }) => {
     return (
@@ -27,6 +29,9 @@ const GridContent = ({ data }) => {
                     </TaskGridItem>
                 )
             })}
+            <TaskGridAdd>
+                +
+            </TaskGridAdd>
         </TaskGrid>
     );
 }
