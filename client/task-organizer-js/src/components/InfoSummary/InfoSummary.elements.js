@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { keyframes } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // Holds the InfoSummary Component and gives it proper placement
 export const SummaryContainer = styled.div`
@@ -45,8 +46,22 @@ export const SummaryDropDownItem = styled.span`
     justify-content: flex-start;
     font-size: 1rem;
     max-height: 2rem;
+    max-width: 2rem;
     overflow: hidden;
+    color: #f5f5f5;
 
+    &:hover {
+        transition: 350ms;
+        color: #1a83ff !important;
+        cursor: pointer;
+    }
+`;
+
+// In case the programmer defines where the icon or text will link to
+export const SummaryLink = styled(Link)`
+    // let us see about styling!
+    text-decoration: none;
+    color: #f5f5f5;
     &:hover {
         transition: 350ms;
         color: #1a83ff !important;
