@@ -164,7 +164,8 @@ export const InfoSummaryData = [
 export const ProfileData = [
   {
     picture: 'https://pbs.twimg.com/profile_images/1240639017768701954/88-dgMc5_400x400.jpg',
-    username: "Connor Keenum"
+    username: "Connor Keenum",
+    email: "example.person@yahoo.com"
   }
 ]
 
