@@ -42,7 +42,6 @@ const SideNav = () => {
                             <MenuBars to='#'>
                                 <FaIcons.FaBars className="icon" onClick={showSidebar} size={'2rem'} />
                             </MenuBars>
-
                             <TabName className={sidebar ? 'expanded' : 'collapsed'}>
                                 {location.pathname === '/OrganizerMain' ? 'Home' : location.pathname.replace('/', '')}
                             </TabName>
