@@ -16,7 +16,7 @@ import * as GoIcons from 'react-icons/go';
 //       see: https://www.tutorialsplane.com/react-pass-component-as-prop-with-props-example/
 // TODO: put this https://www.tutorialsplane.com/react-pass-component-as-prop-with-props-example/ in MEM.DEV
 
-const InfoSummary = ({ MyComponent, Data }) => {
+const InfoSummary = ({ MyComponent, Data, TableHeaders }) => {
 
     const [click, setClick] = useState(true);
 
@@ -31,14 +31,14 @@ const InfoSummary = ({ MyComponent, Data }) => {
                             <SummaryDropDown>
                                 <SummaryDropDownContainer>
                                     <GoIcons.GoTriangleDown className="icon" onClick={handleClick} />
-                                    <p>{item.title}</p>
+                                    <p style={{paddingLeft:"1rem"}}>{item.title}</p>
                                 </SummaryDropDownContainer>
                                 <SummaryDropDownContainer>
                                     <SummaryDropDownItem>
                                         {item.text !== '' ?
-                                        <SummaryLink key={key} to={'/'+item.link}>{item.text}</SummaryLink>
-                                        :
-                                        <SummaryLink to={item.link !== '' ? '/'+item.link : '/OrganizerMain'}>{item.icon}</SummaryLink>}
+                                            <SummaryLink key={key} to={'/' + item.link}>{item.text}</SummaryLink>
+                                            :
+                                            <SummaryLink to={item.link !== '' ? '/' + item.link : '/OrganizerMain'}>{item.icon}</SummaryLink>}
                                     </SummaryDropDownItem>
                                 </SummaryDropDownContainer>
                             </SummaryDropDown>
@@ -51,10 +51,21 @@ const InfoSummary = ({ MyComponent, Data }) => {
                     {
                         click ?
                             <SummaryInfoCollapsable expanded>
-                                <MyComponent data={Data[0].data} />
+                                {
+                                    Data[0].tableHeaders !== '' ?
+                                        <MyComponent data={Data[0].data} tableHeaders={[...TableHeaders]} />
+                                        :
+                                        <MyComponent data={Data[0].data} />
+                                }
+
                             </SummaryInfoCollapsable> :
                             <SummaryInfoCollapsable >
-                                <MyComponent data={Data[0].data} />
+                                {
+                                    Data[0].tableHeaders !== '' ?
+                                        <MyComponent data={Data[0].data} tableHeaders={[...TableHeaders]} />
+                                        :
+                                        <MyComponent data={Data[0].data} />
+                                }
                             </SummaryInfoCollapsable>
                     }
                 </SummaryContainer>
