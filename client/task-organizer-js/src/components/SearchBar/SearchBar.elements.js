@@ -61,7 +61,7 @@ export const DataResult = styled.div`
     position: absolute;
     top: 2.5rem;
     right: 4.75rem;  
-    max-width: 15rem;
+    width: 15rem;
     height: 15rem;
     border-radius: 1rem;
     background-color: white;
