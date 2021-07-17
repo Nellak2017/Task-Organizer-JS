@@ -16,9 +16,11 @@ import FormatDue from '../../lib/moment/FormatDue.js';
 // TODO: Research e.preventDefault()
 // TODO: Reserach ..data , see also: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 
-const TableContent = ({ data }) => {
+const TableContent = ({ data, tableHeaders }) => {
 
     const [tasks, setTasks] = useState([...data]);
+
+    const [Headers, setHeaders] = useState([...tableHeaders]);
 
     const completeTask = (e, index) => {
         e.preventDefault();
@@ -44,11 +46,12 @@ const TableContent = ({ data }) => {
                         <thead>
                             <TaskTableRow>
                                 <td></td>
-                                <TaskTableHeader>Task</TaskTableHeader>
-                                <TaskTableHeader>Due</TaskTableHeader>
-                                <TaskTableHeader>Priority</TaskTableHeader>
-                                <TaskTableHeader>Status</TaskTableHeader>
-                                <TaskTableHeader>Periodicity</TaskTableHeader>
+                                {Headers[0].map((item, key) => {
+                                    return (
+                                        <TaskTableHeader key={key}>{item.td}</TaskTableHeader>
+                                    );
+                                })
+                                }
                             </TaskTableRow>
                         </thead>
 
@@ -56,6 +59,7 @@ const TableContent = ({ data }) => {
                             {(provided) => (
                                 <tbody {...provided.droppableProps} ref={provided.innerRef}>
                                     {tasks.map((value, key) => {
+                                        {console.log(value)}
                                         return (
                                             <Draggable key={value.id} draggableId={value.id} index={key}>
                                                 {(provided) => (
@@ -67,7 +71,15 @@ const TableContent = ({ data }) => {
                                                         <TaskTableData className="due" data-content={FormatDue(value.due)}><span>{FormatDue(value.due)}</span></TaskTableData>
                                                         <TaskTableData data-content={value.priority}><span>{value.priority}</span></TaskTableData>
                                                         <TaskTableData data-content={value.status}><span>{value.status}</span></TaskTableData>
+                                                        <TaskTableData data-content={value.weight}><span>{value.weight}</span></TaskTableData>
+                                                        <TaskTableData data-content={value.order}><span>{value.order}</span></TaskTableData>
                                                         <TaskTableData data-content={value.periodicity}>{value.periodicity}</TaskTableData>
+                                                        <TaskTableData data-content={value.timeToComplete}><span>{value.timeToComplete}</span></TaskTableData>
+                                                        <TaskTableData data-content={value.creationDate}><span>{value.creationDate}</span></TaskTableData>
+                                                        <TaskTableData data-content={value.lastCompletionDate}><span>{value.lastCompletionDate}</span></TaskTableData>
+                                                        <TaskTableData data-content={value.parentThread}><span>{value.parentThread}</span></TaskTableData>
+                                                        <TaskTableData data-content={value.pipelinable}><span>{value.pipelinable}</span></TaskTableData>
+                                                        <TaskTableData data-content={value.numberOfDependencies}><span>{value.numberOfDependencies}</span></TaskTableData>
                                                     </TaskTableRow>
                                                 )}
                                             </Draggable>
