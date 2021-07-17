@@ -102,6 +102,7 @@ export const LogoWords = styled.span`
 
 // This is the vertical nav bar
 export const NavMenu = styled.nav`
+    z-index: 999; 
     background-color: rgba(16,21,34,1);
     width: 250px;
     height: 100vh;
