@@ -53,3 +53,30 @@ export const ThreadName = styled.p`
 export const ThreadContent = styled.p`
     padding-bottom: .1rem;
 `;
+
+export const TaskGridAdd = styled.button`
+    align-self: center;
+    justify-self: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 1rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    border-radius: 1rem;
+    color: white;
+    font-size: 6rem;
+    text-align: left;
+    border: solid 3px rgba(68,76,86,.5);
+    background-color: rgba(68,76,86,.5);
+
+    &:hover {
+        font-weight: bold;
+        border: solid 3px #1a83ff;
+        transition: 350ms;
+        cursor: pointer;
+        background-color: rgba(68,76,86,1);
+    }
+`;
