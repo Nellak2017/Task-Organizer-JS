@@ -75,6 +75,25 @@ export const SidebarData = [
   },
 ];
 
+// I don't know if this way is optimal, but it is easy
+export const TableHeaderData = [
+  {
+    td: 'Task'
+  },
+  {
+    td: 'Due'
+  },
+  {
+    td: 'Priority'
+  },
+  {
+    td: 'Status'
+  },
+  {
+    td: 'Periodicity'
+  },
+]
+
 // This is dummy Table Content data that is supposed to be fetched
 // TODO: have a date / time format used in the data source
 // TODO: have standard method for dealing with periodicity
@@ -139,22 +158,26 @@ export const GridContentData = [
 export const InfoSummaryData = [
   {
     title: 'High Priority Tasks',
-    icon: 'None',
-    iconComponent: 'None',
+    icon: '',
+    iconComponent: '',
     text: 'See All',
     link: 'TodoView',
+    tableHeaders: TableHeaderData,
     data: TableContentData,
-    component: ({data}) => {return <TableContent data={data}/>}
+    component: ({data, tableHeaders}) => {return <TableContent data={data} tableHeaders={tableHeaders}/>}
   },
+  
   {
     title: 'Thread Summary',
     icon: <RiIcons.RiTodoLine className="icon"/>,
-    iconComponent: 'None',
+    iconComponent: '',
     text: '',
     link: '',
+    tableHeaders: '',
     data: GridContentData,
     component: ({data}) => {return <GridContent data={data}/>}
   }
+  
 ];
 
 
