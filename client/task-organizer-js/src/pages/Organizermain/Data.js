@@ -2,6 +2,7 @@ import * as AiIcons from 'react-icons/ai';
 import * as RiIcons from 'react-icons/ri';
 import * as MdIcons from 'react-icons/md';
 import * as CgIcons from 'react-icons/cg';
+import * as BiIcons from 'react-icons/bi';
 import { MakeDue } from '../../lib/moment/FormatDue.js';
 import { TableContent, GridContent } from "../../components";
 
@@ -60,7 +61,18 @@ export const SidebarData = [
     icon: <RiIcons.RiBarChartHorizontalFill />,
     cName: 'nav-text'
   },
-  
+  {
+    title: 'Planning Assistant',
+    path: '/PlanningAssistant',
+    icon: <BiIcons.BiMapAlt />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Trackers',
+    path: '/Trackers',
+    icon: <AiIcons.AiOutlineAim />,
+    cName: 'nav-text'
+  },
 ];
 
 // This is dummy Table Content data that is supposed to be fetched
@@ -130,6 +142,7 @@ export const InfoSummaryData = [
     icon: 'None',
     iconComponent: 'None',
     text: 'See All',
+    link: 'TodoView',
     data: TableContentData,
     component: ({data}) => {return <TableContent data={data}/>}
   },
@@ -138,6 +151,7 @@ export const InfoSummaryData = [
     icon: <RiIcons.RiTodoLine className="icon"/>,
     iconComponent: 'None',
     text: '',
+    link: '',
     data: GridContentData,
     component: ({data}) => {return <GridContent data={data}/>}
   }
