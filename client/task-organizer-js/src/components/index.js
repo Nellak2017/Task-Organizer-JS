@@ -5,3 +5,4 @@ export { default as SideNav } from './SideNav/SideNav';
 export { default as InfoSummary } from './InfoSummary/InfoSummary';
 export { default as TableContent } from './TableContent/TableContent';
 export { default as GridContent } from './GridContent/GridContent';
+export { default as TodoViewSubNav} from './TodoViewSubNav/TodoViewSubNav';
