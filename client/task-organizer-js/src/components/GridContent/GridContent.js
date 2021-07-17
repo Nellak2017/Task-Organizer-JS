@@ -21,12 +21,14 @@ const GridContent = ({ data }) => {
         <TaskGrid>
             {data.map((item, key) => {
                 return (
+                    <>
                     <TaskGridItem key={key} to={item.thread} data-content={item.priority}>
-                        <ThreadName>{item.thread}</ThreadName>
-                        <ThreadContent><strong>{item.taskCount}</strong>{' Tasks '}</ThreadContent>
-                        <ThreadContent><strong>{item.subThreadCount}</strong>{' Sub-Threads '}</ThreadContent>
-                        <ThreadContent><strong>{item.priority}</strong>{' Priority '}</ThreadContent>
+                        <ThreadName key={item.thread}>{item.thread}</ThreadName>
+                        <ThreadContent key={item.taskCount}><strong>{item.taskCount}</strong>{' Tasks '}</ThreadContent>
+                        <ThreadContent key={item.subThreadCount}><strong>{item.subThreadCount}</strong>{' Sub-Threads '}</ThreadContent>
+                        <ThreadContent key={item.priority}><strong>{item.priority}</strong>{' Priority '}</ThreadContent>
                     </TaskGridItem>
+                    </>
                 )
             })}
             <TaskGridAdd>
