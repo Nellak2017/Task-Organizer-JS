@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
 // TODO: Try out different colors for the text for highlighting
+// TODO: Add in Text highlighting when clicked first red, then yellow, then green, then none, then repeat etc.
+// TODO: Give option to edit the table values somehow??
 export const TaskTable = styled.table`
+    z-index: 0 !important;
     color: #fff;
     text-align: left;
     width: 100%; // take up full container
     border-collapse: collapse;
+    background-color: rgba(44,49,56,1);
+    padding: 0;
     & .icon {
         margin: 0;
     }
