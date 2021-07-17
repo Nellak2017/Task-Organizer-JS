@@ -10,6 +10,8 @@ import Templates from './pages/Templates/Templates';
 import ThreadView from './pages/ThreadView/ThreadView';
 import Timelines from './pages/Timelines/Timelines';
 import TodoView from './pages/TodoView/TodoView';
+import PlanningAssistant from './pages/PlanningAssistant/PlanningAssistant';
+import Trackers from './pages/Trackers/Trackers';
 import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
@@ -29,6 +31,8 @@ const App = () => {
             <Route path="/ThreadView" exact component={ThreadView}></Route>
             <Route path="/Timelines" exact component={Timelines}></Route>
             <Route path="/TodoView" exact component={TodoView}></Route>
+            <Route path="/PlanningAssistant" exact component={PlanningAssistant}></Route>
+            <Route path="/Trackers" exact component={Trackers}></Route>
           </Switch>
     </Router>
    );
