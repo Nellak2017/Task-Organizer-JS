@@ -112,7 +112,7 @@ export const SummaryInfoCollapsable = styled.section`
     font-size: 1rem;
     margin-left: 20rem; //  was 0
     width: 67rem; // was 47rem
-    padding: 1rem;
+    padding: 0;
     min-height: 10rem;
     background-color: rgba(44,49,56,1);
     border: 1px solid rgba(68,76,86,.5);
