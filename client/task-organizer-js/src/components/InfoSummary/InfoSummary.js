@@ -4,7 +4,8 @@ import {
     SummaryDropDown,
     SummaryDropDownContainer,
     SummaryDropDownItem,
-    SummaryInfoCollapsable
+    SummaryInfoCollapsable,
+    SummaryLink
 } from './InfoSummary.elements.js';
 import { IconContext } from 'react-icons/lib';
 import * as GoIcons from 'react-icons/go';
@@ -35,14 +36,9 @@ const InfoSummary = ({ MyComponent, Data }) => {
                                 <SummaryDropDownContainer>
                                     <SummaryDropDownItem>
                                         {item.text !== '' ?
-                                        item.text.split(/[ ,]+/).map( (item, key) =>
-                                        {
-                                            return(
-                                                <p key={key}>{item}</p>
-                                            );
-                                        }
-                                        ):
-                                        <span>{item.icon}</span>}
+                                        <SummaryLink key={key} to={'/'+item.link}>{item.text}</SummaryLink>
+                                        :
+                                        <SummaryLink to={item.link !== '' ? '/'+item.link : '/OrganizerMain'}>{item.icon}</SummaryLink>}
                                     </SummaryDropDownItem>
                                 </SummaryDropDownContainer>
                             </SummaryDropDown>
