@@ -7,7 +7,7 @@ export const SummaryContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     color: #f5f5f5;
     margin: 3rem 0 1rem 0;
     font-size: 2rem;
