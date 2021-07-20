@@ -38,6 +38,7 @@ const TableContent = ({ data, tableHeaders }) => {
         setTasks(items);
     }
 
+    // TODO: Fix the problem of too many TableDatas in the Mapping, find a simpler way or just do if...thens for all inline (ugly!)
     return (
         <>
             <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
@@ -55,11 +56,11 @@ const TableContent = ({ data, tableHeaders }) => {
                             </TaskTableRow>
                         </thead>
 
+
                         <Droppable droppableId="Task Summaries">
                             {(provided) => (
                                 <tbody {...provided.droppableProps} ref={provided.innerRef}>
                                     {tasks.map((value, key) => {
-                                        {console.log(value)}
                                         return (
                                             <Draggable key={value.id} draggableId={value.id} index={key}>
                                                 {(provided) => (
@@ -67,19 +68,16 @@ const TableContent = ({ data, tableHeaders }) => {
                                                         <TaskTableData className="iconTd">{tasks[key].status === "Completed" ? <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
                                                             : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />}</TaskTableData>
 
-                                                        <TaskTableData data-content={value.task}>{value.task}</TaskTableData>
-                                                        <TaskTableData className="due" data-content={FormatDue(value.due)}><span>{FormatDue(value.due)}</span></TaskTableData>
-                                                        <TaskTableData data-content={value.priority}><span>{value.priority}</span></TaskTableData>
-                                                        <TaskTableData data-content={value.status}><span>{value.status}</span></TaskTableData>
-                                                        <TaskTableData data-content={value.weight}><span>{value.weight}</span></TaskTableData>
-                                                        <TaskTableData data-content={value.order}><span>{value.order}</span></TaskTableData>
-                                                        <TaskTableData data-content={value.periodicity}>{value.periodicity}</TaskTableData>
-                                                        <TaskTableData data-content={value.timeToComplete}><span>{value.timeToComplete}</span></TaskTableData>
-                                                        <TaskTableData data-content={value.creationDate}><span>{value.creationDate}</span></TaskTableData>
-                                                        <TaskTableData data-content={value.lastCompletionDate}><span>{value.lastCompletionDate}</span></TaskTableData>
-                                                        <TaskTableData data-content={value.parentThread}><span>{value.parentThread}</span></TaskTableData>
-                                                        <TaskTableData data-content={value.pipelinable}><span>{value.pipelinable}</span></TaskTableData>
-                                                        <TaskTableData data-content={value.numberOfDependencies}><span>{value.numberOfDependencies}</span></TaskTableData>
+                                                        {
+                                                            Object.keys(tasks[key]).map((tableHeader, index) => {
+                                                                {console.log(value[tableHeader])}
+                                                                return(
+                                                                    <TaskTableData data-content={tableHeader}>{ tableHeader.toLowerCase().trim() === "due" ? FormatDue(value[tableHeader]) : value[tableHeader]}</TaskTableData>
+                                                                );
+                                                            })
+                                                        }
+
+                                                        
                                                     </TaskTableRow>
                                                 )}
                                             </Draggable>
