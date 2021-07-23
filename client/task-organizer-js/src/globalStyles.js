@@ -14,6 +14,9 @@ a {
 }
 
 body {
+    padding: 0;
+    margin: 0;
+    overflow: visible;
     background-color: rgba(16,21,34,1);
 }
 
