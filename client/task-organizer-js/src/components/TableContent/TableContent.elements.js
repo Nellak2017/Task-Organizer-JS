@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// TODO: Try out different colors for the text for highlighting
 // TODO: Add in Text highlighting when clicked first red, then yellow, then green, then none, then repeat etc.
 // TODO: Give option to edit the table values somehow??
 export const TaskTable = styled.table`
@@ -18,7 +17,7 @@ export const TaskTable = styled.table`
     & .iconTd {
         border-bottom: 0;
         width: 1rem;
-        padding: 1rem .5rem 0 0;
+        padding: .25rem;
     }
 
     & span {
@@ -27,19 +26,19 @@ export const TaskTable = styled.table`
     }
 
 
-    & td[data-content="Low"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
-    & td[data-content="Medium"] span{color: rgba(156,114,88); background-color:rgba(255,235,156);}
-    & td[data-content="High"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
-    & td[data-content="Open"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
-    & td[data-content="Waiting"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
-    & td[data-content="Completed"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
-    & td[data-content="Processing"] span{color: rgba(0,0,97,1); background-color: rgba(135,255,255);}
+    & td[data-content="low"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
+    & td[data-content="medium"] span{color: rgba(156,114,88); background-color:rgba(255,235,156);}
+    & td[data-content="high"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
+    & td[data-content="open"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
+    & td[data-content="waiting"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
+    & td[data-content="completed"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
+    & td[data-content="processing"] span{color: rgba(0,0,97,1); background-color: rgba(135,255,255);}
     & td[data-content*="ago"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
-    & td[data-content*="Yesterday at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
-    & td[data-content*="Today at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
-    & td[data-content*="Tomorrow at"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
+    & td[data-content*="yesterday at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
+    & td[data-content*="today at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
+    & td[data-content*="tomorrow at"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
     & td[data-content*="in"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
-    & td[data-content*="In"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
+    
 `;
 
 export const TaskTableRow = styled.tr`
@@ -47,20 +46,23 @@ export const TaskTableRow = styled.tr`
 `;
 
 export const TaskTableHeader = styled.th`
-    text-decoration: underline;
-    text-decoration-color: rgba(16,21,34,1);
-    text-decoration-thickness: .25rem;
-    text-underline-position: under;
+    text-align: center;
     font-weight: bold;
-    font-size: 1.6rem;
-    padding: 0 0 0 1rem;
+    font-size: 1.4rem;
+    border-right: 2px solid rgba(68,76,86,.5);
+    border-left: 2px solid rgba(68,76,86,.5);
+    
+    min-width: 10rem;
 `;
 
 export const TaskTableData = styled.td`
+    text-align: center;
     font-size: 1rem;
     border-bottom: 2px solid rgba(68,76,86,.5);
-    padding: 1rem 0 0 1rem;
-    max-width: 10rem; 
+    border-right: 2px solid rgba(68,76,86,.5);
+    border-top: 2px solid rgba(68,76,86,.5);
+    
+    max-width: 20rem; 
     max-height: 2rem;
     white-space: nowrap;
     text-overflow: ellipsis;
