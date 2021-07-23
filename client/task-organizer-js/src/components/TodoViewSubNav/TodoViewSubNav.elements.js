@@ -2,16 +2,17 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const SubNav = styled.nav`
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     position: sticky;
     left: 0 !important;
     top: 5.05rem;
     z-index: 950; 
-    align-self: flex-start;
+
     overflow: visible;
     min-width: 100%;
-    flex-grow: 0;
-    flex-shrink: 0;
+
 
     height: 4rem;
     width: 100%;
