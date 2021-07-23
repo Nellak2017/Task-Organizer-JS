@@ -73,7 +73,7 @@ const TableContent = ({ data, tableHeaders }) => {
                 <TaskTable>
                     <thead>
                         <TaskTableRow>
-                            <td></td>
+                            <th></th>
                             {Headers[0].map((item, key) => {
                                 return (
                                     <TaskTableHeader key={key}>{item.td}</TaskTableHeader>
