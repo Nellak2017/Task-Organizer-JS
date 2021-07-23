@@ -16,9 +16,36 @@ import FormatDue from '../../lib/moment/FormatDue.js';
 // TODO: Research e.preventDefault()
 // TODO: Reserach ..data , see also: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 
+// TODO: Check the TableHeaderData by putting a "_" between each word instead of a space or just merge together to see if equality (Leads to bug right now!)
 const TableContent = ({ data, tableHeaders }) => {
 
-    const [tasks, setTasks] = useState([...data]);
+    // Make the temporary array of headers
+    const tempHeaders = Array.from(Object.values(tableHeaders[0]).map((item, key) => {
+        return (
+            Object.values(item).toString().toLowerCase().trim()
+        )
+    })).flat(1);
+
+    // filter TableContentData items to only contain keys that are in TempHeaders,
+    // return array of task objects for the table
+    const filteredTableContentData = Array.from(
+        data.map(item => {
+            return (
+                Object.assign({}, ...Object.keys(item).filter(attribute => {
+                    return (
+                        tempHeaders.includes(attribute.toLowerCase().trim())
+                    )
+                }
+                ).map(atrKey => {
+                    return (
+                        { [atrKey]: item[atrKey] }
+                    )
+                }))
+            )
+        })
+    );
+
+    const [tasks, setTasks] = useState([...filteredTableContentData]);
 
     const [Headers, setHeaders] = useState([...tableHeaders]);
 
@@ -39,60 +66,62 @@ const TableContent = ({ data, tableHeaders }) => {
     }
 
     // TODO: Fix the problem of too many TableDatas in the Mapping, find a simpler way or just do if...thens for all inline (ugly!)
+    // put back Headers[0] if you can't make it work otherwise
     return (
-        <>
-            <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
-                <DragDropContext onDragEnd={handleOnDragEnd}>
-                    <TaskTable>
-                        <thead>
-                            <TaskTableRow>
-                                <td></td>
-                                {Headers[0].map((item, key) => {
+        <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
+            <DragDropContext onDragEnd={handleOnDragEnd}>
+                <TaskTable>
+                    <thead>
+                        <TaskTableRow>
+                            <td></td>
+                            {Headers[0].map((item, key) => {
+                                return (
+                                    <TaskTableHeader key={key}>{item.td}</TaskTableHeader>
+                                );
+                            })
+                            }
+                        </TaskTableRow>
+                    </thead>
+
+
+                    <Droppable droppableId="Task Summaries">
+                        {(provided) => (
+                            <tbody {...provided.droppableProps} ref={provided.innerRef}>
+                                {tasks.map((value, key) => {
                                     return (
-                                        <TaskTableHeader key={key}>{item.td}</TaskTableHeader>
+                                        <Draggable key={value.task} draggableId={value.task + key} index={key}>
+                                            {provided => (
+                                                <TaskTableRow {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                                                    <TaskTableData className="iconTd">{tasks[key].status === "Completed" ? <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
+                                                        : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />}</TaskTableData>
+                                                    {
+                                                        Object.keys(tasks[key]).map((tableHeader, index) => {
+                                                            return (
+                                                                <TaskTableData key={index} data-content={
+                                                                    tableHeader.toLowerCase().trim() === "due" ?
+                                                                        FormatDue(value[tableHeader]).toLowerCase().trim() :
+                                                                        value[tableHeader].toLowerCase().trim()}>
+                                                                    <span>
+                                                                        {tableHeader.toLowerCase().trim() === "due" ? FormatDue(value[tableHeader]) : value[tableHeader]}
+                                                                    </span>
+                                                                </TaskTableData>
+                                                            );
+                                                        })
+                                                    }
+                                                </TaskTableRow>
+                                            )}
+                                        </Draggable>
                                     );
                                 })
                                 }
-                            </TaskTableRow>
-                        </thead>
-
-
-                        <Droppable droppableId="Task Summaries">
-                            {(provided) => (
-                                <tbody {...provided.droppableProps} ref={provided.innerRef}>
-                                    {tasks.map((value, key) => {
-                                        return (
-                                            <Draggable key={value.id} draggableId={value.id} index={key}>
-                                                {(provided) => (
-                                                    <TaskTableRow {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                                                        <TaskTableData className="iconTd">{tasks[key].status === "Completed" ? <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
-                                                            : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />}</TaskTableData>
-
-                                                        {
-                                                            Object.keys(tasks[key]).map((tableHeader, index) => {
-                                                                {console.log(value[tableHeader])}
-                                                                return(
-                                                                    <TaskTableData data-content={tableHeader}>{ tableHeader.toLowerCase().trim() === "due" ? FormatDue(value[tableHeader]) : value[tableHeader]}</TaskTableData>
-                                                                );
-                                                            })
-                                                        }
-
-                                                        
-                                                    </TaskTableRow>
-                                                )}
-                                            </Draggable>
-                                        );
-                                    })
-                                    }
-                                    {provided.placeholder}
-                                </tbody>
-                            )
-                            }
-                        </Droppable>
-                    </TaskTable>
-                </DragDropContext>
-            </IconContext.Provider>
-        </>
+                                {provided.placeholder}
+                            </tbody>
+                        )
+                        }
+                    </Droppable>
+                </TaskTable>
+            </DragDropContext>
+        </IconContext.Provider>
     );
 }
 
