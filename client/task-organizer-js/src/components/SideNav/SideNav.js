@@ -34,7 +34,7 @@ const SideNav = () => {
     // TODO: Make this Mobile Responsive
 
     return (
-        <>
+        
             <IconContext.Provider value={{ color: '#fff', size: '3rem' }}>
                 <OrganizerMainNav>
                     <OrganizerMainNavElementContainer>
@@ -76,7 +76,7 @@ const SideNav = () => {
                     </NavMenuItems>
                 </NavMenu>
             </IconContext.Provider>
-        </>
+        
     );
 }
 
