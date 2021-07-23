@@ -2,11 +2,24 @@ import styled from 'styled-components';
 import GridOnIcon from '@material-ui/icons/GridOn';
 import {Link} from 'react-router-dom';
 
+// TODO: Make the sticky positioning work better, fixed sucks
+
 // This is the horizontal nav bar
 export const OrganizerMainNav = styled.nav`
+    display: inline-flex;
+    position: sticky;
+    left: -20px !important;
+    top: 0;
+    z-index: 997; 
+    align-self: flex-start;
+    overflow: visible;
+    width: 100%;
+   
+    flex-grow: 0;
+    flex-shrink: 0;
+
     background-color: rgba(34,39,46,1);
-    height: 80px;
-    display: flex;
+    min-height: 80px;
     justify-content: space-between;
     align-items: center;
     color: #f5f5f5;
