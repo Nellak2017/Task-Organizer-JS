@@ -47,6 +47,7 @@ export const TableHeaderData = [
 // This is dummy Table Content data that is supposed to be fetched
 // TODO: have a date / time format used in the data source
 // TODO: have standard method for dealing with periodicity
+// TODO: Add Data validation for this so that you can pass in CamelCase Attributes instead of this ugly mess
 export const TableContentData = [
 
     {
@@ -57,12 +58,12 @@ export const TableContentData = [
         weight: '100', 
         order: '1', 
         periodicity: '1 * day',
-        timeToComplete: '5 hours',
-        creationDate: 'today',
-        lastCompletionDate: 'yesterday',
-        parentThread: 'Experience',
+        'time to complete': '5 hours',
+        'creation date': 'today',
+        'last completion date': 'yesterday',
+        'parent thread': 'Experience',
         pipelinable: 'No',
-        numberOfDependencies: '0',
+        'number of dependencies': '0',
         id: '0',
         completed: false
     },
@@ -71,16 +72,15 @@ export const TableContentData = [
         due: MakeDue(0, 6, 30),
         priority: 'Low',
         status: 'Open',
-        status: 'Processing',
         weight: '50', 
         order: '2', 
         periodicity: '1 * day',
-        timeToComplete: '2 hours',
-        creationDate: 'today',
-        lastCompletionDate: 'never',
-        parentThread: 'Domestic',
+        'time to complete': '2 hours',
+        'creation date': 'today',
+        'last completion date': 'never',
+        'parent thread': 'Domestic',
         pipelinable: 'No',
-        numberOfDependencies: '1',
+        'number of dependencies': '1',
         id: '1',
         completed: false
     }
