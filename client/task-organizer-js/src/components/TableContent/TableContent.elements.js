@@ -10,6 +10,15 @@ export const TaskTable = styled.table`
     border-collapse: collapse;
     background-color: rgba(44,49,56,1);
     padding: 0;
+
+    & th {
+        background-color: rgba(54,59,66,1);
+    }
+
+    & tr:nth-child(even) {
+        background-color: rgba(54,59,66,1);
+    }
+
     & .icon {
         margin: 0;
     }
@@ -25,6 +34,13 @@ export const TaskTable = styled.table`
         border-radius: 1rem;
     }
 
+    & td:hover {
+        background-color: rgba(64,69,76,1);
+    }
+
+    & th:hover {
+        background-color: rgba(64,69,76,1);
+    }
 
     & td[data-content="low"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
     & td[data-content="medium"] span{color: rgba(156,114,88); background-color:rgba(255,235,156);}
@@ -51,7 +67,7 @@ export const TaskTableHeader = styled.th`
     font-size: 1.4rem;
     border-right: 2px solid rgba(68,76,86,.5);
     border-left: 2px solid rgba(68,76,86,.5);
-    
+
     min-width: 10rem;
 `;
 
