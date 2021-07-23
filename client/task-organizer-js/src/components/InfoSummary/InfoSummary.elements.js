@@ -26,13 +26,16 @@ export const SummaryDropDown = styled.section`
     align-items: center;
     justify-content: space-between;
     margin-left: 20rem; //  was 0
-    width: 67rem; // was 47rem
-
+    min-width: fit-content;
+    width: 75%; // was 47rem
+    overflow: hidden;
+    
     border-bottom: 1px solid rgba(68,76,86,.5);
 `;
 // This is to hold the elements inside of the Summary Drop down
 // So that items can be correctly positioned
 export const SummaryDropDownContainer = styled.span`
+
     display: flex;
     flex-direction: row;
     align-items: center;
