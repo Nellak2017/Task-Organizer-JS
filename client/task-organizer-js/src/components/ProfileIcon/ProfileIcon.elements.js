@@ -13,14 +13,6 @@ export const ProfileContainer = styled(Link)`
     border: 0px solid rgba(68,76,86,.5);
     color: #f5f5f5;
 
-    & .showMe {
-        display: none; 
-    }
-    &:hover .showMe{
-        display: block !important;
-        z-index: 999 !important;
-    }
-
     &:hover {
         transition-timing-function: linear; 
         transition: 450ms;
@@ -45,6 +37,16 @@ export const ProfileName = styled.span`
     overflow: hidden;
 `;
 
+export const ProfilePopUpContainer = styled.div`
+    & .showMe {
+        display: none; 
+    }
+    &:hover .showMe{
+        display: block !important;
+        z-index: 1000 !important;
+    }
+`;
+
 export const ProfilePopUp = styled.div`
     position: absolute; // must be absolute so that you can have it below the profile picture
     top: 5.1rem;
@@ -52,7 +54,8 @@ export const ProfilePopUp = styled.div`
     width: 18rem;
     height: 24rem;
     border-radius: 1rem;
-    background-color: rgba(34,39,46,1); 
+    background-color: rgba(34,39,46,1);
+    z-index: 999 !important; 
 
     & img {
         width: 100%;
@@ -87,7 +90,7 @@ export const ProfilePopUpInnerContainer = styled.div`
     }
 `;
 
-export const EmailFlexContainer = styled(Link)`
+export const EmailFlexContainer = styled.div`
     display: flex;
     flex-direction: row;
     padding-left: 1rem;
