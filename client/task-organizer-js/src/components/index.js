@@ -6,3 +6,5 @@ export { default as InfoSummary } from './InfoSummary/InfoSummary';
 export { default as TableContent } from './TableContent/TableContent';
 export { default as GridContent } from './GridContent/GridContent';
 export { default as TodoViewSubNav} from './TodoViewSubNav/TodoViewSubNav';
+export { default as Editable} from './Editable/Editable';
+export { default as UnderConstruction} from './UnderConstruction/UnderConstruction';
