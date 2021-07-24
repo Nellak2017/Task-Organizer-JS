@@ -48,6 +48,7 @@ export const TableHeaderData = [
 // TODO: have a date / time format used in the data source
 // TODO: have standard method for dealing with periodicity
 // TODO: Add Data validation for this so that you can pass in CamelCase Attributes instead of this ugly mess
+// TODO: Use ISO Standards for your Data
 export const TableContentData = [
 
     {
