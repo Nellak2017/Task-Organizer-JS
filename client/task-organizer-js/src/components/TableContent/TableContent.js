@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { useTable, usePagination } from 'react-table';
 import {
     TaskTable,
     TaskTableRow,
@@ -9,15 +10,17 @@ import {
 import { IconContext } from 'react-icons/lib';
 import * as BiIcons from 'react-icons/bi';
 import FormatDue from '../../lib/moment/FormatDue.js';
+import Editable from '../../components/Editable/Editable.js';
 
 // TODO: Improve Drag-And-Drop Functionality with react-beautiful-dnd (Search how to do it in tables), see also: https://dev.to/milandhar/drag-and-drop-table-with-react-beautiful-dnd-54ad
 // TODO: Gray out stuff when completed
 // TODO: Add logic for see all
 // TODO: Research e.preventDefault()
 // TODO: Reserach ..data , see also: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
-
 // TODO: Check the TableHeaderData by putting a "_" between each word instead of a space or just merge together to see if equality (Leads to bug right now!)
-const TableContent = ({ data, tableHeaders }) => {
+
+
+const TableContent = ({ columns, data, updateMyData, skipPageReset, tableHeaders }) => {
 
     // Make the temporary array of headers
     const tempHeaders = Array.from(Object.values(tableHeaders[0]).map((item, key) => {
@@ -45,6 +48,44 @@ const TableContent = ({ data, tableHeaders }) => {
         })
     );
 
+    // Set our editable cell renderer as the default Cell renderer
+    const defaultColumn = {
+        Cell: Editable
+    }
+
+    /*
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        prepareRow,
+        page,
+        canPreviousPage,
+        canNextPage,
+        pageOptions,
+        pageCount,
+        gotoPage,
+        nextPage,
+        previousPage,
+        setPageSize,
+        state: { pageIndex, pageSize },
+      } = useTable(
+        {
+          columns,
+          data,
+          defaultColumn,
+          // use the skipPageReset option to disable page resetting temporarily
+          autoResetPage: !skipPageReset,
+          // updateMyData isn't part of the API, but
+          // anything we put into these options will
+          // automatically be available on the instance.
+          // That way we can call this function from our
+          // cell renderer!
+          updateMyData,
+        },
+        usePagination
+      )
+        */
     const [tasks, setTasks] = useState([...filteredTableContentData]);
 
     const [Headers, setHeaders] = useState([...tableHeaders]);
