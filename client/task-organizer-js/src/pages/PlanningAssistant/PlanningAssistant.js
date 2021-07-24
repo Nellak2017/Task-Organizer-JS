@@ -5,12 +5,13 @@
 // * College Class Scheduler, Cost Estimator, etc.
 // * General Mind Map for making Tasks with Dependencies
 
-import { SideNav } from "../../components";
+import { SideNav, UnderConstruction } from "../../components";
 
 const PlanningAssistant = () => {
     return (
         <>
             <SideNav />
+            <UnderConstruction />
         </>
     );
 }

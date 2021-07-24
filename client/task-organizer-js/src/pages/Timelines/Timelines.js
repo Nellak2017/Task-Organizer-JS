@@ -1,9 +1,10 @@
-import { SideNav } from "../../components";
+import { SideNav, UnderConstruction } from "../../components";
 
 const Timelines = () => {
     return (
         <>
             <SideNav />
+            <UnderConstruction />
         </>
     );
 }

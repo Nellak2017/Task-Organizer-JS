@@ -1,9 +1,10 @@
-import { SideNav } from "../../components";
+import { SideNav, UnderConstruction } from "../../components";
 
 const Templates = () => {
     return (
         <>
             <SideNav />
+            <UnderConstruction />
         </>
     );
 }
