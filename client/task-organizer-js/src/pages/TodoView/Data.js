@@ -4,43 +4,57 @@ import { TableContent } from "../../components";
 // I don't know if this way is optimal, but it is easy
 export const TableHeaderData = [
     {
-        td: 'Task'
+        Header: 'Task',
+        accessor: 'task',
     },
     {
-        td: 'Due'
+        Header: 'Due',
+        accessor: 'due',
+
     },
     {
-        td: 'Priority'
+        Header: 'Priority',
+        accessor: 'priority',
     },
     {
-        td: 'Status'
+        Header: 'Status',
+        accessor: 'status',
     },
     {
-        td: 'Weight'
+        Header: 'Weight',
+        accessor: 'weight',
     },
     {
-        td: 'Order'
+        Header: 'Order',
+        accessor: 'order',
     },
     {
-        td: 'Periodicity'
+        Header: 'Periodicity',
+        accessor: 'periodicity',
     },
     {
-        td: 'Time To Complete'
+        Header: 'Time To Complete',
+        accessor: 'time_to_complete',
     },
     {
-        td: 'Creation Date'
+        Header: 'Creation Date',
+        accessor: 'creation_date',
     },
     {
-        td: 'Last Completion Date'
+        Header: 'Last Completion Date',
+        accessor: 'last_completion_date',
     },
     {
-        td: 'Parent Thread'
+        Header: 'Parent Thread',
+        accessor: 'parent_thread',
     },
     {
-        td: 'Pipelinable'
+        Header: 'Pipelinable',
+        accessor: 'pipelinable',
     },
     {
-        td: 'Number of Dependencies'
+        Header: 'Number of Dependencies',
+        accessor: 'number_of_dependencies',
     },
 ];
 
@@ -52,38 +66,38 @@ export const TableHeaderData = [
 export const TableContentData = [
 
     {
-        task: 'Github (20 contribs)',
-        due: MakeDue(0, 18, 30),
-        priority: 'High',
-        status: 'Processing',
-        weight: '100', 
-        order: '1', 
-        periodicity: '1 * day',
-        'time to complete': '5 hours',
-        'creation date': 'today',
-        'last completion date': 'yesterday',
-        'parent thread': 'Experience',
-        pipelinable: 'No',
-        'number of dependencies': '0',
-        id: '0',
-        completed: false
+        'task': 'Github (20 contribs)',
+        'due': [0, 18, 30],
+        'priority': 'High',
+        'status': 'Processing',
+        'weight': '100', 
+        'order': '1', 
+        'periodicity': '1 * day',
+        'time_to_complete': '5 hours',
+        'creation_date': 'today',
+        'last_completion_date': 'yesterday',
+        'parent_thread': 'Experience',
+        'pipelinable': 'No',
+        'number_of_dependencies': '0',
+        'id': '0',
+        'completed': false
     },
     {
-        task: 'Relax',
-        due: MakeDue(0, 6, 30),
-        priority: 'Low',
-        status: 'Open',
-        weight: '50', 
-        order: '2', 
-        periodicity: '1 * day',
-        'time to complete': '2 hours',
-        'creation date': 'today',
-        'last completion date': 'never',
-        'parent thread': 'Domestic',
-        pipelinable: 'No',
-        'number of dependencies': '1',
-        id: '1',
-        completed: false
+        'task': 'Relax',
+        'due': [0, 18, 30],
+        'priority': 'Low',
+        'status': 'Open',
+        'weight': '50', 
+        'order': '2', 
+        'periodicity': '1 * day',
+        'time_to_complete': '2 hours',
+        'creation_date': 'today',
+        'last_completion_date': 'never',
+        'parent_thread': 'Domestic',
+        'pipelinable': 'No',
+        'number_of_dependencies': '1',
+        'id': '1',
+        'completed': false
     }
 ];
 

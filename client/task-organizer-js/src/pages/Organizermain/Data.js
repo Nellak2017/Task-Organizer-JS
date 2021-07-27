@@ -5,6 +5,7 @@ import * as CgIcons from 'react-icons/cg';
 import * as BiIcons from 'react-icons/bi';
 import { MakeDue } from '../../lib/moment/FormatDue.js';
 import { TableContent, GridContent } from "../../components";
+import { format } from 'date-fns'
 
 export const SidebarData = [
   {
@@ -34,7 +35,7 @@ export const SidebarData = [
   {
     title: 'Todo View',
     path: '/TodoView',
-    icon: <RiIcons.RiTodoLine/>,
+    icon: <RiIcons.RiTodoLine />,
     cName: 'nav-text'
   },
   {
@@ -75,22 +76,32 @@ export const SidebarData = [
   },
 ];
 
-// I don't know if this way is optimal, but it is easy
+// TODO: Format Dates properly
 export const TableHeaderData = [
   {
-    td: 'Task'
+    Header: 'Task',
+    accessor: 'task',
   },
   {
-    td: 'Due'
+    Header: 'Due',
+    accessor: 'due',
+    /*
+    Cell: ({ value }) => {
+      return format(new Date(value), 'dd/MM/yyyy')
+    }
+    */
   },
   {
-    td: 'Priority'
+    Header: 'Priority',
+    accessor: 'priority',
   },
   {
-    td: 'Status'
+    Header: 'Status',
+    accessor: 'status',
   },
   {
-    td: 'Periodicity'
+    Header: 'Periodicity',
+    accessor: 'periodicity',
   },
 ]
 
@@ -98,24 +109,24 @@ export const TableHeaderData = [
 // TODO: have a date / time format used in the data source
 // TODO: have standard method for dealing with periodicity
 export const TableContentData = [
-  
+
   {
-    task: 'Github (20 contribs)',
-    due: MakeDue(0,18,30),
-    priority: 'High',
-    status: 'Processing',
-    periodicity: '1 * day',
-    id: '0',
-    completed: false
+    'task': 'Github (20 contribs)',
+    'due': [0, 18, 30],
+    'priority': 'High',
+    'status': 'Processing',
+    'periodicity': '1 * day',
+    'id': '0',
+    'completed': false
   },
   {
-    task: 'Relax',
-    due: MakeDue(0,6,30),
-    priority: 'Low',
-    status: 'Open',
-    periodicity: '7 * week',
-    id: '1',
-    completed: false
+    'task': 'Relax',
+    'due': [0, 6, 30],
+    'priority': 'Low',
+    'status': 'Open',
+    'periodicity': '7 * week',
+    'id': '1',
+    'completed': false
   }
 ];
 
@@ -123,7 +134,7 @@ export const TableContentData = [
 // This is the dummy Grid Content Data that is supposed to be fetched
 // TODO: figure out how to calculate and pass in the data from the DB
 export const GridContentData = [
-  
+
   {
     thread: 'College',
     taskCount: '3',
@@ -164,20 +175,20 @@ export const InfoSummaryData = [
     link: 'TodoView',
     tableHeaders: TableHeaderData,
     data: TableContentData,
-    component: ({data, tableHeaders}) => {return <TableContent data={data} tableHeaders={tableHeaders}/>}
+    component: ({ data, tableHeaders }) => { return <TableContent data={data} tableHeaders={tableHeaders} /> }
   },
-  
+
   {
     title: 'Thread Summary',
-    icon: <RiIcons.RiTodoLine className="icon"/>,
+    icon: <RiIcons.RiTodoLine className="icon" />,
     iconComponent: '',
     text: '',
     link: '',
     tableHeaders: '',
     data: GridContentData,
-    component: ({data}) => {return <GridContent data={data}/>}
+    component: ({ data }) => { return <GridContent data={data} /> }
   }
-  
+
 ];
 
 

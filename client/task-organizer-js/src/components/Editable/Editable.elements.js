@@ -33,3 +33,5 @@ export const Styles = styled.div`
         padding: 0.5rem;
     }
 `
+
+export default Styles;
