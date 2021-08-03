@@ -42,18 +42,7 @@ export const TaskTable = styled.table`
         background-color: rgba(64,69,76,1);
     }
 
-    & td[data-content="low"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
-    & td[data-content="medium"] span{color: rgba(156,114,88); background-color:rgba(255,235,156);}
-    & td[data-content="high"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
-    & td[data-content="open"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
-    & td[data-content="waiting"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
-    & td[data-content="completed"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
-    & td[data-content="processing"] span{color: rgba(0,0,97,1); background-color: rgba(135,255,255);}
-    & td[data-content*="ago"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
-    & td[data-content*="yesterday at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
-    & td[data-content*="today at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
-    & td[data-content*="tomorrow at"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
-    & td[data-content*="in"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
+    
     
 `;
 
@@ -83,6 +72,33 @@ export const TaskTableData = styled.td`
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+
+
+    &[data-content="low"] input{color: rgba(0,97,0,1); }
+    &[data-content="medium"] input{color: rgba(156,114,88);}
+    &[data-content="high"] input{color: rgba(207,45,6); }
+    &[data-content="open"] input{color: rgba(207,45,6); }
+    &[data-content="waiting"] input{color: rgba(156,114,88); }
+    &[data-content="completed"] input{color: rgba(0,97,0,1); }
+    &[data-content="processing"] input{color: rgba(0,0,97,1); }
+    &[data-content*="ago"] input{color: rgba(207,45,6); }
+    &[data-content*="yesterday at"] input{color: rgba(207,45,6); }
+    &[data-content*="today at"] input{color: rgba(207,45,6); }
+    &[data-content*="tomorrow at"] input{color: rgba(156,114,88); }
+    &[data-content*="in "] input{color: rgba(0,97,0,1); }
+
+    &[data-content="low"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
+    &[data-content="medium"] span{color: rgba(156,114,88); background-color:rgba(255,235,156);}
+    &[data-content="high"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
+    &[data-content="open"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
+    &[data-content="waiting"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
+    &[data-content="completed"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
+    &[data-content="processing"] span {color: rgba(0,0,97,1); background-color: rgba(135,255,255);}
+    &[data-content*="ago"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
+    &[data-content*="yesterday at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
+    &[data-content*="today at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
+    &[data-content*="tomorrow at"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
+    &[data-content*="in "] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
 
     & :hover {
         font-weight: bold;
