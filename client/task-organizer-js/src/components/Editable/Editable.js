@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
 import {
-    Styles
+    StyledEditableCell
 } from "./Editable.elements"
-/*
+
+// This does not work with react-table as intended for unknown reasons..
+// All I know is that value is supposed to be value: initialValue, but wtf is initalValue??
+// If you can ever figure out where it is pulling "initialValue" from, then you can make this into a component
 const Editable = ({
-    value: initalValue,
-    row: {index},
+    value,
+    row: { index },
     column: {id},
     updateMyData
 }) => {
     // keep tabs on the state of the cell
-    const [value, setValue] = useState(initialValue);
+    const [initialValue, setValue] = useState(value);
     const onChange = e => { setValue(e.target.value) }
     // only update external data when input blurred
     const onBlur = e => { updateMyData(index, id, value) }
@@ -18,14 +21,13 @@ const Editable = ({
     useEffect(() => {
         setValue(initialValue)
     }, [initialValue])
-    return ( <input value={value} onChange={onChange} onBlur={onBlur} /> );
+    return ( <StyledEditableCell value={initialValue} onChange={onChange} onBlur={onBlur} /> );
 }
-*/
-
-const Editable = () =>{
-    return (
+/*
+const Editable = () => {
+    return(
         <></>
     )
 }
-
+*/
 export default Editable;
