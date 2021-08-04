@@ -1,10 +1,23 @@
 import { TableContent } from "../../components";
 import React from 'react';
-// I don't know if this way is optimal, but it is easy
+import MomentUtils from '@date-io/moment';
+import {
+    DatePicker,
+    TimePicker,
+    DateTimePicker,
+    MuiPickersUtilsProvider
+} from '@material-ui/pickers';
+import FormatDue from '../../lib/moment/FormatDue.js';
+import moment from 'moment';
+
 export const TableHeaderData = [
     {
         Header: 'Task',
         accessor: 'task',
+    },
+    {
+        Header: 'Due',
+        accessor: 'due',
         Cell: ({
             value: initialValue,
             row: { index },
@@ -12,21 +25,22 @@ export const TableHeaderData = [
             updateMyData, // This is a custom function that we supplied to our table instance
         }) => {
             // We need to keep and update the state of the cell normally
+            const [selectedDate, handleDateChange] = React.useState(new moment());
             const [value, setValue] = React.useState(initialValue)
-            const onChange = e => { setValue(e.target.value)}
-    
+            const onChange = e => { setValue(selectedDate) }
+
             // We'll only update the external data when the input is blurred
-            const onBlur = () => { updateMyData(index, id, value)}
-    
+            const onBlur = () => { updateMyData(index, id, value) }
+
             // If the initialValue is changed external, sync it up with our state
-            React.useEffect(() => { setValue(initialValue) }, [initialValue])
-    
-            return <input value={value} onChange={onChange} onBlur={onBlur} />
+            //React.useEffect(() => { setValue(selectedDate) }, [selectedDate])
+
+            return (
+                <MuiPickersUtilsProvider utils={MomentUtils} >
+                    <DateTimePicker key={index} value={selectedDate} onChange={handleDateChange} onBlur={onBlur} allowKeyboardControl={true} format={FormatDue(selectedDate)}/>
+                </MuiPickersUtilsProvider>
+            )
         }
-    },
-    {
-        Header: 'Due',
-        accessor: 'due',
     },
     {
         Header: 'Priority',
@@ -83,11 +97,11 @@ export const TableContentData = [
 
     {
         'task': 'Github (20 contribs)',
-        'due': [0, 18, 30],
+        'due': new moment(),
         'priority': 'High',
         'status': 'Processing',
-        'weight': '100', 
-        'order': '1', 
+        'weight': '100',
+        'order': '1',
         'periodicity': '1 * day',
         'time_to_complete': '5 hours',
         'creation_date': 'today',
@@ -100,11 +114,11 @@ export const TableContentData = [
     },
     {
         'task': 'Relax',
-        'due': [0, 18, 30],
+        'due': new moment(),
         'priority': 'Low',
         'status': 'Open',
-        'weight': '50', 
-        'order': '2', 
+        'weight': '50',
+        'order': '2',
         'periodicity': '1 * day',
         'time_to_complete': '2 hours',
         'creation_date': 'today',
