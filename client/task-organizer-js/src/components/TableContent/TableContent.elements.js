@@ -83,7 +83,7 @@ export const TaskTableData = styled.td`
     &[data-content="processing"] input{color: rgba(0,0,97,1); }
     &[data-content*="ago"] input{color: rgba(207,45,6); }
     &[data-content*="yesterday at"] input{color: rgba(207,45,6); }
-    &[data-content*="today at"] input{color: rgba(207,45,6); }
+    &[data-content*="Today at"] input{color: rgba(207,45,6); }
     &[data-content*="tomorrow at"] input{color: rgba(156,114,88); }
     &[data-content*="in "] input{color: rgba(0,97,0,1); }
 
@@ -96,7 +96,7 @@ export const TaskTableData = styled.td`
     &[data-content="processing"] span {color: rgba(0,0,97,1); background-color: rgba(135,255,255);}
     &[data-content*="ago"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
     &[data-content*="yesterday at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
-    &[data-content*="today at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
+    &[data-content*="Today at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
     &[data-content*="tomorrow at"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
     &[data-content*="in "] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
 
