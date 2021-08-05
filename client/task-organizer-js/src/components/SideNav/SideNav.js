@@ -57,6 +57,7 @@ const SideNav = () => {
                     </OrganizerMainNavElementContainer>
 
                 </OrganizerMainNav>
+                
                 <NavMenu className={sidebar ? "active" : ""}>
                     <NavMenuItems onClick={showSidebar}>
                         <NavLogo to='/'>
