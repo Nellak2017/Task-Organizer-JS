@@ -7,10 +7,10 @@ import { TableContent, GridContent } from "../../components";
 import React from 'react';
 import MomentUtils from '@date-io/moment';
 import {
-    DatePicker,
-    TimePicker,
-    DateTimePicker,
-    MuiPickersUtilsProvider
+  DatePicker,
+  TimePicker,
+  DateTimePicker,
+  MuiPickersUtilsProvider
 } from '@material-ui/pickers';
 import FormatDue from '../../lib/moment/FormatDue.js';
 import moment from 'moment';
@@ -99,7 +99,7 @@ export const TableHeaderData = [
       row: { index },
       column: { id },
       updateMyData, // This is a custom function that we supplied to our table instance
-  }) => {
+    }) => {
       // We need to keep and update the state of the cell normally
       const [selectedDate, handleDateChange] = React.useState(new moment(initialValue));
 
@@ -107,17 +107,17 @@ export const TableHeaderData = [
       const onBlur = () => { updateMyData(index, id, selectedDate) }
 
       return (
-          <MuiPickersUtilsProvider utils={MomentUtils} >
-              <StyledDateTimePicker
-                  key={index}
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                  onBlur={onBlur}
-                  allowKeyboardControl={true}
-                  format={FormatDue(selectedDate)} />
-          </MuiPickersUtilsProvider>
+        <MuiPickersUtilsProvider utils={MomentUtils} >
+          <StyledDateTimePicker
+            key={index}
+            value={selectedDate}
+            onChange={handleDateChange}
+            onBlur={onBlur}
+            allowKeyboardControl={true}
+            format={FormatDue(selectedDate)} />
+        </MuiPickersUtilsProvider>
       )
-  }
+    }
   },
   {
     Header: 'Priority',
@@ -127,7 +127,7 @@ export const TableHeaderData = [
       row: { index },
       column: { id },
       updateMyData, // This is a custom function that we supplied to our table instance
-  }) => {
+    }) => {
       // We need to keep and update the state of the cell normally
       const [value, setValue] = React.useState(initialValue)
       const onChange = e => { setValue(e.target.value) }
@@ -136,20 +136,42 @@ export const TableHeaderData = [
       const onBlur = () => { updateMyData(index, id, value) }
 
       return (
-          <StyledSelect
-              value={value}
-              onChange={onChange}
-              onBlur={onBlur}>
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
-          </StyledSelect>
+        <StyledSelect
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </StyledSelect>
       )
-  }
+    }
   },
   {
     Header: 'Status',
     accessor: 'status',
+    Cell: ({
+      value: initialValue,
+      row: { index },
+      column: { id },
+      updateMyData, // This is a custom function that we supplied to our table instance
+    }) => {
+      // We need to keep and update the state of the cell normally
+      const [value, setValue] = React.useState(initialValue)
+
+      const onClick = () => {
+        (value === "Processing") ?
+          updateMyData(index, id, "Open") :
+          (value === "Open") ?
+            updateMyData(index, id, "Processing") :
+            updateMyData(index, id, value)
+      }
+
+      // If the initialValue is changed external, sync it up with our state
+      React.useEffect(() => { setValue(initialValue) }, [initialValue])
+
+      return (<span onClick={onClick}>{value}</span>)
+    }
   },
   {
     Header: 'Periodicity',
@@ -164,7 +186,7 @@ export const TableContentData = [
 
   {
     'task': 'Github (20 contribs)',
-    'due': new moment('16:30, 8Aug2021','HH:mm, DMMMYYYY'),
+    'due': new moment('16:30, 8Aug2021', 'HH:mm, DMMMYYYY'),
     'priority': 'High',
     'status': 'Processing',
     'periodicity': '1 * day',
@@ -173,7 +195,7 @@ export const TableContentData = [
   },
   {
     'task': 'Relax',
-    'due':  new moment('10:30, 9Aug2021','HH:mm, DMMMYYYY'),
+    'due': new moment('10:30, 9Aug2021', 'HH:mm, DMMMYYYY'),
     'priority': 'Low',
     'status': 'Open',
     'periodicity': '7 * week',
