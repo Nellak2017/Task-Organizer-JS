@@ -84,13 +84,13 @@ export const TableHeaderData = [
         }) => {
             // We need to keep and update the state of the cell normally
             const [value, setValue] = React.useState(initialValue)
-            
+
             const onClick = () => {
                 (value === "Processing") ?
                     updateMyData(index, id, "Open") :
-                (value === "Open") ?
-                    updateMyData(index, id, "Processing") :
-                    updateMyData(index, id, value)
+                    (value === "Open") ?
+                        updateMyData(index, id, "Processing") :
+                        updateMyData(index, id, value)
             }
 
             // If the initialValue is changed external, sync it up with our state
@@ -133,6 +133,72 @@ export const TableHeaderData = [
     {
         Header: 'Periodicity',
         accessor: 'periodicity',
+        Cell: ({
+            value: initialValue,
+            row: { index },
+            column: { id },
+            updateMyData, // This is a custom function that we supplied to our table instance
+        }) => {
+            // We need to keep and update the state of the cell normally
+            const [NumberValue, setNumberValue] = React.useState(initialValue.replace(/\D/g, '') >= 10 ? 10 : initialValue.replace(/\D/g, '') < 1 ? 1 : initialValue.replace(/\D/g, ''));
+            const [PeriodValue, setPeriodValue] = React.useState(initialValue.replace(/[0-9]/g, ''));
+            const [value, setValue] = React.useState(String(NumberValue) + String(PeriodValue))
+
+            const onChangeNumber = e => {
+                setNumberValue(e.target.value.replace(/\D/g, ''));
+                setValue(String(e.target.value.replace(/\D/g, '')) + String(PeriodValue));
+            }
+
+            const onChangePeriod = e => {
+                setPeriodValue(e.target.value.replace(/[0-9]/g, ''));
+                setValue(String(NumberValue) + String(e.target.value.replace(/[0-9]/g, '')));
+            }
+
+            // We'll only update the external data when the input is blurred
+            const onBlur = () => {
+                setValue(String(NumberValue) + String(PeriodValue));
+                updateMyData(index, id, value);
+            }
+
+            return (
+                <span>
+                    <StyledEditableCell
+                        style={
+                            {
+                                width: '2.5rem',
+                            }
+                        }
+                        type={"number"}
+                        min="1"
+                        max="10"
+                        value={NumberValue >= 10 ? 10 : NumberValue < 1 ? 1 : NumberValue}
+                        onChange={onChangeNumber}
+                        onBlur={onBlur}
+                    />
+                    <StyledSelect
+                        style={
+                            {
+                                color: 'white',
+                                appearance: 'none',
+                                width: '4rem',
+                                border: 0,
+                                outline: 'none'
+                            }
+                        }
+                        value={PeriodValue}
+                        onChange={onChangePeriod}
+                        onBlur={onBlur}>
+                        <option value="hour">hour</option>
+                        <option value="day">day</option>
+                        <option value="week">week</option>
+                        <option value="month">month</option>
+                        <option value="quarter">quarter</option>
+                        <option value="six month">6 month</option>
+                        <option value="year">year</option>
+                    </StyledSelect>
+                </span>
+            )
+        }
     },
     {
         Header: 'Time To Complete',
@@ -174,7 +240,7 @@ export const TableContentData = [
         'status': 'Processing',
         'weight': '100',
         'order': '1',
-        'periodicity': '1 * day',
+        'periodicity': '100day',
         'time_to_complete': '5 hours',
         'creation_date': 'today',
         'last_completion_date': 'yesterday',
@@ -191,7 +257,7 @@ export const TableContentData = [
         'status': 'Open',
         'weight': '50',
         'order': '2',
-        'periodicity': '1 * day',
+        'periodicity': '100day',
         'time_to_complete': '2 hours',
         'creation_date': 'today',
         'last_completion_date': 'never',
