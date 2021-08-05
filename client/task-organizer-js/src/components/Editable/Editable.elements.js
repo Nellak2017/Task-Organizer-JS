@@ -24,6 +24,16 @@ export const StyledDateTimePicker = styled(DateTimePicker)`
     }
 `;
 
+export const StyledSelect = styled.select`
+    background-color: transparent;
+    border: 0;
+    font-size: 1rem;
+
+    & option {
+        border-radius: 1rem;
+    }
+`;
+
 export default StyledEditableCell;
 
 /* Need: 
