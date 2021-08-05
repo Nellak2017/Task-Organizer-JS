@@ -342,10 +342,7 @@ export const TableHeaderData = [
 ];
 
 // This is dummy Table Content data that is supposed to be fetched
-// TODO: have a date / time format used in the data source
-// TODO: have standard method for dealing with periodicity
-// TODO: Add Data validation for this so that you can pass in CamelCase Attributes instead of this ugly mess
-// TODO: Use ISO Standards for your Data
+// TODO: Add drop down for Parent Thread to choose any of the existing Threads to be the parent
 export const TableContentData = [
 
     {
@@ -384,6 +381,27 @@ export const TableContentData = [
     }
 ];
 
+export const DefaultRowTemplate = [
+
+    {
+        'task': 'blank task',
+        'due': new moment(),
+        'priority': 'Medium',
+        'status': 'Open',
+        'weight': '50',
+        'order': '1',
+        'periodicity': '1day',
+        'time_to_complete': '1 hours',
+        'creation_date': 'today',
+        'last_completion_date': 'never',
+        'parent_thread': 'None',
+        'pipelinable': 'No',
+        'number_of_dependencies': '0',
+        'id': '0',
+        'completed': false
+    },
+];
+
 
 // TODO: Add - sorted by {Sort Method}; to the title
 export const InfoSummaryData = [
@@ -395,6 +413,6 @@ export const InfoSummaryData = [
         link: 'TodoView',
         tableHeaders: TableHeaderData,
         data: TableContentData,
-        component: ({ data, tableHeaders }) => { return <TableContent data={data} tableHeaders={tableHeaders} /> }
+        component: ({ data, tableHeaders}) => { return <TableContent data={data} tableHeaders={tableHeaders} templates={DefaultRowTemplate}/> }
     },
 ];

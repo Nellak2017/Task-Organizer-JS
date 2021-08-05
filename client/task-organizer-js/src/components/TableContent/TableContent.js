@@ -14,7 +14,9 @@ import { MakeDue } from '../../lib/moment/FormatDue.js';
 import Editable from '../../components/Editable/Editable.js';
 import StyledEditableCell from '../Editable/Editable.elements.js';
 
-const TableContent = ({ data, tableHeaders }) => {
+const TableContent = ({ data, tableHeaders, templates}) => {
+
+    console.log(templates)
 
     const [mutatedData, setMutatedData] = useState(data); // (2) [{task:.., due:...,...},{...}]
     const columns = useMemo(() => tableHeaders[0], [tableHeaders]); // (13) [{Header:"Task",accessor:"task"}}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
@@ -83,6 +85,11 @@ const TableContent = ({ data, tableHeaders }) => {
         setMutatedData(items);
     }
 
+    // TODO: Make Templates more sophisticated 
+    const addTask = () => {
+        mutatedData.push(templates[0]);
+    }
+
     console.log(instance);
 
     return (
@@ -115,13 +122,8 @@ const TableContent = ({ data, tableHeaders }) => {
                                                 <TaskTableRow {...row.getRowProps()} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                                                     <TaskTableData className="iconTd">{mutatedData[key].status === "Completed" ? <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
                                                         : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />}</TaskTableData>
-
-
                                                     {
-
                                                         row.cells.map((tableHeader, index) => {
-                                                            // We need to handle the edge cases for data content highlighting
-                                                            // This means that for due, we need to be able to parse the Material-UI value Whatever that means
                                                             return (
                                                                 <TaskTableData {...tableHeader.getCellProps()} key={index}
                                                                     data-content={
