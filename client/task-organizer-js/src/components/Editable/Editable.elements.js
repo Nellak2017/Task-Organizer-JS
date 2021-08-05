@@ -28,8 +28,8 @@ export const StyledSelect = styled.select`
     background-color: transparent;
     border: 0;
     font-size: 1rem;
-
     & option {
+        color: black;
         border-radius: 1rem;
     }
 `;
