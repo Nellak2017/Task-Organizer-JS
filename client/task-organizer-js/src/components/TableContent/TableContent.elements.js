@@ -73,6 +73,7 @@ export const TaskTableData = styled.td`
     text-overflow: ellipsis;
     overflow: hidden;
 
+    & input{font-size: 1rem; text-align: center;}
 
     &[data-content="low"] input{color: rgba(0,97,0,1); }
     &[data-content="medium"] input{color: rgba(156,114,88);}
@@ -82,10 +83,10 @@ export const TaskTableData = styled.td`
     &[data-content="completed"] input{color: rgba(0,97,0,1); }
     &[data-content="processing"] input{color: rgba(0,0,97,1); }
     &[data-content*="ago"] input{color: rgba(207,45,6); }
-    &[data-content*="yesterday at"] input{color: rgba(207,45,6); }
+    &[data-content*="Yesterday at"] input{color: rgba(207,45,6); }
     &[data-content*="Today at"] input{color: rgba(207,45,6); }
-    &[data-content*="tomorrow at"] input{color: rgba(156,114,88); }
-    &[data-content*="in "] input{color: rgba(0,97,0,1); }
+    &[data-content*="Tomorrow at"] input{color: rgba(156,114,88); }
+    &[data-content*="from now at"] input{color: rgba(0,97,0,1); }
 
     &[data-content="low"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
     &[data-content="medium"] span{color: rgba(156,114,88); background-color:rgba(255,235,156);}
@@ -95,10 +96,10 @@ export const TaskTableData = styled.td`
     &[data-content="completed"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
     &[data-content="processing"] span {color: rgba(0,0,97,1); background-color: rgba(135,255,255);}
     &[data-content*="ago"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
-    &[data-content*="yesterday at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
+    &[data-content*="Yesterday at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
     &[data-content*="Today at"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
-    &[data-content*="tomorrow at"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
-    &[data-content*="in "] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
+    &[data-content*="Tomorrow at"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
+    &[data-content*="from now at"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
 
     & :hover {
         font-weight: bold;
