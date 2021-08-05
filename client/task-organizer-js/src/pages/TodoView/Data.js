@@ -9,6 +9,7 @@ import {
 } from '@material-ui/pickers';
 import FormatDue from '../../lib/moment/FormatDue.js';
 import moment from 'moment';
+import {StyledDateTimePicker} from '../../components/Editable/Editable.elements.js';
 
 export const TableHeaderData = [
     {
@@ -25,19 +26,20 @@ export const TableHeaderData = [
             updateMyData, // This is a custom function that we supplied to our table instance
         }) => {
             // We need to keep and update the state of the cell normally
-            const [selectedDate, handleDateChange] = React.useState(new moment());
-            const [value, setValue] = React.useState(initialValue)
-            const onChange = e => { setValue(selectedDate) }
-
+            const [selectedDate, handleDateChange] = React.useState(new moment(initialValue));
+      
             // We'll only update the external data when the input is blurred
-            const onBlur = () => { updateMyData(index, id, value) }
-
-            // If the initialValue is changed external, sync it up with our state
-            //React.useEffect(() => { setValue(selectedDate) }, [selectedDate])
-
+            const onBlur = () => { updateMyData(index, id, selectedDate) }
+      
             return (
                 <MuiPickersUtilsProvider utils={MomentUtils} >
-                    <DateTimePicker key={index} value={selectedDate} onChange={handleDateChange} onBlur={onBlur} allowKeyboardControl={true} format={FormatDue(selectedDate)}/>
+                    <StyledDateTimePicker
+                        key={index}
+                        value={selectedDate}
+                        onChange={handleDateChange}
+                        onBlur={onBlur}
+                        allowKeyboardControl={true}
+                        format={FormatDue(selectedDate)} />
                 </MuiPickersUtilsProvider>
             )
         }

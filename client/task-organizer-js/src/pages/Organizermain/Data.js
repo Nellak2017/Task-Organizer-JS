@@ -4,7 +4,17 @@ import * as MdIcons from 'react-icons/md';
 import * as CgIcons from 'react-icons/cg';
 import * as BiIcons from 'react-icons/bi';
 import { TableContent, GridContent } from "../../components";
-//import { format } from 'date-fns'
+import React from 'react';
+import MomentUtils from '@date-io/moment';
+import {
+    DatePicker,
+    TimePicker,
+    DateTimePicker,
+    MuiPickersUtilsProvider
+} from '@material-ui/pickers';
+import FormatDue from '../../lib/moment/FormatDue.js';
+import moment from 'moment';
+import {StyledDateTimePicker} from '../../components/Editable/Editable.elements.js';
 
 export const SidebarData = [
   {
@@ -84,11 +94,30 @@ export const TableHeaderData = [
   {
     Header: 'Due',
     accessor: 'due',
-    /*
-    Cell: ({ value }) => {
-      return format(new Date(value), 'dd/MM/yyyy')
-    }
-    */
+    Cell: ({
+      value: initialValue,
+      row: { index },
+      column: { id },
+      updateMyData, // This is a custom function that we supplied to our table instance
+  }) => {
+      // We need to keep and update the state of the cell normally
+      const [selectedDate, handleDateChange] = React.useState(new moment(initialValue));
+
+      // We'll only update the external data when the input is blurred
+      const onBlur = () => { updateMyData(index, id, selectedDate) }
+
+      return (
+          <MuiPickersUtilsProvider utils={MomentUtils} >
+              <StyledDateTimePicker
+                  key={index}
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  onBlur={onBlur}
+                  allowKeyboardControl={true}
+                  format={FormatDue(selectedDate)} />
+          </MuiPickersUtilsProvider>
+      )
+  }
   },
   {
     Header: 'Priority',
@@ -111,7 +140,7 @@ export const TableContentData = [
 
   {
     'task': 'Github (20 contribs)',
-    'due': [0, 18, 30],
+    'due': new moment('16:30, 8Aug2021','HH:mm, DMMMYYYY'),
     'priority': 'High',
     'status': 'Processing',
     'periodicity': '1 * day',
@@ -120,7 +149,7 @@ export const TableContentData = [
   },
   {
     'task': 'Relax',
-    'due': [0, 6, 30],
+    'due':  new moment('10:30, 9Aug2021','HH:mm, DMMMYYYY'),
     'priority': 'Low',
     'status': 'Open',
     'periodicity': '7 * week',
