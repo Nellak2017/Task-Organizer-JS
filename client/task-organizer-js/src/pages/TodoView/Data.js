@@ -59,6 +59,11 @@ export const TableHeaderData = [
     {
         Header: 'Order',
         accessor: 'order',
+        Cell:({row: { index }}) => {      
+            return (
+                <span>{index+1}</span>
+            )
+        }
     },
     {
         Header: 'Periodicity',
@@ -99,7 +104,7 @@ export const TableContentData = [
 
     {
         'task': 'Github (20 contribs)',
-        'due': new moment(),
+        'due': new moment('16:30, 8Aug2021','HH:mm, DMMMYYYY'),
         'priority': 'High',
         'status': 'Processing',
         'weight': '100',
@@ -116,7 +121,7 @@ export const TableContentData = [
     },
     {
         'task': 'Relax',
-        'due': new moment(),
+        'due': new moment('10:30, 9Aug2021','HH:mm, DMMMYYYY'),
         'priority': 'Low',
         'status': 'Open',
         'weight': '50',
