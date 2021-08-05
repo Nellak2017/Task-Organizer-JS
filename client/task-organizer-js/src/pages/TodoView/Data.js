@@ -140,18 +140,18 @@ export const TableHeaderData = [
             updateMyData, // This is a custom function that we supplied to our table instance
         }) => {
             // We need to keep and update the state of the cell normally
-            const [NumberValue, setNumberValue] = React.useState(initialValue.replace(/\D/g, '') >= 10 ? 10 : initialValue.replace(/\D/g, '') < 1 ? 1 : initialValue.replace(/\D/g, ''));
-            const [PeriodValue, setPeriodValue] = React.useState(initialValue.replace(/[0-9]/g, ''));
+            const [NumberValue, setNumberValue] = React.useState(initialValue.replace(/\D/g, '') >= 10 ? 10 : initialValue.replace(/\D/g, '') < 1 ? 1 : initialValue.replace(/\D/g, '').trim());
+            const [PeriodValue, setPeriodValue] = React.useState(initialValue.replace(/[0-9]/g, '').trim());
             const [value, setValue] = React.useState(String(NumberValue) + String(PeriodValue))
 
             const onChangeNumber = e => {
-                setNumberValue(e.target.value.replace(/\D/g, ''));
-                setValue(String(e.target.value.replace(/\D/g, '')) + String(PeriodValue));
+                setNumberValue(e.target.value.replace(/\D/g, '').trim());
+                setValue(String(e.target.value.replace(/\D/g, '').trim()) + String(PeriodValue));
             }
 
             const onChangePeriod = e => {
-                setPeriodValue(e.target.value.replace(/[0-9]/g, ''));
-                setValue(String(NumberValue) + String(e.target.value.replace(/[0-9]/g, '')));
+                setPeriodValue(e.target.value.replace(/[0-9]/g, '').trim());
+                setValue(String(NumberValue) + String(e.target.value.replace(/[0-9]/g, '').trim()));
             }
 
             // We'll only update the external data when the input is blurred
@@ -203,26 +203,141 @@ export const TableHeaderData = [
     {
         Header: 'Time To Complete',
         accessor: 'time_to_complete',
+        Cell: ({
+            value: initialValue,
+            row: { index },
+            column: { id },
+            updateMyData, // This is a custom function that we supplied to our table instance
+        }) => {
+            // We need to keep and update the state of the cell normally
+            const [NumberValue, setNumberValue] = React.useState(initialValue.replace(/\D/g, '').trim());
+            const [PeriodValue, setPeriodValue] = React.useState(initialValue.replace(/[0-9]/g, '').trim());
+            const [value, setValue] = React.useState(String(NumberValue) + String(PeriodValue));
+
+            const onChangeNumber = e => {
+                setNumberValue(e.target.value.replace(/\D/g, '').trim());
+                setValue(String(e.target.value.replace(/\D/g, '').trim()) + String(PeriodValue));
+            }
+
+            const onChangePeriod = e => {
+                setPeriodValue(e.target.value.replace(/[0-9]/g, '').trim());
+                setValue(String(NumberValue) + String(e.target.value.replace(/[0-9]/g, '').trim()));
+            }
+
+            // We'll only update the external data when the input is blurred
+            const onBlur = () => {
+                const temp = NumberValue === "" ? 1 : NumberValue;
+                setValue(String(temp) + String(PeriodValue));
+                updateMyData(index, id, String(temp) + String(PeriodValue));
+            }
+
+            return (
+                <span>
+                    <StyledEditableCell
+                        style={
+                            {
+                                width: '2.5rem',
+                            }
+                        }
+                        type={"number"}
+                        min="0"
+                        max="1000"
+                        value={NumberValue >= 1000 ? 1000 : NumberValue < 1 ? 1 : NumberValue}
+                        onChange={onChangeNumber}
+                        onBlur={onBlur}
+                    />
+                    <StyledSelect
+                        style={
+                            {
+                                color: 'white',
+                                appearance: 'none',
+                                width: '4rem',
+                                border: 0,
+                                outline: 'none'
+                            }
+                        }
+                        value={PeriodValue}
+                        onChange={onChangePeriod}
+                        onBlur={onBlur}>
+                        <option value="seconds">seconds</option>
+                        <option value="minutes">minutes</option>
+                        <option value="hours">hours</option>
+                        <option value="days">days</option>
+                        <option value="weeks">weeks</option>
+                        <option value="months">months</option>
+                        <option value="years">years</option>
+                    </StyledSelect>
+                </span>
+            )
+        }
     },
     {
         Header: 'Creation Date',
         accessor: 'creation_date',
+        Cell: ({  value: initialValue }) => {
+            return (
+                <span>{initialValue}</span>
+            )
+        }
     },
     {
         Header: 'Last Completion Date',
         accessor: 'last_completion_date',
+        Cell: ({  value: initialValue }) => {
+            return (
+                <span>{initialValue}</span>
+            )
+        }
     },
     {
         Header: 'Parent Thread',
         accessor: 'parent_thread',
+        Cell: ({  value: initialValue }) => {
+            return (
+                <span>{initialValue}</span>
+            )
+        }
     },
     {
         Header: 'Pipelinable',
         accessor: 'pipelinable',
+        Cell: ({
+            value: initialValue,
+            row: { index },
+            column: { id },
+            updateMyData, // This is a custom function that we supplied to our table instance
+        }) => {
+            // We need to keep and update the state of the cell normally
+            const [value, setValue] = React.useState(initialValue)
+            const onChange = e => { setValue(e.target.value) }
+
+            // We'll only update the external data when the input is blurred
+            const onBlur = () => { updateMyData(index, id, value) }
+
+            return (
+                <StyledSelect
+                    style={
+                        {
+                            color: 'white'
+                        }
+                    }
+                    value={value}
+                    onChange={onChange}
+                    onBlur={onBlur}>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </StyledSelect>
+            )
+        }
     },
     {
         Header: 'Number of Dependencies',
         accessor: 'number_of_dependencies',
+        Cell: ({  value: initialValue }) => {
+            return (
+                <span>{initialValue}</span>
+            )
+        }
     },
 ];
 
