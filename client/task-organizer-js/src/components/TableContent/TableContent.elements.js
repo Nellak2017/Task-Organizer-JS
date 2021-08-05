@@ -75,6 +75,13 @@ export const TaskTableData = styled.td`
 
     & input{font-size: 1rem; text-align: center;}
 
+    & input[type=number]::-webkit-inner-spin-button, 
+      input[type=number]::-webkit-outer-spin-button {  
+        -webkit-appearance: none;
+        margin: 0; 
+        width: 0;
+    }
+
     &[data-content="low"] input{color: rgba(0,97,0,1); }
     &[data-content="medium"] input{color: rgba(156,114,88);}
     &[data-content="high"] input{color: rgba(207,45,6); }
