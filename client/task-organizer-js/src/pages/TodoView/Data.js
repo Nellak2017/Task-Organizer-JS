@@ -9,7 +9,7 @@ import {
 } from '@material-ui/pickers';
 import FormatDue from '../../lib/moment/FormatDue.js';
 import moment from 'moment';
-import {StyledDateTimePicker} from '../../components/Editable/Editable.elements.js';
+import { StyledDateTimePicker, StyledSelect } from '../../components/Editable/Editable.elements.js';
 import StyledEditableCell from '../../components/Editable/Editable.elements.js';
 
 export const TableHeaderData = [
@@ -28,10 +28,10 @@ export const TableHeaderData = [
         }) => {
             // We need to keep and update the state of the cell normally
             const [selectedDate, handleDateChange] = React.useState(new moment(initialValue));
-      
+
             // We'll only update the external data when the input is blurred
             const onBlur = () => { updateMyData(index, id, selectedDate) }
-      
+
             return (
                 <MuiPickersUtilsProvider utils={MomentUtils} >
                     <StyledDateTimePicker
@@ -48,15 +48,7 @@ export const TableHeaderData = [
     {
         Header: 'Priority',
         accessor: 'priority',
-    },
-    {
-        Header: 'Status',
-        accessor: 'status',
-    },
-    {
-        Header: 'Weight',
-        accessor: 'weight',
-        Cell:({
+        Cell: ({
             value: initialValue,
             row: { index },
             column: { id },
@@ -65,22 +57,54 @@ export const TableHeaderData = [
             // We need to keep and update the state of the cell normally
             const [value, setValue] = React.useState(initialValue)
             const onChange = e => { setValue(e.target.value) }
-    
+
             // We'll only update the external data when the input is blurred
             const onBlur = () => { updateMyData(index, id, value) }
-    
+
+            return (
+                <StyledSelect
+                    value={value}
+                    onChange={onChange}
+                    onBlur={onBlur}>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </StyledSelect>
+            )
+        }
+    },
+    {
+        Header: 'Status',
+        accessor: 'status',
+    },
+    {
+        Header: 'Weight',
+        accessor: 'weight',
+        Cell: ({
+            value: initialValue,
+            row: { index },
+            column: { id },
+            updateMyData, // This is a custom function that we supplied to our table instance
+        }) => {
+            // We need to keep and update the state of the cell normally
+            const [value, setValue] = React.useState(initialValue)
+            const onChange = e => { setValue(e.target.value) }
+
+            // We'll only update the external data when the input is blurred
+            const onBlur = () => { updateMyData(index, id, value) }
+
             // If the initialValue is changed external, sync it up with our state
             React.useEffect(() => { setValue(initialValue) }, [initialValue])
-    
-            return <StyledEditableCell type={"number"} value={value} onChange={onChange} onBlur={onBlur} />
+
+            return <StyledEditableCell type={"number"} min="1" max="100" value={value} onChange={onChange} onBlur={onBlur} />
         }
     },
     {
         Header: 'Order',
         accessor: 'order',
-        Cell:({row: { index }}) => {      
+        Cell: ({ row: { index } }) => {
             return (
-                <span>{index+1}</span>
+                <span>{index + 1}</span>
             )
         }
     },
@@ -123,7 +147,7 @@ export const TableContentData = [
 
     {
         'task': 'Github (20 contribs)',
-        'due': new moment('16:30, 8Aug2021','HH:mm, DMMMYYYY'),
+        'due': new moment('16:30, 8Aug2021', 'HH:mm, DMMMYYYY'),
         'priority': 'High',
         'status': 'Processing',
         'weight': '100',
@@ -140,7 +164,7 @@ export const TableContentData = [
     },
     {
         'task': 'Relax',
-        'due': new moment('10:30, 9Aug2021','HH:mm, DMMMYYYY'),
+        'due': new moment('10:30, 9Aug2021', 'HH:mm, DMMMYYYY'),
         'priority': 'Low',
         'status': 'Open',
         'weight': '50',
