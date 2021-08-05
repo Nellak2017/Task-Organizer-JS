@@ -17,7 +17,7 @@ import StyledEditableCell from '../Editable/Editable.elements.js';
 const TableContent = ({ data, tableHeaders }) => {
 
     const [mutatedData, setMutatedData] = useState(data); // (2) [{task:.., due:...,...},{...}]
-    const columns = useMemo(() => tableHeaders[0], []); // (13) [{Header:"Task",accessor:"task"}}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+    const columns = useMemo(() => tableHeaders[0], [tableHeaders]); // (13) [{Header:"Task",accessor:"task"}}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 
     // Takes a copy of the input data and updates it with the SetMutatedData method to be value inside data
     // Ex: {'task': 'Github (20 contribs)'} -> (0,'task','Do the laundry') => {'task': 'Do the laundry'}
@@ -83,7 +83,7 @@ const TableContent = ({ data, tableHeaders }) => {
         setMutatedData(items);
     }
 
-    console.log(instance);
+    //console.log(instance);
 
     return (
         <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
@@ -115,6 +115,7 @@ const TableContent = ({ data, tableHeaders }) => {
                                                 <TaskTableRow {...row.getRowProps()} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                                                     <TaskTableData className="iconTd">{mutatedData[key].status === "Completed" ? <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
                                                         : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />}</TaskTableData>
+
 
                                                     {
 
