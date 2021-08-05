@@ -55,6 +55,82 @@ export const SubNavAddTaskButton = styled.button`
     }
 `;
 
+export const SubNavAddPopUp = styled.div`
+    position: absolute; // must be absolute so that you can have it below the profile picture
+    top: 4rem;
+    left: 23rem; 
+    width: 10rem;
+    height: 4rem;
+    border-radius: 1rem;
+    background-color: rgba(54,59,66,1);
+    z-index: 999 !important; 
+
+    & img {
+        width: 100%;
+        height: auto;
+        border-radius: 1rem 1rem 0 0;
+    }
+
+    & a {
+        text-decoration: none;
+        font-size: .75rem;
+        font-weight: 400;
+        color: rgba(108,116,126,1);
+    }
+
+    & a:hover {
+        color: rgba(128,136,146,1);
+    }
+`;
+
+export const AddPopUpContainer = styled.section`
+     & .showMe {
+        display: none; 
+    }
+    &:hover .showMe{
+        display: block !important;
+        z-index: 1000 !important;
+    }
+`;
+
+export const AddPopUpInnerContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    text-align: center;
+    font-weight: bold;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+
+    & > * {
+        padding-bottom: 1rem;
+    }
+`;
+
+export const AddPopUpButton = styled.button`
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
+    padding: .5rem;
+    color: white;
+    background-color: rgba(54,59,66,1);
+    border: 0;
+    font-size: 1rem;
+    border-radius: 1rem;
+    & svg {
+        margin-right: .5rem;
+    }
+    &:hover {
+        background-color: rgba(64,69,76,1);
+        cursor: pointer;
+    }
+`;
+
+
+
 export const SubNavAddOptionsButton = styled.button`
     width: 2rem;
     height: 50%;
