@@ -83,7 +83,7 @@ const TableContent = ({ data, tableHeaders }) => {
         setMutatedData(items);
     }
 
-    //console.log(instance);
+    console.log(instance);
 
     return (
         <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
