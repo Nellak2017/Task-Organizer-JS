@@ -14,7 +14,7 @@ import {
 } from '@material-ui/pickers';
 import FormatDue from '../../lib/moment/FormatDue.js';
 import moment from 'moment';
-import {StyledDateTimePicker} from '../../components/Editable/Editable.elements.js';
+import { StyledDateTimePicker, StyledSelect } from '../../components/Editable/Editable.elements.js';
 
 export const SidebarData = [
   {
@@ -122,6 +122,30 @@ export const TableHeaderData = [
   {
     Header: 'Priority',
     accessor: 'priority',
+    Cell: ({
+      value: initialValue,
+      row: { index },
+      column: { id },
+      updateMyData, // This is a custom function that we supplied to our table instance
+  }) => {
+      // We need to keep and update the state of the cell normally
+      const [value, setValue] = React.useState(initialValue)
+      const onChange = e => { setValue(e.target.value) }
+
+      // We'll only update the external data when the input is blurred
+      const onBlur = () => { updateMyData(index, id, value) }
+
+      return (
+          <StyledSelect
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+          </StyledSelect>
+      )
+  }
   },
   {
     Header: 'Status',
