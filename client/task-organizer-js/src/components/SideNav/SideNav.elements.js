@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 export const OrganizerMainNav = styled.nav`
     display: inline-flex;
     position: sticky;
-    left: -20px !important;
+    left: 0 !important;
     top: 0;
     z-index: 997; 
     align-self: flex-start;
