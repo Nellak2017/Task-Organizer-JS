@@ -76,6 +76,28 @@ export const TableHeaderData = [
     {
         Header: 'Status',
         accessor: 'status',
+        Cell: ({
+            value: initialValue,
+            row: { index },
+            column: { id },
+            updateMyData, // This is a custom function that we supplied to our table instance
+        }) => {
+            // We need to keep and update the state of the cell normally
+            const [value, setValue] = React.useState(initialValue)
+            
+            const onClick = () => {
+                (value === "Processing") ?
+                    updateMyData(index, id, "Open") :
+                (value === "Open") ?
+                    updateMyData(index, id, "Processing") :
+                    updateMyData(index, id, value)
+            }
+
+            // If the initialValue is changed external, sync it up with our state
+            React.useEffect(() => { setValue(initialValue) }, [initialValue])
+
+            return (<span onClick={onClick}>{value}</span>)
+        }
     },
     {
         Header: 'Weight',
