@@ -1,10 +1,27 @@
 import styled from 'styled-components';
+import {
+    DatePicker,
+    TimePicker,
+    DateTimePicker,
+    MuiPickersUtilsProvider
+} from '@material-ui/pickers';
 
 export const StyledEditableCell = styled.input`
     border: none;
     background: transparent;
     text-align: center;
     color: white;
+`;
+
+export const StyledDateTimePicker = styled(DateTimePicker)`
+    width: 90%;
+    &.MuiInput-underline:before{
+        border-bottom: 0;
+    }
+    &.MuiFormControl-root{
+        vertical-align: middle;
+        min-width: 14rem;
+    }
 `;
 
 export default StyledEditableCell;
