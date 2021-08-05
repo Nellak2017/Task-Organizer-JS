@@ -10,6 +10,7 @@ import {
 import FormatDue from '../../lib/moment/FormatDue.js';
 import moment from 'moment';
 import {StyledDateTimePicker} from '../../components/Editable/Editable.elements.js';
+import StyledEditableCell from '../../components/Editable/Editable.elements.js';
 
 export const TableHeaderData = [
     {
@@ -55,6 +56,24 @@ export const TableHeaderData = [
     {
         Header: 'Weight',
         accessor: 'weight',
+        Cell:({
+            value: initialValue,
+            row: { index },
+            column: { id },
+            updateMyData, // This is a custom function that we supplied to our table instance
+        }) => {
+            // We need to keep and update the state of the cell normally
+            const [value, setValue] = React.useState(initialValue)
+            const onChange = e => { setValue(e.target.value) }
+    
+            // We'll only update the external data when the input is blurred
+            const onBlur = () => { updateMyData(index, id, value) }
+    
+            // If the initialValue is changed external, sync it up with our state
+            React.useEffect(() => { setValue(initialValue) }, [initialValue])
+    
+            return <StyledEditableCell type={"number"} value={value} onChange={onChange} onBlur={onBlur} />
+        }
     },
     {
         Header: 'Order',
