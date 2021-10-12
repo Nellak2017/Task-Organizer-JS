@@ -16,8 +16,6 @@ import StyledEditableCell from '../Editable/Editable.elements.js';
 
 const TableContent = ({ data, tableHeaders, templates}) => {
 
-    console.log(templates)
-
     const [mutatedData, setMutatedData] = useState(data); // (2) [{task:.., due:...,...},{...}]
     const columns = useMemo(() => tableHeaders[0], [tableHeaders]); // (13) [{Header:"Task",accessor:"task"}}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 
@@ -89,8 +87,6 @@ const TableContent = ({ data, tableHeaders, templates}) => {
     const addTask = () => {
         mutatedData.push(templates[0]);
     }
-
-    console.log(instance);
 
     return (
         <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
