@@ -18,9 +18,11 @@ import * as GoIcons from 'react-icons/go';
 
 const InfoSummary = ({ MyComponent, Data, TableHeaders }) => {
 
+
     const [click, setClick] = useState(true);
 
     const handleClick = () => setClick(!click);
+
 
     return (
         <>
@@ -31,7 +33,7 @@ const InfoSummary = ({ MyComponent, Data, TableHeaders }) => {
                             <SummaryDropDown>
                                 <SummaryDropDownContainer>
                                     <GoIcons.GoTriangleDown className="icon" onClick={handleClick} />
-                                    <p style={{paddingLeft:"1rem"}}>{item.title}</p>
+                                    <p style={{ paddingLeft: "1rem" }}>{item.title}</p>
                                 </SummaryDropDownContainer>
                                 <SummaryDropDownContainer>
                                     <SummaryDropDownItem>
@@ -72,6 +74,7 @@ const InfoSummary = ({ MyComponent, Data, TableHeaders }) => {
             </IconContext.Provider>
         </>
     );
+
 }
 
 export default InfoSummary;
