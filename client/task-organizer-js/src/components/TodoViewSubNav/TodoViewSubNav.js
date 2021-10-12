@@ -10,11 +10,14 @@ import {
     AddPopUpInnerContainer,
     AddPopUpButton
 } from './TodoViewSubNav.elements.js';
-import { useState } from 'react';
+import { useState} from 'react';
 import * as CgIcons from 'react-icons/cg';
 import * as RiIcons from 'react-icons/ri';
 import { IconContext } from 'react-icons/lib';
 import * as GoIcons from 'react-icons/go';
+
+import { todoViewAddTask } from "../../state/actions/TodoViewActions";
+import { store } from "../../state/store";
 
 const TodoViewSubNav = () => {
 
@@ -22,11 +25,15 @@ const TodoViewSubNav = () => {
 
     const handleAddButtonClick = () => {setAddPressed(!addPressed);}
 
+    const handleAddTaskClick = () => {
+        store.dispatch(todoViewAddTask());
+    }
+
     return (
         <>
             <SubNav>
                 <SubNavAddContainer>
-                    <SubNavAddTaskButton>Add Task</SubNavAddTaskButton>
+                    <SubNavAddTaskButton onClick={handleAddTaskClick}>Add Task</SubNavAddTaskButton>
                     <SubNavAddOptionsButton onClick={handleAddButtonClick}>v</SubNavAddOptionsButton>
                     <AddPopUpContainer>
                         <SubNavAddPopUp className={!addPressed ? "showMe" : "" }>
@@ -34,6 +41,7 @@ const TodoViewSubNav = () => {
                                 <AddPopUpButton><CgIcons.CgTemplate />Add Thread</AddPopUpButton>
                                 <AddPopUpButton><RiIcons.RiStackLine />Add Template</AddPopUpButton>
                             </AddPopUpInnerContainer>
+                    
                         </SubNavAddPopUp>
                     </AddPopUpContainer>
                 </SubNavAddContainer>
