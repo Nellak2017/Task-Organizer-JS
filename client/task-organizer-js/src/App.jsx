@@ -15,28 +15,32 @@ import TodoView from './pages/TodoView/TodoView';
 import PlanningAssistant from './pages/PlanningAssistant/PlanningAssistant';
 import Trackers from './pages/Trackers/Trackers';
 import ScrollToTop from './components/ScrollToTop';
+import { Provider } from 'react-redux';
+import { store } from './state/store';
 
 const App = () => {
 
   return (
     <MuiPickersUtilsProvider utils={MomentUtils} >
       <Router>
-        <GlobalStyle />
-        <ScrollToTop />
-        <Switch>
-          <Route path="/" exact component={HomePage}></Route>
-          <Route path="/Calendars" exact component={Calendars}></Route>
-          <Route path="/Gantts" exact component={Gantts}></Route>
-          <Route path="/OrganizerMain" exact component={OrganizerMain}></Route>
-          <Route path="/Settings" exact component={Settings}></Route>
-          <Route path="/Stats" exact component={Stats}></Route>
-          <Route path="/Templates" exact component={Templates}></Route>
-          <Route path="/ThreadView" exact component={ThreadView}></Route>
-          <Route path="/Timelines" exact component={Timelines}></Route>
-          <Route path="/TodoView" exact component={TodoView}></Route>
-          <Route path="/PlanningAssistant" exact component={PlanningAssistant}></Route>
-          <Route path="/Trackers" exact component={Trackers}></Route>
-        </Switch>
+        <Provider store={store}>
+          <GlobalStyle />
+          <ScrollToTop />
+          <Switch>
+            <Route path="/" exact component={HomePage}></Route>
+            <Route path="/Calendars" exact component={Calendars}></Route>
+            <Route path="/Gantts" exact component={Gantts}></Route>
+            <Route path="/OrganizerMain" exact component={OrganizerMain}></Route>
+            <Route path="/Settings" exact component={Settings}></Route>
+            <Route path="/Stats" exact component={Stats}></Route>
+            <Route path="/Templates" exact component={Templates}></Route>
+            <Route path="/ThreadView" exact component={ThreadView}></Route>
+            <Route path="/Timelines" exact component={Timelines}></Route>
+            <Route path="/TodoView" exact component={TodoView}></Route>
+            <Route path="/PlanningAssistant" exact component={PlanningAssistant}></Route>
+            <Route path="/Trackers" exact component={Trackers}></Route>
+          </Switch>
+        </Provider>
       </Router>
     </MuiPickersUtilsProvider>
   );
