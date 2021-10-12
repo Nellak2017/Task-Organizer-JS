@@ -10,10 +10,10 @@ const UnderConstruction = () => {
     return (
         <>
             <Styles>
-                <body>
+                <section>
                     <div className="warning-content">
                         <h1>Website Under Construction</h1>
-                        <svg height="70px" version="1.1" viewbox="0 0 100 68" width="100.001px" x="0px" xmlns="http://www.w3.org/2000/svg" y="0px">
+                        <svg height="70px" version="1.1" viewBox="0 0 100 68" width="100.001px" x="0px" xmlns="http://www.w3.org/2000/svg" y="0px">
                             <g id="large">
                                 <g transform="rotate(90.625 31 37)">
                                     <path d="M55.777,38.473l6.221-1.133c0.017-1.791-0.123-3.573-0.41-5.324l-6.321-0.19c-0.438-2.053-1.135-4.048-2.076-5.931
@@ -31,7 +31,7 @@ const UnderConstruction = () => {
 		                        l-5.378-3.324C55.268,42.615,55.655,40.542,55.777,38.473z M42.302,42.435c-3.002,6.243-10.495,8.872-16.737,5.866
 		                        c-6.244-2.999-8.872-10.493-5.867-16.736c3.002-6.244,10.495-8.873,16.736-5.869C42.676,28.698,45.306,36.19,42.302,42.435z" fill="none" stroke="#1a83ff">
                                     </path>
-                                    <animatetransform attributename="transform" begin="0s" dur="3s" from="0 31 37" repeatcount="indefinite" to="360 31 37" type="rotate">
+                                    <animatetransform attributeName="transform" begin="0s" dur="3s" from="0 31 37" repeatCount="indefinite" to="360 31 37" type="rotate">
                                     </animatetransform>
                                 </g>
                                 <g id="small" transform="rotate(-315.938 78 21)">
@@ -47,7 +47,7 @@ const UnderConstruction = () => {
 		                        c0.372-0.777,0.691-1.569,0.963-2.361l-5.568-3.586C93.181,22.677,93.269,20.939,93.068,19.253z M84.365,24.062
 		                        c-1.693,3.513-5.908,4.991-9.418,3.302c-3.513-1.689-4.99-5.906-3.301-9.419c1.688-3.513,5.906-4.991,9.417-3.302
 		                        C84.573,16.331,86.05,20.549,84.365,24.062z" fill="none" stroke="#1a83ff"></path>
-                                    <animatetransform attributename="transform" begin="0s" dur="2s" from="0 78 21" repeatcount="indefinite" to="-360 78 21" type="rotate">
+                                    <animatetransform attributeName="transform" begin="0s" dur="2s" from="0 78 21" repeatCount="indefinite" to="-360 78 21" type="rotate">
                                     </animatetransform>
                                 </g>
                             </g>
@@ -58,7 +58,7 @@ const UnderConstruction = () => {
 
                         <p><em>It&#39;s okay, I&#39;m excited too!</em></p>
                     </div>
-                </body>
+                </section>
             </Styles>
         </>
     );
