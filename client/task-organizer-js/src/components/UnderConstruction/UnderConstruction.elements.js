@@ -11,6 +11,13 @@ export const Styles = styled.div`
         overflow-x: hidden;
     }
 
+    section {
+        background: #ffffff;
+        color:#999;
+        font-family:Roboto;
+        overflow-x: hidden;
+    }
+
     path {
         color: #1a83ff;
     }
