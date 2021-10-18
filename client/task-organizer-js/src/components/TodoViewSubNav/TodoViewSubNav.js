@@ -17,16 +17,18 @@ import { IconContext } from 'react-icons/lib';
 import * as GoIcons from 'react-icons/go';
 
 import { todoViewAddTask } from "../../state/actions/TodoViewActions";
-import { store } from "../../state/store";
 
+import { useDispatch } from 'react-redux'; 
 const TodoViewSubNav = () => {
+
+    const dispatch = useDispatch();
 
     const [addPressed, setAddPressed] = useState(false);
 
     const handleAddButtonClick = () => {setAddPressed(!addPressed);}
 
     const handleAddTaskClick = () => {
-        store.dispatch(todoViewAddTask());
+        dispatch(todoViewAddTask());
     }
 
     return (
