@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { useTable } from 'react-table';
 import {
@@ -14,7 +14,12 @@ import { MakeDue } from '../../lib/moment/FormatDue.js';
 import Editable from '../../components/Editable/Editable.js';
 import StyledEditableCell from '../Editable/Editable.elements.js';
 
+import { useDispatch } from 'react-redux'; 
+import { todoViewUpdateTableData } from "../../state/actions/TodoViewActions";
+
 const TableContent = ({ data, tableHeaders, templates}) => {
+
+    const dispatch = useDispatch();
 
     const [mutatedData, setMutatedData] = useState(data); // (2) [{task:.., due:...,...},{...}]
     const columns = useMemo(() => tableHeaders[0], [tableHeaders]); // (13) [{Header:"Task",accessor:"task"}}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
@@ -83,10 +88,21 @@ const TableContent = ({ data, tableHeaders, templates}) => {
         setMutatedData(items);
     }
 
-    // TODO: Make Templates more sophisticated 
-    const addTask = () => {
-        mutatedData.push(templates[0]);
+    // Dispatch Method for when you want to update the table data to the store
+    // call this when the user clicks off of the table
+    const updateTableDataToStore = () => {
+        dispatch(todoViewUpdateTableData(mutatedData));
     }
+
+    // Listen for changes to mutatedData, when it changes I want you to dispatch the Update Table Event
+    // Note: THIS ACTUALLY WORKS! I am so glad I am celebrating!
+    useEffect(() => {
+        updateTableDataToStore();
+      }, [mutatedData]);
+
+
+    console.log("Mutated data: ");
+    console.log(mutatedData);
 
     return (
         <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
