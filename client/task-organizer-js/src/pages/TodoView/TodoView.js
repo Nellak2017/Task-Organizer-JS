@@ -9,9 +9,10 @@ import { store } from "../../state/store";
 // TODO: Possibly put the full Table in the Redux store, think about it later
 const TodoView = () => {
 
+    
     // Use the State of the Store
     const state = useSelector((state) => state);
-
+    
     // Mirror the State of the Store with InfoSummaryData updates
     const [InfoSummaryDataCopy, setInfoSummaryDataCopy] = useState(InfoSummaryData);
 
@@ -19,10 +20,11 @@ const TodoView = () => {
     // It updates the child component if you put the relevant store information as a 
     // JSON string in the key prop! If you don't, then React doesn't know when to update the component
     store.subscribe( () => {
-        const copy = InfoSummaryData;
+        let copy = InfoSummaryDataCopy;
         copy[0].data = store.getState().TodoViewTable;
         setInfoSummaryDataCopy(copy.slice());
     });
+    
 
     return (
         <>
