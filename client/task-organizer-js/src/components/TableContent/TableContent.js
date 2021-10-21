@@ -100,10 +100,6 @@ const TableContent = ({ data, tableHeaders, templates}) => {
         updateTableDataToStore();
       }, [mutatedData]);
 
-
-    console.log("Mutated data: ");
-    console.log(mutatedData);
-
     return (
         <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
             <DragDropContext onDragEnd={handleOnDragEnd}>
