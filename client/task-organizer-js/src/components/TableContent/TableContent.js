@@ -17,7 +17,12 @@ import StyledEditableCell from '../Editable/Editable.elements.js';
 import { useDispatch } from 'react-redux'; 
 import { todoViewUpdateTableData } from "../../state/actions/TodoViewActions";
 
-const TableContent = ({ data, tableHeaders, templates}) => {
+const TableContent = ({ data, tableHeaders, templates, name}) => {
+
+    console.log("Name passed in from TableContent");
+    console.log(name);
+
+    const namesList = ["TodoView","OrganizerMain"];
 
     const dispatch = useDispatch();
 
@@ -91,7 +96,9 @@ const TableContent = ({ data, tableHeaders, templates}) => {
     // Dispatch Method for when you want to update the table data to the store
     // call this when the user clicks off of the table
     const updateTableDataToStore = () => {
-        dispatch(todoViewUpdateTableData(mutatedData));
+        if(namesList.includes(name)){
+            dispatch(todoViewUpdateTableData(mutatedData));
+        } 
     }
 
     // Listen for changes to mutatedData, when it changes I want you to dispatch the Update Table Event
@@ -100,70 +107,78 @@ const TableContent = ({ data, tableHeaders, templates}) => {
         updateTableDataToStore();
       }, [mutatedData]);
 
-    return (
-        <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
-            <DragDropContext onDragEnd={handleOnDragEnd}>
-                <TaskTable {...getTableProps()}>
-                    <thead>
-                        {headerGroups.map(headerGroup => (
 
-                            <TaskTableRow {...headerGroup.getHeaderGroupProps()}>
-                                <th></th>
-                                {headerGroup.headers.map((column, key) => {
-                                    return (
-                                        <TaskTableHeader {...column.getHeaderProps()} key={key}>{column.render('Header')}</TaskTableHeader>
-                                    );
-                                })
-                                }
-                            </TaskTableRow>
-                        ))}
-                    </thead>
-
-                    <Droppable droppableId="Task Summaries">
-                        {(provided) => (
-                            <tbody {...getTableBodyProps()} {...provided.droppableProps} ref={provided.innerRef}>
-                                {rows.map((row, key) => {
-                                    prepareRow(row)
-                                    return (
-                                        <Draggable key={row.cells[key].value} draggableId={String(row.cells[key].value) + String(key)} index={key}>
-                                            {provided => (
-                                                <TaskTableRow {...row.getRowProps()} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                                                    <TaskTableData className="iconTd">{mutatedData[key].status === "Completed" ? <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
-                                                        : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />}</TaskTableData>
-                                                    {
-                                                        row.cells.map((tableHeader, index) => {
-                                                            return (
-                                                                <TaskTableData {...tableHeader.getCellProps()} key={index}
-                                                                    data-content={
-                                                                        tableHeader.column.Header.toLowerCase().trim() === "due" ?
-                                                                            FormatDue(tableHeader.value) :
-                                                                            tableHeader.value.toLowerCase().trim()
-                                                                    }>
-                                                                    <span>
-                                                                        {
-                                                                            tableHeader.render('Cell')
-                                                                        }
-                                                                    </span>
-
-                                                                </TaskTableData>
-                                                            );
-                                                        })
-                                                    }
-                                                </TaskTableRow>
-                                            )}
-                                        </Draggable>
-                                    );
-                                })
-                                }
-                                {provided.placeholder}
-                            </tbody>
-                        )
-                        }
-                    </Droppable>
-                </TaskTable>
-            </DragDropContext>
-        </IconContext.Provider>
-    );
+    if (namesList.includes(name)) {
+        return (
+            <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
+                <DragDropContext onDragEnd={handleOnDragEnd}>
+                    <TaskTable {...getTableProps()}>
+                        <thead>
+                            {headerGroups.map(headerGroup => (
+    
+                                <TaskTableRow {...headerGroup.getHeaderGroupProps()}>
+                                    <th></th>
+                                    {headerGroup.headers.map((column, key) => {
+                                        return (
+                                            <TaskTableHeader {...column.getHeaderProps()} key={key}>{column.render('Header')}</TaskTableHeader>
+                                        );
+                                    })
+                                    }
+                                </TaskTableRow>
+                            ))}
+                        </thead>
+    
+                        <Droppable droppableId="Task Summaries">
+                            {(provided) => (
+                                <tbody {...getTableBodyProps()} {...provided.droppableProps} ref={provided.innerRef}>
+                                    {rows.map((row, key) => {
+                                        prepareRow(row)
+                                        return (
+                                            <Draggable key={row.cells[key].value} draggableId={String(row.cells[key].value) + String(key)} index={key}>
+                                                {provided => (
+                                                    <TaskTableRow {...row.getRowProps()} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                                                        <TaskTableData className="iconTd">{mutatedData[key].status === "Completed" ? <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
+                                                            : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />}</TaskTableData>
+                                                        {
+                                                            row.cells.map((tableHeader, index) => {
+                                                                return (
+                                                                    <TaskTableData {...tableHeader.getCellProps()} key={index}
+                                                                        data-content={
+                                                                            tableHeader.column.Header.toString().toLowerCase().trim() === "due" ?
+                                                                                FormatDue(tableHeader.value) :
+                                                                                tableHeader.value.toLowerCase().trim()
+                                                                        }>
+                                                                        <span>
+                                                                            {
+                                                                                tableHeader.render('Cell')
+                                                                            }
+                                                                        </span>
+    
+                                                                    </TaskTableData>
+                                                                );
+                                                            })
+                                                        }
+                                                    </TaskTableRow>
+                                                )}
+                                            </Draggable>
+                                        );
+                                    })
+                                    }
+                                    {provided.placeholder}
+                                </tbody>
+                            )
+                            }
+                        </Droppable>
+                    </TaskTable>
+                </DragDropContext>
+            </IconContext.Provider>
+        );
+    } else {
+        console.error("The name provided to TableContent was invalid. Please add a valid name prop to TableContent to display the correct component.");
+        return (
+            <div>Sorry, but the name provided to TableContent was invalid. Please add a valid name prop to TableContent to display the correct component.</div>
+        );
+    }
 
 }
 

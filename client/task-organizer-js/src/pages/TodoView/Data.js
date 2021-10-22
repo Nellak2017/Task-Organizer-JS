@@ -404,6 +404,8 @@ export const DefaultRowTemplate = [
 ];
 
 
+const name = 'TodoView';
+
 // TODO: Add - sorted by {Sort Method}; to the title
 export const InfoSummaryData = [
     {
@@ -414,6 +416,6 @@ export const InfoSummaryData = [
         link: 'TodoView',
         tableHeaders: TableHeaderData,
         data: TableContentData,
-        component: ({ data, tableHeaders}) => { return <TableContent data={data} tableHeaders={tableHeaders} templates={DefaultRowTemplate}/> }
+        component: ({ data, tableHeaders}) => { return <TableContent data={data} tableHeaders={tableHeaders} templates={DefaultRowTemplate} name={name}/> }
     },
 ];

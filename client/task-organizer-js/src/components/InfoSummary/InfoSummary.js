@@ -23,7 +23,6 @@ const InfoSummary = ({ MyComponent, Data, TableHeaders }) => {
 
     const handleClick = () => setClick(!click);
 
-
     return (
         <>
             <IconContext.Provider value={{ color: '#fff', size: '1.5rem' }}>

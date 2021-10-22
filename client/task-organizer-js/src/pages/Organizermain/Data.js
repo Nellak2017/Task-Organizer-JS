@@ -306,7 +306,9 @@ export const GridContentData = [
 
 // This is the Data for an InfoSummary
 // This will let you customize the Icon and 
-// the iconComponent that comes out on Hover
+// the iconComponent that comes out on Hover'
+const name = 'OrganizerMain';
+
 export const InfoSummaryData = [
   {
     title: 'High Priority Tasks',
@@ -316,7 +318,7 @@ export const InfoSummaryData = [
     link: 'TodoView',
     tableHeaders: TableHeaderData,
     data: TableContentData,
-    component: ({ data, tableHeaders }) => { return <TableContent data={data} tableHeaders={tableHeaders} /> }
+    component: ({ data, tableHeaders }) => { return <TableContent data={data} tableHeaders={tableHeaders} name={name} /> }
   },
 
   {
