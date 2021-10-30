@@ -29,7 +29,7 @@ const OrganizerMain = () => {
             <SideNav />
             {InfoSummaryDataCopy.map((value, key) => {
                 return (
-                    <InfoSummary key={key} MyComponent={value.component} Data={[value]} TableHeaders={[TableHeaderData]} />
+                    <InfoSummary key={JSON.stringify(state.App)} MyComponent={value.component} Data={[value]} TableHeaders={[TableHeaderData]} />
                 );
             })
             }
