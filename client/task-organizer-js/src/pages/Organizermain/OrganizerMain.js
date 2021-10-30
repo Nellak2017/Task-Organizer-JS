@@ -1,7 +1,9 @@
 import { SideNav, InfoSummary } from "../../components";
 import { InfoSummaryData, TableHeaderData } from "../../pages/OrganizerMain/Data";
+import { OrganizerMainTableSummary } from "../../state/transformers/transformers.js";
+import { masterData } from "../../state/masterData/masterData.js";
 
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'; 
 import { store } from "../../state/store";
 
 // TODO: Add Media Queries for Responsive Design
@@ -10,6 +12,9 @@ const OrganizerMain = () => {
 
     // Use the State of the Store
     const state = useSelector((state) => state);
+
+    console.log("Testing out the OrganizerMainTableSummary function in Organizer Main ");
+    console.log(OrganizerMainTableSummary(masterData));
 
     console.log("InfoSummaryData for OrganizerMain");
     console.log(InfoSummaryData);
