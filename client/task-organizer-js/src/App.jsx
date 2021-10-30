@@ -15,10 +15,20 @@ import TodoView from './pages/TodoView/TodoView';
 import PlanningAssistant from './pages/PlanningAssistant/PlanningAssistant';
 import Trackers from './pages/Trackers/Trackers';
 import ScrollToTop from './components/ScrollToTop';
-import { Provider } from 'react-redux';
+import { Provider, useSelector, useDispatch } from 'react-redux';
 import { store } from './state/store';
+import { useEffect } from 'react';
+import { UpdateMasterStoreData } from "./state/actions/AppActions";
 
 const App = () => {
+
+  /*
+    Summary of wishlist: 
+    
+    Master JSON -> Redux Store (At start only for now, later when DB connected do every page change)
+    Redux Store -> DB (On page change)
+    DB -> Master JSON (On page change)
+    */
 
   return (
     <MuiPickersUtilsProvider utils={MomentUtils} >
@@ -27,7 +37,7 @@ const App = () => {
           <GlobalStyle />
           <ScrollToTop />
           <Switch>
-            <Route path="/" exact component={HomePage}></Route>
+            <Route path="/" exact component={HomePage} ></Route>
             <Route path="/Calendars" exact component={Calendars}></Route>
             <Route path="/Gantts" exact component={Gantts}></Route>
             <Route path="/OrganizerMain" exact component={OrganizerMain}></Route>
