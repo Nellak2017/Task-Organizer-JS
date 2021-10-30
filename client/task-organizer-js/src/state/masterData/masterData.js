@@ -6,6 +6,8 @@
 
 // This is the Master list of all the task's data
 // All views will derive from this list.
+import moment from 'moment';
+
 export const masterData = [
     {
         'task': 'Github (20 contribs)',
