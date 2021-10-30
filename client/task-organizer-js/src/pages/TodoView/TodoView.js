@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { SideNav, TodoViewSubNav, InfoSummary } from "../../components";
 import { InfoSummaryData, TableHeaderData } from "../../pages/TodoView/Data";
 
@@ -8,9 +8,6 @@ import { store } from "../../state/store";
 // TODO: Finish up this page with the other components
 // TODO: Possibly put the full Table in the Redux store, think about it later
 const TodoView = () => {
-
-    // Name of the Link
-    const linkName = "TodoView";
 
     // Use the State of the Store
     const state = useSelector((state) => state);
@@ -27,10 +24,10 @@ const TodoView = () => {
         setInfoSummaryDataCopy(copy.slice());
     });
     
-    console.log("InfoSummaryDataCopy in TodoView");
-    console.log(InfoSummaryDataCopy);
+    console.log("State of Store.App in TodoView");
+    console.log(store.getState().App);
 
-    console.log("The store's state in TodoView");
+    console.log("State of Store.TodoViewTable in TodoView");
     console.log(store.getState().TodoViewTable);
 
     return (
