@@ -15,20 +15,13 @@ const TodoView = () => {
     // Mirror the State of the Store with InfoSummaryData updates
     const [InfoSummaryDataCopy, setInfoSummaryDataCopy] = useState(InfoSummaryData);
 
-    // This is called when the Store Changes.. 
     // It updates the child component if you put the relevant store information as a 
     // JSON string in the key prop! If you don't, then React doesn't know when to update the component
     store.subscribe( () => {
         let copy = InfoSummaryData;
-        copy[0].data = store.getState().TodoViewTable;
+        copy[0].data = store.getState().App; // There is no transformation to be done here, it is raw only 
         setInfoSummaryDataCopy(copy.slice());
     });
-    
-    console.log("State of Store.App in TodoView");
-    console.log(store.getState().App);
-
-    console.log("State of Store.TodoViewTable in TodoView");
-    console.log(store.getState().TodoViewTable);
 
     return (
         <>
