@@ -19,7 +19,7 @@ const TodoView = () => {
     // JSON string in the key prop! If you don't, then React doesn't know when to update the component
     store.subscribe( () => {
         let copy = InfoSummaryData;
-        copy[0].data = store.getState().App; // There is no transformation to be done here, it is raw only 
+        copy[0].data = store.getState().MasterData; // There is no transformation to be done here, it is raw only 
         setInfoSummaryDataCopy(copy.slice());
     });
 
@@ -29,7 +29,7 @@ const TodoView = () => {
             <TodoViewSubNav />
             {InfoSummaryDataCopy.map((value,key) => {
             return (
-                <InfoSummary key={JSON.stringify(state.TodoViewTable)} MyComponent={value.component} Data={[value]} TableHeaders={[TableHeaderData]} Name={"TodoView"}/>
+                <InfoSummary key={JSON.stringify(state.MasterData)} MyComponent={value.component} Data={[value]} TableHeaders={[TableHeaderData]} Name={"TodoView"}/>
             );
         })
         }
