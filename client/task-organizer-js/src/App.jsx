@@ -15,9 +15,8 @@ import TodoView from './pages/TodoView/TodoView';
 import PlanningAssistant from './pages/PlanningAssistant/PlanningAssistant';
 import Trackers from './pages/Trackers/Trackers';
 import ScrollToTop from './components/ScrollToTop';
-import { Provider, useSelector, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 import { store } from './state/store';
-import { useEffect } from 'react';
 
 const App = () => {
 
