@@ -1,6 +1,6 @@
 import { SideNav, InfoSummary } from "../../components";
 import { InfoSummaryData, TableHeaderData } from "../../pages/OrganizerMain/Data";
-import { OrganizerMainTableSummary } from "../../state/transformers/transformers.js";
+import { OrganizerMainTableSummary, nameToComponentFunction } from "../../state/transformers/transformers.js";
 import { masterData } from "../../state/masterData/masterData.js";
 
 import { useState } from "react";
@@ -20,16 +20,22 @@ const OrganizerMain = () => {
     // Every time the store updates, inject the InfoSummaryDataCopy with the OrganizerMain perspective of the Store
     store.subscribe( () => {
         let copy = InfoSummaryData;
-        copy[0].data = OrganizerMainTableSummary(store.getState().App); // The data in this table is subset of Master Data
+        copy[0].data = OrganizerMainTableSummary(state.MasterData); // The data in this table is subset of Master Data
         setInfoSummaryDataCopy(copy.slice());
     });
+
+    console.log("InfoSummaryDataCopy:");
+    console.log(InfoSummaryDataCopy);
+
+    console.log("Testing the store out state.MasterData");
+    console.log(state.MasterData);
 
     return (
         <>
             <SideNav />
             {InfoSummaryDataCopy.map((value, key) => {
                 return (
-                    <InfoSummary key={JSON.stringify(state.App)} MyComponent={value.component} Data={[value]} TableHeaders={[TableHeaderData]} />
+                    <InfoSummary key={JSON.stringify(state.MasterData)} MyComponent={value.component} Data={[value]} TableHeaders={[TableHeaderData]} />
                 );
             })
             }
