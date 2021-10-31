@@ -29,7 +29,7 @@ const TodoView = () => {
             <TodoViewSubNav />
             {InfoSummaryDataCopy.map((value,key) => {
             return (
-                <InfoSummary key={JSON.stringify(state.MasterData)} MyComponent={value.component} Data={[value]} TableHeaders={[TableHeaderData]} Name={"TodoView"}/>
+                <InfoSummary key={JSON.stringify(state.MasterData)+key} MyComponent={value.component} Data={[value]} TableHeaders={[TableHeaderData]} Name={"TodoView"}/>
             );
         })
         }
