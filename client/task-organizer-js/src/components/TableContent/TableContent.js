@@ -10,19 +10,12 @@ import {
 import { IconContext } from 'react-icons/lib';
 import * as BiIcons from 'react-icons/bi';
 import FormatDue from '../../lib/moment/FormatDue.js';
-import { MakeDue } from '../../lib/moment/FormatDue.js';
-import Editable from '../../components/Editable/Editable.js';
 import StyledEditableCell from '../Editable/Editable.elements.js';
 
 import { useDispatch } from 'react-redux'; 
 import { todoViewUpdateTableData } from "../../state/actions/TodoViewActions";
 
-const TableContent = ({ data, tableHeaders, templates, name}) => {
-
-    console.log("Name passed in from TableContent");
-    console.log(name);
-
-    const namesList = ["TodoView","OrganizerMain"];
+const TableContent = ({ data, tableHeaders, templates}) => {
 
     const dispatch = useDispatch();
 
@@ -96,19 +89,18 @@ const TableContent = ({ data, tableHeaders, templates, name}) => {
     // Dispatch Method for when you want to update the table data to the store
     // call this when the user clicks off of the table
     const updateTableDataToStore = () => {
-        if(namesList.includes(name)){
             dispatch(todoViewUpdateTableData(mutatedData));
-        } 
     }
 
     // Listen for changes to mutatedData, when it changes I want you to dispatch the Update Table Event
     // Note: THIS ACTUALLY WORKS! I am so glad I am celebrating!
+    const testKeys = ["task","due","priority","status","weight","order","periodicity","time_to_complete","creation_date","last_completion_date","parent_thread","pipelinable","number_of_dependencies","id","completed"];
     useEffect(() => {
-        updateTableDataToStore();
+        if(JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(testKeys)){
+            updateTableDataToStore();
+        }
       }, [mutatedData]);
 
-
-    if (namesList.includes(name)) {
         return (
             <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
                 <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -173,12 +165,6 @@ const TableContent = ({ data, tableHeaders, templates, name}) => {
                 </DragDropContext>
             </IconContext.Provider>
         );
-    } else {
-        console.error("The name provided to TableContent was invalid. Please add a valid name prop to TableContent to display the correct component.");
-        return (
-            <div>Sorry, but the name provided to TableContent was invalid. Please add a valid name prop to TableContent to display the correct component.</div>
-        );
-    }
 
 }
 
