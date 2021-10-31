@@ -1,4 +1,3 @@
-import { TableContentData } from "../../pages/TodoView/Data";
 import { masterConfigs } from "../masterData/masterConfigs.js";
 
 export const reducer = (state = masterConfigs , action) => {
