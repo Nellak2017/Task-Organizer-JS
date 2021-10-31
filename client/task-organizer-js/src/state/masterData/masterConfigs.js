@@ -3,7 +3,7 @@
 
 import * as RiIcons from 'react-icons/ri';
 
-export const MasterConfig =
+export const masterConfigs =
 {
     Globals: [],
     OrganizerMain: [
