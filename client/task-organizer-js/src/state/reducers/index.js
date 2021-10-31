@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import TodoViewTableReducer from './TodoViewTableReducer';
-import AppReducer from './AppReducer';
+import MasterConfigReducer from './MasterConfigReducer';
+import MasterDataReducer from './MasterDataReducer';
 
 const reducers = combineReducers({
-    TodoViewTable: TodoViewTableReducer,
-    App: AppReducer
+    MasterData: MasterDataReducer,
+    MasterConfigs: MasterConfigReducer
 });
 
 export default reducers;
