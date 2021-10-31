@@ -2,9 +2,7 @@ import { TableContent } from "../../components";
 import React from 'react';
 import MomentUtils from '@date-io/moment';
 import {
-    DatePicker,
-    TimePicker,
-    DateTimePicker,
+
     MuiPickersUtilsProvider
 } from '@material-ui/pickers';
 import FormatDue from '../../lib/moment/FormatDue.js';
