@@ -10,7 +10,7 @@ export const reducer = (state = masterData, action) => {
         case TodoView_AddRow:
             return [...state, action.item];
         case TodoView_UpdateTableData:
-            return state;
+            return [...action.item];
         default:
             return state;
     }
