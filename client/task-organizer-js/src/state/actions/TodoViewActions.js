@@ -1,11 +1,11 @@
-import { TableContentData } from "../../pages/TodoView/Data";
+import { masterData } from "../../state/masterData/masterData.js";
 import moment from 'moment';
-
-const TableData = [TableContentData];
 
 const TodoView_AddRow = 'TodoView/AddRow';
 const TodoView_UpdateTableData = 'TodoView/UpdateTableData';
 
+
+// Todo: Make this a bit more customizable by adding the custom templates provided by the user in the local JSON / Store
 export const todoViewAddTask = () => {
 
     // Access the Data to calculate:
@@ -13,7 +13,7 @@ export const todoViewAddTask = () => {
     // Use current date to calculuate:
     // 	creation_date, due 
 
-    const ID = TableData.length + 1;
+    const ID = masterData.length + 1;
 
     return {
         type: TodoView_AddRow,
