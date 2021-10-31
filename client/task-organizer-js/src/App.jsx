@@ -18,7 +18,6 @@ import ScrollToTop from './components/ScrollToTop';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import { store } from './state/store';
 import { useEffect } from 'react';
-import { UpdateMasterStoreData } from "./state/actions/AppActions";
 
 const App = () => {
 
