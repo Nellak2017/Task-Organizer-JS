@@ -1,7 +1,6 @@
 import { SideNav, InfoSummary } from "../../components";
 import { InfoSummaryData, TableHeaderData } from "../../pages/OrganizerMain/Data";
 import { OrganizerMainTableSummary, nameToComponentFunction } from "../../state/transformers/transformers.js";
-import { masterData } from "../../state/masterData/masterData.js";
 
 import { useState } from "react";
 import { useSelector } from 'react-redux'; 
@@ -23,12 +22,6 @@ const OrganizerMain = () => {
         copy[0].data = OrganizerMainTableSummary(store.getState().MasterData); // The data in this table is subset of Master Data
         setInfoSummaryDataCopy(copy.slice());
     });
-
-    console.log("InfoSummaryDataCopy:");
-    console.log(InfoSummaryDataCopy);
-
-    console.log("Testing the store out state.MasterConfigs.OrganizerMain");
-    console.log(state.MasterConfigs.OrganizerMain);
 
     return (
         <>
