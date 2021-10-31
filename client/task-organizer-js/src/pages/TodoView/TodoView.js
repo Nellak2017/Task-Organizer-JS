@@ -7,6 +7,8 @@ import { store } from "../../state/store";
 
 // TODO: Finish up this page with the other components
 // TODO: Possibly put the full Table in the Redux store, think about it later
+
+// TODO: Finish up the CRUD capabilities by adding the CD part of it. To do this, you must convert the MasterConfig into the proper data for this component
 const TodoView = () => {
 
     // Use the State of the Store
