@@ -47,7 +47,7 @@ export const SummaryDropDownItem = styled.span`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    font-size: 1rem;
+    font-size: .9rem;
     max-height: 2rem;
     max-width: 2rem;
     overflow: hidden;
