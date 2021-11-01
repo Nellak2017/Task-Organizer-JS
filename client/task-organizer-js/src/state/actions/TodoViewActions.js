@@ -20,7 +20,7 @@ export const todoViewAddTask = () => {
         info: 'Create a Default Task for TodoView/Table',
         item: {
             'task': 'Default Task',
-            'due': new moment('16:30, 10Oct2021', 'HH:mm, DMMMYYYY'),
+            'due': new moment(),
             'priority': 'Low',
             'status': 'Open',
             'weight': '10',
