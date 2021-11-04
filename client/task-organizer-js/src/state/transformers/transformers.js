@@ -47,12 +47,15 @@ export const nameToComponentFunction = (name) => {
 
 export const plainConfigsToUsableConfigs = (plainConfigs) => {
 
+    const TABLE_CONTENT = 'TableContent';
+    const GRID_CONTENT = 'GridContent';
+
     let ADAPTED = [];
     for (let item in plainConfigs) {
 
         // This function must take into account the different types of components for a passed in Configs file
         switch (plainConfigs[item].component) {
-            case "TableContent":
+            case TABLE_CONTENT:
                 // Get Proper Headers
                 // input: [allowed headers] , output: [non-plain injected obj] called adaptedTableHeaders
                 const masterConfig = TableHeaderData; // Array of objects, contains master copy of tableHeaders
@@ -65,22 +68,33 @@ export const plainConfigsToUsableConfigs = (plainConfigs) => {
                 }
                 // Inject Proper Headers and Component
                 // Note, Data will be injected later by something else
-                const adaptedObject = {
+                const adaptedTable = {
                     title: plainConfigs[item].title,
                     icon: plainConfigs[item].icon,
                     iconComponent: plainConfigs[item].iconComponent,
                     text: plainConfigs[item].text,
                     link: plainConfigs[item].link,
                     tableHeaders: adaptedTableHeaders,
-                    data: '',
-                    component: nameToComponentFunction("TableContent")
+                    data: [],
+                    component: ({ data, tableHeaders }) => { return <TableContent data={data} tableHeaders={tableHeaders} templates={DefaultRowTemplate} /> }
                 }
-                ADAPTED.push(adaptedObject);
+                ADAPTED.push(adaptedTable);
                 break;
     
-            case "GridContent":
-                console.log("Passing in Transformers.js, plain configs to useable configs, GridContent switch case ");
-                ADAPTED.push(plainConfigs[item]);
+            case GRID_CONTENT:
+                // Inject Proper Headers and Component
+                // Note, Data will be injected later by something else
+                const adaptedGrid = {
+                    title: plainConfigs[item].title,
+                    icon: plainConfigs[item].icon,
+                    iconComponent: plainConfigs[item].iconComponent,
+                    text: plainConfigs[item].text,
+                    link: plainConfigs[item].link,
+                    tableHeaders: plainConfigs[item].tableHeaders,
+                    data: [],
+                    component: ({ data }) => { return <GridContent data={data} /> }
+                }
+                ADAPTED.push(adaptedGrid);
                 break;
             default:
                 ADAPTED.push(plainConfigs[item]);
