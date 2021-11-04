@@ -61,7 +61,7 @@ export const plainConfigsToUsableConfigs = (plainConfigs) => {
                 const masterConfig = TableHeaderData; // Array of objects, contains master copy of tableHeaders
                 const allowedTableHeaders = plainConfigs[item].tableHeaders; // Array of Strings, list of allowed values
                 let adaptedTableHeaders = []; // table headers for Component
-    
+
                 for (let row in masterConfig) {
                     const item = masterConfig[row].Header.toLowerCase();
                     if (allowedTableHeaders.includes(item)) { adaptedTableHeaders.push(masterConfig[row]); }
@@ -80,7 +80,7 @@ export const plainConfigsToUsableConfigs = (plainConfigs) => {
                 }
                 ADAPTED.push(adaptedTable);
                 break;
-    
+
             case GRID_CONTENT:
                 // Inject Proper Headers and Component
                 // Note, Data will be injected later by something else
@@ -122,6 +122,84 @@ export const OrganizerMainTableSummary = (MasterData) => {
             );
         })
     );
+}
+
+// Adapter for the OrganizerMain table summary. It has been lightly tested. Beware of this function.
+export const OrganizerMainGridSummary = (MasterData) => {
+    let gridObjs = [];
+    let uniqueThreads = new Set();
+    let threadPriorityDictionary = {};
+    const initialGridObj = {
+        taskCount: 0,
+        subThreadCount: 0,
+        priority: 'Low'
+    };
+    const weights = {
+        "Low": 1,
+        "Medium": 2,
+        "High": 3
+    };
+    const inverseWeights = {
+        1: "Low",
+        2: "Medium",
+        3: "High"
+    };
+
+    for (let task in MasterData) {
+
+        const threadName = MasterData[task].parent_thread;
+        const taskPriority = MasterData[task].priority;
+
+        // Test if the thread is already in the set 
+        const priorLen = uniqueThreads.size;
+        uniqueThreads.add(threadName);
+        const postLen = uniqueThreads.size;
+
+
+        // if the loop found a new thread
+        if (priorLen < postLen) {
+
+            // Note, do not do simple assignment, or it will copy by reference instead of by value
+            let gridObj = JSON.parse(JSON.stringify(initialGridObj)); // use the template to add a new grid to the JSON
+
+            gridObj.taskCount = 1; // the number of tasks in this thread is always 1 if you make it to this block
+            gridObj.priority = taskPriority; // if it is a new thread, then the priority is whatever that priority was
+
+            gridObjs[threadName] = gridObj; // try and make a threadName: {obj} in the dictionary
+
+            threadPriorityDictionary[threadName] = weights[taskPriority];
+        }
+        // if the loop finds a thread it encountered before
+        else {
+            // let the priority be the closest average to low,med, or high
+
+            gridObjs[threadName].taskCount += 1;
+
+            const len = gridObjs[threadName].taskCount;
+            const last = weights[taskPriority];
+
+            threadPriorityDictionary[threadName] = Math.round(((threadPriorityDictionary[threadName] * (len - 1)) + last) / len);
+            const newAvg = threadPriorityDictionary[threadName];
+
+            if (newAvg > 3 || newAvg < 0) {
+                console.error("Warning. You used a NewAverage Value greater than 3 or less than 0 in transformers.js in OrganizerMainGridSummary in the else clause");
+            }
+
+            gridObjs[threadName].priority = inverseWeights[newAvg];
+        }
+    }
+    // Note: the way the grid object is now (convienent form to read), does not work with the original data reader
+    // So we have to transform it one last time
+    let transform = Object.entries(gridObjs);
+    for (let i in transform) {
+        const threadName = transform[i][0];
+        const otherStuff = transform[i][1]
+        transform[i] = otherStuff;
+        transform[i]["thread"] = threadName;
+    }
+
+
+    return transform;
 }
 
 export const OrganizerMainThreadSummary = (MasterData) => {
