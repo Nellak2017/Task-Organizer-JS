@@ -13,7 +13,7 @@ export const masterConfigs =
             iconComponent: '',
             text: 'See All',
             link: 'TodoView',
-            tableHeaders: '',
+            tableHeaders: ['task','due','priority','status','periodicity'],
             data: '',
             component: "TableContent"
         },
