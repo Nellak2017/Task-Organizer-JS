@@ -66,6 +66,7 @@ export const plainConfigsToUsableConfigs = (plainConfigs) => {
                     const item = masterConfig[row].Header.toLowerCase();
                     if (allowedTableHeaders.includes(item)) { adaptedTableHeaders.push(masterConfig[row]); }
                 }
+
                 // Inject Proper Headers and Component
                 // Note, Data will be injected later by something else
                 const adaptedTable = {
@@ -79,7 +80,7 @@ export const plainConfigsToUsableConfigs = (plainConfigs) => {
                     component: ({ data, tableHeaders }) => { return <TableContent data={data} tableHeaders={tableHeaders} templates={DefaultRowTemplate} /> }
                 }
                 ADAPTED.push(adaptedTable);
-                break;
+                continue;
 
             case GRID_CONTENT:
                 // Inject Proper Headers and Component
@@ -95,12 +96,12 @@ export const plainConfigsToUsableConfigs = (plainConfigs) => {
                     component: ({ data }) => { return <GridContent data={data} /> }
                 }
                 ADAPTED.push(adaptedGrid);
-                break;
+                continue;
             default:
                 ADAPTED.push(plainConfigs[item]);
                 break;
         }
-    }
+    };
     return ADAPTED;
 }
 
