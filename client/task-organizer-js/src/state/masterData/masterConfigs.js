@@ -15,6 +15,7 @@ export const masterConfigs =
             link: 'TodoView',
             tableHeaders: ['task','due','priority','status','periodicity'],
             data: '',
+            name: "TableContent",
             component: "TableContent"
         },
 
@@ -26,6 +27,7 @@ export const masterConfigs =
             link: '',
             tableHeaders: '',
             data: '',
+            name: "GridContent",
             component: "GridContent"
         }
 
@@ -42,6 +44,7 @@ export const masterConfigs =
             link: 'TodoView',
             tableHeaders: '',
             data: '',
+            name: "TableContent",
             component: "TableContent"
         },
     ],

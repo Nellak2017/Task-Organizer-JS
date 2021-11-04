@@ -77,6 +77,7 @@ export const plainConfigsToUsableConfigs = (plainConfigs) => {
                     link: plainConfigs[item].link,
                     tableHeaders: adaptedTableHeaders,
                     data: [],
+                    name: TABLE_CONTENT,
                     component: ({ data, tableHeaders }) => { return <TableContent data={data} tableHeaders={tableHeaders} templates={DefaultRowTemplate} /> }
                 }
                 ADAPTED.push(adaptedTable);
@@ -93,6 +94,7 @@ export const plainConfigsToUsableConfigs = (plainConfigs) => {
                     link: plainConfigs[item].link,
                     tableHeaders: plainConfigs[item].tableHeaders,
                     data: [],
+                    name: GRID_CONTENT,
                     component: ({ data }) => { return <GridContent data={data} /> }
                 }
                 ADAPTED.push(adaptedGrid);
