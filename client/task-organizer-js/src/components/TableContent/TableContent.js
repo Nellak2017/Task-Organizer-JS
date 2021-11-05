@@ -13,10 +13,10 @@ import * as MdIcons from 'react-icons/md'; // MdOutlineClose
 import FormatDue from '../../lib/moment/FormatDue.js';
 import StyledEditableCell from '../Editable/Editable.elements.js';
 
-import { useDispatch, useSelector } from 'react-redux'; 
+import { useDispatch, useSelector } from 'react-redux';
 import { todoViewUpdateTableData } from "../../state/actions/TodoViewActions";
 
-const TableContent = ({ data, tableHeaders, templates}) => {
+const TableContent = ({ data, tableHeaders, templates }) => {
 
     // Use the State of the Store
     const state = useSelector((state) => state);
@@ -90,93 +90,104 @@ const TableContent = ({ data, tableHeaders, templates}) => {
         setMutatedData(items);
     }
 
+    const deleteTask = (rowIndex) => {
+        setMutatedData((old) => old.filter((row, index) => {return index !== rowIndex}));
+    }
+
     // Dispatch Method for when you want to update the table data to the store
     // call this when the user clicks off of the table
     const updateTableDataToStore = () => {
-            dispatch(todoViewUpdateTableData(mutatedData));
+        dispatch(todoViewUpdateTableData(mutatedData));
     }
 
     // Listen for changes to mutatedData, when it changes I want you to dispatch the Update Table Event
     // Note: THIS ACTUALLY WORKS! I am so glad I am celebrating!
-    const testKeys = ["task","due","priority","status","weight","order","periodicity","time_to_complete","creation_date","last_completion_date","parent_thread","pipelinable","number_of_dependencies","id","completed"];
+    const testKeys = ["task", "due", "priority", "status", "weight", "order", "periodicity", "time_to_complete", "creation_date", "last_completion_date", "parent_thread", "pipelinable", "number_of_dependencies", "id", "completed"];
     useEffect(() => {
-        if(JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(testKeys)){
+        console.log("JSON.stringify(Object.keys(mutatedData[0]))");
+        console.log(JSON.stringify(Object.keys(mutatedData[0])));
+
+        if (JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(testKeys)) {
             updateTableDataToStore();
+            console.log("Mutated data has changed and we definitely submitted the update action");
+            console.log(mutatedData);
         }
-      }, [mutatedData]);
+    }, [mutatedData]);
 
-        return (
-            <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
-                <DragDropContext onDragEnd={handleOnDragEnd}>
-                    <TaskTable {...getTableProps()}>
-                        <thead>
-                            {headerGroups.map(headerGroup => (
-    
-                                <TaskTableRow {...headerGroup.getHeaderGroupProps()}>
-                                    <th></th>
-                                    {headerGroup.headers.map((column, key) => {
-                                        return (
-                                            <TaskTableHeader {...column.getHeaderProps()} key={key}>{column.render('Header')}</TaskTableHeader>
-                                        );
-                                    })
-                                    }
-                                </TaskTableRow>
-                            ))}
-                        </thead>
-    
-                        <Droppable droppableId="Task Summaries">
-                            {(provided) => (
-                                <tbody {...getTableBodyProps()} {...provided.droppableProps} ref={provided.innerRef}>
-                                    {rows.map((row, key) => {
-                                        prepareRow(row)
-                                        return (
-                                            <Draggable key={row.cells[key].value} draggableId={String(row.cells[key].value) + String(key)} index={key}>
-                                                {provided => (
-                                                    <TaskTableRow {...row.getRowProps()} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+    return (
+        <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
+            <DragDropContext onDragEnd={handleOnDragEnd}>
+                <TaskTable {...getTableProps()}>
+                    <thead>
+                        {headerGroups.map(headerGroup => (
 
-                                                        <TaskTableData className="iconTd">
+                            <TaskTableRow {...headerGroup.getHeaderGroupProps()}>
+                                <th></th>
+                                {headerGroup.headers.map((column, key) => {
+                                    return (
+                                        <TaskTableHeader {...column.getHeaderProps()} key={key}>{column.render('Header')}</TaskTableHeader>
+                                    );
+                                })
+                                }
+                            </TaskTableRow>
+                        ))}
+                    </thead>
+
+                    <Droppable droppableId="Task Summaries">
+                        {(provided) => (
+                            <tbody {...getTableBodyProps()} {...provided.droppableProps} ref={provided.innerRef}>
+                                {rows.map((row, key) => {
+                                    prepareRow(row)
+                                    return (
+                                        <Draggable key={row.cells[key].value} draggableId={String(row.cells[key].value) + String(key)} index={key}>
+                                            {provided => (
+                                                <TaskTableRow {...row.getRowProps()} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+
+                                                    <TaskTableData className="iconTd">
                                                         {
-                                                            state.MasterConfigs.Globals[0].delete_mode ? 
-                                                            <MdIcons.MdOutlineClose key={key} className="icon" onClick={(e) => completeTask(e, key)} />
-                                                            : ( mutatedData[key].status === "Completed" ? 
-                                                            <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
-                                                            : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} /> )
-                                                            }
-                                                        </TaskTableData>
-                                                        {
-                                                            row.cells.map((tableHeader, index) => {
-                                                                return (
-                                                                    <TaskTableData {...tableHeader.getCellProps()} key={index}
-                                                                        data-content={
-                                                                            tableHeader.column.Header.toString().toLowerCase().trim() === "due" ?
-                                                                                FormatDue(tableHeader.value) :
-                                                                                tableHeader.value.toLowerCase().trim()
-                                                                        }>
-                                                                        <span>
-                                                                            {
-                                                                                tableHeader.render('Cell')
-                                                                            }
-                                                                        </span>
-    
-                                                                    </TaskTableData>
-                                                                );
-                                                            })
+                                                            state.MasterConfigs.Globals[0].delete_mode ?
+
+                                                                <MdIcons.MdOutlineClose key={key} className="closeIcon" onClick={(e) => deleteTask(key)} />
+
+                                                                : (mutatedData[key].status === "Completed" ?
+                                                                    <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
+                                                                    : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />)
                                                         }
-                                                    </TaskTableRow>
-                                                )}
-                                            </Draggable>
-                                        );
-                                    })
-                                    }
-                                    {provided.placeholder}
-                                </tbody>
-                            )
-                            }
-                        </Droppable>
-                    </TaskTable>
-                </DragDropContext>
-            </IconContext.Provider>
-        );
+                                                    </TaskTableData>
+                                                    {
+                                                        row.cells.map((tableHeader, index) => {
+                                                            return (
+                                                                <TaskTableData {...tableHeader.getCellProps()} key={index}
+                                                                    data-content={
+                                                                        tableHeader.column.Header.toString().toLowerCase().trim() === "due" ?
+                                                                            FormatDue(tableHeader.value) :
+                                                                            tableHeader.value.toLowerCase().trim()
+                                                                    }>
+                                                                    <span>
+                                                                        {
+                                                                            tableHeader.render('Cell')
+                                                                        }
+                                                                    </span>
+
+                                                                </TaskTableData>
+                                                            );
+                                                        })
+                                                    }
+                                                </TaskTableRow>
+                                            )}
+                                        </Draggable>
+                                    );
+                                })
+                                }
+                                {provided.placeholder}
+                            </tbody>
+                        )
+                        }
+                    </Droppable>
+                </TaskTable>
+            </DragDropContext>
+        </IconContext.Provider>
+    );
 
 }
 
