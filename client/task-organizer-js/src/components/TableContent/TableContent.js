@@ -82,35 +82,30 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     };
 
     // TODO: Only update the Data that needs to be updated, without losing Id and other pieces of data. 
+    // [...test.slice(0, 2), test[4], ...test.slice(3, 4), test[2], ...test.slice(4,-1)]; --> Swaps test[4] with test[2]
+    // [...test.slice(0, a), test[b], ...test.slice(a+1, b), test[a], ...test.slice(b,-1)]; --> Swaps test[b] with test[a] , a < b
     const handleOnDragEnd = (result) => {
         if (!result.destination) return;
-        const items = Array.from(rows.map(item => { return (item.values) }));
-        const [reorderedItem] = items.splice(result.source.index, 1);
-        items.splice(result.destination.index, 0, reorderedItem);
-        setMutatedData(items);
+        setMutatedData(old => {
+            const items = Array.from(old);
+            const [reorderedItem] = items.splice(result.source.index, 1);
+            items.splice(result.destination.index, 0, reorderedItem);
+            return items;
+        });
     }
 
-    const deleteTask = (rowIndex) => {
-        setMutatedData((old) => old.filter((row, index) => {return index !== rowIndex}));
-    }
+    const deleteTask = (rowIndex) => { setMutatedData(old => old.filter((row, index) => { return index !== rowIndex }));}
 
     // Dispatch Method for when you want to update the table data to the store
     // call this when the user clicks off of the table
-    const updateTableDataToStore = () => {
-        dispatch(todoViewUpdateTableData(mutatedData));
-    }
+    const updateTableDataToStore = () => { dispatch(todoViewUpdateTableData(mutatedData));}
 
     // Listen for changes to mutatedData, when it changes I want you to dispatch the Update Table Event
     // Note: THIS ACTUALLY WORKS! I am so glad I am celebrating!
     const testKeys = ["task", "due", "priority", "status", "weight", "order", "periodicity", "time_to_complete", "creation_date", "last_completion_date", "parent_thread", "pipelinable", "number_of_dependencies", "id", "completed"];
     useEffect(() => {
-        console.log("JSON.stringify(Object.keys(mutatedData[0]))");
-        console.log(JSON.stringify(Object.keys(mutatedData[0])));
-
         if (JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(testKeys)) {
             updateTableDataToStore();
-            console.log("Mutated data has changed and we definitely submitted the update action");
-            console.log(mutatedData);
         }
     }, [mutatedData]);
 
