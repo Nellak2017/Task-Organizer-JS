@@ -8,7 +8,8 @@ import {
     TaskTableData
 } from './TableContent.elements.js';
 import { IconContext } from 'react-icons/lib';
-import * as BiIcons from 'react-icons/bi';
+import * as BiIcons from 'react-icons/bi'; // BiCheckbox
+import * as MdIcons from 'react-icons/md'; // MdOutlineClose
 import FormatDue from '../../lib/moment/FormatDue.js';
 import StyledEditableCell from '../Editable/Editable.elements.js';
 
@@ -129,8 +130,13 @@ const TableContent = ({ data, tableHeaders, templates}) => {
                                             <Draggable key={row.cells[key].value} draggableId={String(row.cells[key].value) + String(key)} index={key}>
                                                 {provided => (
                                                     <TaskTableRow {...row.getRowProps()} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                                                        <TaskTableData className="iconTd">{mutatedData[key].status === "Completed" ? <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
-                                                            : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />}</TaskTableData>
+
+                                                        <TaskTableData className="iconTd">
+                                                        {
+                                                            <MdIcons.MdOutlineClose key={key} className="icon" onClick={(e) => completeTask(e, key)} />
+                                
+                                                            }
+                                                        </TaskTableData>
                                                         {
                                                             row.cells.map((tableHeader, index) => {
                                                                 return (
