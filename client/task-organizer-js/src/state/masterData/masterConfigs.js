@@ -5,7 +5,12 @@ import * as RiIcons from 'react-icons/ri';
 
 export const masterConfigs =
 {
-    Globals: [],
+    Globals: [
+        {
+            delete_mode: false
+        }
+    ]
+    ,
     OrganizerMain: [
         {
             title: 'High Priority Tasks',
