@@ -32,7 +32,7 @@ const events = [
 const Calendars = () => {
 
     const [newEvent, setNewEvent] = useState({title: "", start: "", end: ""});
-    const [allEvents, setAllEvents] = useState(events)
+    const [allEvents, setAllEvents] = useState(events);
     
 
     return (
