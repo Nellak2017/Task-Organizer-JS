@@ -55,6 +55,25 @@ export const SubNavAddTaskButton = styled.button`
     }
 `;
 
+export const SubNavDeleteTaskButton = styled.button`
+    width: 12rem;
+    height: 50%;
+    border-radius: .5rem;
+    border: solid 1px rgba(68,76,86,.5);
+    background-color: rgba(20,170,245,1);
+    color: #f5f5f5;
+    font-size: 1rem;
+
+    margin-left: 1rem;
+
+    &:hover {
+        transition: 350ms;
+        border: solid 2px #1a83ff ;
+        cursor: pointer;
+        background-color: #1a83ff;
+    }
+`;
+
 export const SubNavAddPopUp = styled.div`
     position: absolute; // must be absolute so that you can have it below the profile picture
     top: 4rem;

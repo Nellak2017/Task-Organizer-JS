@@ -3,6 +3,7 @@ import {
     SubNavAddContainer,
     SubNavOptionsContainer,
     SubNavAddTaskButton,
+    SubNavDeleteTaskButton,
     SubNavAddOptionsButton,
     SubNavOptionButton,
     SubNavAddPopUp,
@@ -19,6 +20,7 @@ import * as GoIcons from 'react-icons/go';
 import { todoViewAddTask } from "../../state/actions/TodoViewActions";
 
 import { useDispatch } from 'react-redux'; 
+
 const TodoViewSubNav = () => {
 
     const dispatch = useDispatch();
@@ -29,6 +31,10 @@ const TodoViewSubNav = () => {
 
     const handleAddTaskClick = () => {
         dispatch(todoViewAddTask());
+    }
+
+    const handleDeleteTaskClick = () => {
+        // dispatch(delete_mode());
     }
 
     return (
@@ -46,7 +52,12 @@ const TodoViewSubNav = () => {
                     
                         </SubNavAddPopUp>
                     </AddPopUpContainer>
+
+                    <SubNavDeleteTaskButton onClick={handleAddTaskClick}>Toggle Delete Task Mode</SubNavDeleteTaskButton>
+                    
                 </SubNavAddContainer>
+
+
                 <SubNavOptionsContainer>
                     <SubNavOptionButton>
                         Sort

@@ -133,7 +133,9 @@ const TableContent = ({ data, tableHeaders, templates}) => {
 
                                                         <TaskTableData className="iconTd">
                                                         {
-                                                            <MdIcons.MdOutlineClose key={key} className="icon" onClick={(e) => completeTask(e, key)} />
+                                                            mutatedData[key].status === "Completed" ? 
+                                                            <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
+                                                            : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />
                                 
                                                             }
                                                         </TaskTableData>
