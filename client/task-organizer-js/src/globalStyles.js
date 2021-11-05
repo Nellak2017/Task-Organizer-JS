@@ -1,4 +1,4 @@
-import styled, {createGlobalStyle} from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -31,6 +31,17 @@ body {
         cursor: pointer;
 }
 
+.closeIcon {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.closeIcon:hover {
+    transition: 350ms;
+    color: rgba(207,45,6) !important;
+    cursor: pointer;
+}
+
 `;
 
 
@@ -51,11 +62,11 @@ export const Container = styled.div`
 
 export const Button = styled.button`
     border-radius: 4px;
-    background: ${({primary}) => (primary ? '#4B59F7': '#0467FB')};
+    background: ${({ primary }) => (primary ? '#4B59F7' : '#0467FB')};
     white-space: nowrap;
-    padding: ${({big}) => ( big ? '12px 64px':'10px 20px')};
+    padding: ${({ big }) => (big ? '12px 64px' : '10px 20px')};
     color: #fff;
-    font-size: ${({fontBig}) => (fontBig ? '20px':'16px')};
+    font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
     outline: none;
     border: none;
     cursor: pointer;
@@ -63,7 +74,7 @@ export const Button = styled.button`
     &:hover {
         transition: all .3s ease-out;
         background: #fff;
-        background: ${({primary}) => (primary ? '#0467FB': '#4B59F7')};
+        background: ${({ primary }) => (primary ? '#0467FB' : '#4B59F7')};
     }
     @media screen and (max-width: 960px){
         width: 100%;
