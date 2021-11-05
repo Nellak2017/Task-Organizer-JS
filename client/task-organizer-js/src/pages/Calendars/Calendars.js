@@ -30,6 +30,9 @@ const events = [
 
 
 const Calendars = () => {
+
+    const [newEvent, setNewEvent] = useState({title: "", start: "", end: ""})
+
     return (
         <>
             <SideNav />
