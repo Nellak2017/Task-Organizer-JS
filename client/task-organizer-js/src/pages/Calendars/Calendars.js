@@ -1,6 +1,6 @@
 import { SideNav } from "../../components";
 import { Calendar, momentLocalizer } from 'react-big-calendar';
-import { moment } from 'moment';
+import moment  from 'moment';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
@@ -17,18 +17,14 @@ const events = [
     {
         title: "Big Meeting",
         allDay: true,
-        start: moment().toDate(),
-        end: moment()
-            .add(1, "days")
-            .toDate(),
+        start: new moment('16:30, 8Nov2021', 'HH:mm, DMMMYYYY'),
+        end: new moment('16:30, 9Nov2021', 'HH:mm, DMMMYYYY'),
     },
     {
         title: "Vacation",
         allDay: true,
-        start: moment().toDate(),
-        end: moment()
-            .add(7, "days")
-            .toDate(),
+        start: new moment('16:30, 8Nov2021', 'HH:mm, DMMMYYYY'),
+        end: new moment('16:30, 9Nov2021', 'HH:mm, DMMMYYYY'),
     }
 ];
 
