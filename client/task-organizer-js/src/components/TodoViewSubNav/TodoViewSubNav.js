@@ -17,7 +17,7 @@ import * as RiIcons from 'react-icons/ri';
 import { IconContext } from 'react-icons/lib';
 import * as GoIcons from 'react-icons/go';
 
-import { todoViewAddTask } from "../../state/actions/TodoViewActions";
+import { todoViewAddTask, todoViewDeleteMode } from "../../state/actions/TodoViewActions";
 
 import { useDispatch } from 'react-redux'; 
 
@@ -34,7 +34,7 @@ const TodoViewSubNav = () => {
     }
 
     const handleDeleteTaskClick = () => {
-        // dispatch(delete_mode());
+        dispatch(todoViewDeleteMode());
     }
 
     return (
@@ -53,7 +53,7 @@ const TodoViewSubNav = () => {
                         </SubNavAddPopUp>
                     </AddPopUpContainer>
 
-                    <SubNavDeleteTaskButton onClick={handleAddTaskClick}>Toggle Delete Task Mode</SubNavDeleteTaskButton>
+                    <SubNavDeleteTaskButton onClick={handleDeleteTaskClick}>Toggle Delete Task Mode</SubNavDeleteTaskButton>
                     
                 </SubNavAddContainer>
 
