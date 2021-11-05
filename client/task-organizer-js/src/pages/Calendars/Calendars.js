@@ -1,10 +1,10 @@
-import { SideNav, UnderConstruction } from "../../components";
+import { SideNav } from "../../components";
 
 const Calendars = () => {
     return (
         <>
             <SideNav />
-            <UnderConstruction />
+
         </>
     );
 }
