@@ -94,11 +94,11 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         });
     }
 
-    const deleteTask = (rowIndex) => { setMutatedData(old => old.filter((row, index) => { return index !== rowIndex }));}
+    const deleteTask = (rowIndex) => { setMutatedData(old => old.filter((row, index) => { return index !== rowIndex })); }
 
     // Dispatch Method for when you want to update the table data to the store
     // call this when the user clicks off of the table
-    const updateTableDataToStore = () => { dispatch(todoViewUpdateTableData(mutatedData));}
+    const updateTableDataToStore = () => { dispatch(todoViewUpdateTableData(mutatedData)); }
 
     // Listen for changes to mutatedData, when it changes I want you to dispatch the Update Table Event
     // Note: THIS ACTUALLY WORKS! I am so glad I am celebrating!
@@ -134,7 +134,7 @@ const TableContent = ({ data, tableHeaders, templates }) => {
                                 {rows.map((row, key) => {
                                     prepareRow(row)
                                     return (
-                                        <Draggable key={row.cells[key].value} draggableId={String(row.cells[key].value) + String(key)} index={key}>
+                                        <Draggable key={key} draggableId={String(mutatedData[key].value) + String(key)} index={key}>
                                             {provided => (
                                                 <TaskTableRow {...row.getRowProps()} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
 
