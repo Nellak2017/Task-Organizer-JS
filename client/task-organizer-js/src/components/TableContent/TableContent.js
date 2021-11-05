@@ -13,10 +13,13 @@ import * as MdIcons from 'react-icons/md'; // MdOutlineClose
 import FormatDue from '../../lib/moment/FormatDue.js';
 import StyledEditableCell from '../Editable/Editable.elements.js';
 
-import { useDispatch } from 'react-redux'; 
+import { useDispatch, useSelector } from 'react-redux'; 
 import { todoViewUpdateTableData } from "../../state/actions/TodoViewActions";
 
 const TableContent = ({ data, tableHeaders, templates}) => {
+
+    // Use the State of the Store
+    const state = useSelector((state) => state);
 
     const dispatch = useDispatch();
 
@@ -133,10 +136,11 @@ const TableContent = ({ data, tableHeaders, templates}) => {
 
                                                         <TaskTableData className="iconTd">
                                                         {
-                                                            mutatedData[key].status === "Completed" ? 
+                                                            state.MasterConfigs.Globals[0].delete_mode ? 
+                                                            <MdIcons.MdOutlineClose key={key} className="icon" onClick={(e) => completeTask(e, key)} />
+                                                            : ( mutatedData[key].status === "Completed" ? 
                                                             <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
-                                                            : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />
-                                
+                                                            : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} /> )
                                                             }
                                                         </TaskTableData>
                                                         {
