@@ -4,7 +4,6 @@ import moment from 'moment';
 const TodoView_AddRow = 'TodoView/AddRow';
 const TodoView_UpdateTableData = 'TodoView/UpdateTableData';
 const TodoView_Delete_Mode = 'TodoView/DeleteMode';
-const TodoView_Delete_Task = 'TodoView/DeleteTask';
 
 // Todo: Make this a bit more customizable by adding the custom templates provided by the user in the local JSON / Store
 export const todoViewAddTask = () => {
@@ -58,14 +57,6 @@ export const todoViewDeleteMode = () => {
     return {
         type: TodoView_Delete_Mode,
         info: 'Toggle Delete Mode for the table component. When active, you will be able to delete rows.' 
-    }
-};
-
-// Flesh this one out later
-export const todoViewDeleteTask = (task) => {
-    return {
-        type: TodoView_Delete_Task,
-        info: 'Delete the given task from the store.'
     }
 };
 
