@@ -24,7 +24,7 @@ const TodoView = () => {
         copy[0].data = store.getState().MasterData; // There is no transformation to be done here, it is raw only 
         setInfoSummaryDataCopy(copy.slice());
     });
-
+    
     return (
         <>
             <SideNav />
