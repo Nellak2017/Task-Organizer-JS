@@ -56,6 +56,7 @@ export const ProfilePopUp = styled.div`
     border-radius: 1rem;
     background-color: rgba(34,39,46,1);
     z-index: 999 !important; 
+    border: 1px solid white;
 
     & img {
         width: 100%;
