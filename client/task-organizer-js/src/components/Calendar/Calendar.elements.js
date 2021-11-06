@@ -51,6 +51,7 @@ export const StyledCalendar = styled(Calendar)`
 
     .rbc-active { 
         background-color: slateblue!important;
+        color: white;
     }
 
     .rbc-active:hover {
