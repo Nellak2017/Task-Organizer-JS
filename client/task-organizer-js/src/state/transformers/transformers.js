@@ -124,7 +124,7 @@ export const OrganizerMainTableSummary = (MasterData) => {
                 filterObject(value, allowed)
             );
         })
-    );
+    );  
 }
 
 // Adapter for the OrganizerMain table summary. It has been lightly tested. Beware of this function.
