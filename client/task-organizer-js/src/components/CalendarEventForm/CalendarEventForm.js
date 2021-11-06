@@ -1,6 +1,16 @@
-import { StyledDatePicker } from './CalendarEventForm.elements.js';
+import { 
+    StyledDatePicker,
+    EventFormContainer 
+} from './CalendarEventForm.elements.js';
 import { useState } from 'react';
 import moment from 'moment';
+
+/* TODO: 
+    - [ ] Add X to close container when user doesn't want this Component anymore
+    - [ ] Attach Store state instead of dummy data to this and to the Calendar too
+    - [ ] Fix the styling of this component so it looks like a legitimate form
+ */
+
 
 const events = [
     {
@@ -29,7 +39,7 @@ export const CalendarEventForm = () => {
     }
 
     return (
-        <>
+        <EventFormContainer>
             <h1>Calendar</h1>
             <h2>Add New Event</h2>
             <div>
@@ -58,7 +68,7 @@ export const CalendarEventForm = () => {
                     Add Event
                 </button>
             </div>
-        </>
+        </EventFormContainer>
     );
 }
 
