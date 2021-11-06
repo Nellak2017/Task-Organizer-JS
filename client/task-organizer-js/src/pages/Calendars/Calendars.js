@@ -1,7 +1,8 @@
 import { SideNav } from "../../components";
-import { Calendar, momentLocalizer } from 'react-big-calendar';
+import { Calendar } from "../../components/Calendar/Calendar.js";
+import { momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
-import "react-big-calendar/lib/css/react-big-calendar.css";
+//import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -32,7 +33,7 @@ https://www.youtube.com/watch?v=KUKyTRYGrnU&t=129s,
 https://duckduckgo.com/?q=dark+theme+calendar&atb=v181-1&iax=images&ia=images&iai=https%3A%2F%2Fcdn.dribbble.com%2Fusers%2F636775%2Fscreenshots%2F3158395%2Ffor_dribbble.png
 https://www.youtube.com/watch?v=e0cZz7rhn7Y
 
-- [ ] Figure out the styles to modify in Styled Component or Wrapper
+- [X] Figure out the styles to modify in Styled Component or Wrapper
 - [ ] Use masterData to compute Events (Figure out allDay exception later)
 - [ ] Create a Calendar form Component, use inpiration from here: https://www.youtube.com/watch?v=KUKyTRYGrnU&t=129s,
 https://duckduckgo.com/?q=dark+theme+calendar&atb=v181-1&iax=images&ia=images&iai=https%3A%2F%2Fcdn.dribbble.com%2Fusers%2F636775%2Fscreenshots%2F3158395%2Ffor_dribbble.png
@@ -59,7 +60,7 @@ const Calendars = () => {
                 events={allEvents}
                 startAccessor="start"
                 endAccessor="end"
-                style={{ height: 500, margin: "50px" }}
+                style={{ height: 500, margin: "50px", color: "#fff" }}
             />
             <h1>Calendar</h1>
             <h2>Add New Event</h2>
