@@ -56,7 +56,7 @@ const Calendars = () => {
                 events={allEvents}
                 startAccessor="start"
                 endAccessor="end"
-                style={{ height: 500, margin: "50px", color: "#fff" }}
+                style={{ height: 500, width: "50%", margin: "auto", color: "#fff" }}
             />
             <CalendarEventForm/>
         </>
