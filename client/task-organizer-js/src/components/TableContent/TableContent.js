@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { useTable } from 'react-table';
+import { useTable, useSortBy } from 'react-table';
 import {
     TaskTable,
     TaskTableRow,
@@ -67,7 +67,8 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         data: mutatedData,
         defaultColumn,
         updateMyData,
-    })
+    }, useSortBy)
+
     const {
         getTableProps,
         getTableBodyProps,
@@ -120,7 +121,12 @@ const TableContent = ({ data, tableHeaders, templates }) => {
                                 <th></th>
                                 {headerGroup.headers.map((column, key) => {
                                     return (
-                                        <TaskTableHeader {...column.getHeaderProps()} key={key}>{column.render('Header')}</TaskTableHeader>
+                                        <TaskTableHeader 
+                                        {...column.getHeaderProps(column.getSortByToggleProps())} key={key}
+                                        >
+                                            {column.render('Header')}
+                                            {column.isSorted ? (column.isSortedDesc ? " ▼" : " ▲") : " "}
+                                        </TaskTableHeader>
                                     );
                                 })
                                 }
