@@ -62,20 +62,18 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     }
     const defaultColumn = { Cell: EditableCell }
 
-    const instance = useTable({
-        columns,
-        data: mutatedData,
-        defaultColumn,
-        updateMyData,
-    }, useSortBy)
-
     const {
         getTableProps,
         getTableBodyProps,
         headerGroups,
         rows,
         prepareRow
-    } = instance
+    } = useTable({
+        columns,
+        data: mutatedData,
+        defaultColumn,
+        updateMyData: updateMyData,
+    }, useSortBy)
 
     const completeTask = (e, index) => {
         e.preventDefault();
