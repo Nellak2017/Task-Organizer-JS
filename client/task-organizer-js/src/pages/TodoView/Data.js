@@ -291,11 +291,7 @@ export const TableHeaderData = [
     {
         Header: 'Parent Thread',
         accessor: 'parent_thread',
-        Cell: ({  value: initialValue }) => {
-            return (
-                <span>{initialValue}</span>
-            )
-        }
+        
     },
     {
         Header: 'Pipelinable',
