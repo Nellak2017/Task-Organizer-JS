@@ -47,7 +47,7 @@ export const masterConfigs =
             iconComponent: '',
             text: 'See All',
             link: 'TodoView',
-            tableHeaders: '',
+            tableHeaders: ["task", "due", "priority", "status", "weight", "order", "periodicity", "time_to_complete", "creation_date", "last_completion_date", "parent_thread", "pipelinable", "number_of_dependencies", "id", "completed"],
             data: '',
             name: "TableContent",
             component: "TableContent"

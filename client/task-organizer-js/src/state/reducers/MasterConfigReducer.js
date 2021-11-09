@@ -5,6 +5,7 @@ const TodoView_Delete_Mode = 'TodoView/DeleteMode';
 export const reducer = (state = masterConfigs , action) => {
     switch (action.type) {
 		case TodoView_Delete_Mode:
+			console.log("made it to TodoView_Delete_Mode");
 			const DELETE_FLAG_STATUS = state.Globals[0].delete_mode === false ? true : false ;
 			return {
 				...state,

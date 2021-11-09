@@ -34,18 +34,24 @@ const OrganizerMain = () => {
     const state = useSelector((state) => state);
 
     // Inject the initial data into our transformed Store data
-    let StoreCopy = plainConfigsToUsableConfigs(state.MasterConfigs.OrganizerMain);
-    StoreCopy = inject(StoreCopy);
+    const StoreCopy = inject(plainConfigsToUsableConfigs(state.MasterConfigs.OrganizerMain));
 
     // Mirror the State of the Store with InfoSummaryData updates
     const [InfoSummaryDataCopy, setInfoSummaryDataCopy] = useState(StoreCopy);
 
     // Every time the store updates, inject the InfoSummaryDataCopy with the OrganizerMain perspective of the Store
+    
     store.subscribe(() => {
+        /*
         let copy = InfoSummaryDataCopy;
         copy = inject(copy);
         setInfoSummaryDataCopy(copy.slice());
+        */
+       console.log("HEY THE STORE CHANGED");
+       console.log("It is: ");
+       console.log(store.getState().MasterData);
     });
+    
 
     return (
         <>

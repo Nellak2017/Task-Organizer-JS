@@ -127,7 +127,7 @@ export const PageButtonContainer = styled.div`
     min-height: 1.7rem;
     background-color: rgba(44,49,56,1);
     border: 1px solid black;
-    overflow-x:auto;
+    
     
 
     fieldset {

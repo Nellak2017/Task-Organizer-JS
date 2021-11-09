@@ -63,7 +63,7 @@ export const plainConfigsToUsableConfigs = (plainConfigs) => {
                 let adaptedTableHeaders = []; // table headers for Component
 
                 for (let row in masterConfig) {
-                    const item = masterConfig[row].Header.toLowerCase();
+                    const item = masterConfig[row].accessor.toLowerCase();
                     if (allowedTableHeaders.includes(item)) { adaptedTableHeaders.push(masterConfig[row]); }
                 }
 
