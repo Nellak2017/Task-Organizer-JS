@@ -109,6 +109,7 @@ export const SummaryInfoCollapsable = styled.section`
         
     }
     display: flex;
+    flex-direction: column;
     align-items: stretch;
     animation-duration: 500ms;
     animation-fill-mode: both;
