@@ -1,11 +1,16 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { useTable, useSortBy } from 'react-table';
+import { useTable, useSortBy, usePagination } from 'react-table';
 import {
     TaskTable,
     TaskTableRow,
     TaskTableHeader,
-    TaskTableData
+    TaskTableData,
+    PageButtonContainer,
+    PageButton,
+    PageLabel,
+    GoToPage,
+    ShowNPages
 } from './TableContent.elements.js';
 import { IconContext } from 'react-icons/lib';
 import * as BiIcons from 'react-icons/bi'; // BiCheckbox
@@ -19,7 +24,7 @@ import { todoViewUpdateTableData } from "../../state/actions/TodoViewActions";
 const TableContent = ({ data, tableHeaders, templates }) => {
 
     // Use the State of the Store
-    const state = useSelector((state) => state);
+    const store_state = useSelector((state) => state);
 
     const dispatch = useDispatch();
 
@@ -66,14 +71,28 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         getTableProps,
         getTableBodyProps,
         headerGroups,
-        rows,
+        page,
+        nextPage,
+        previousPage,
+        canPreviousPage,
+        canNextPage,
+        pageOptions,
+        state,
+        gotoPage,
+        pageCount,
+        setPageSize,
         prepareRow
     } = useTable({
         columns,
         data: mutatedData,
         defaultColumn,
+        initialState: { pageSize: 5 },
         updateMyData: updateMyData,
-    }, useSortBy)
+    },
+        useSortBy,
+        usePagination)
+
+    const { pageIndex, pageSize } = state
 
     const completeTask = (e, index) => {
         e.preventDefault();
@@ -109,83 +128,130 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     }, [mutatedData]);
 
     return (
-        <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
-            <DragDropContext onDragEnd={handleOnDragEnd}>
-                <TaskTable {...getTableProps()}>
-                    <thead>
-                        {headerGroups.map(headerGroup => (
+        <>
+            <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
+                <DragDropContext onDragEnd={handleOnDragEnd}>
+                    <TaskTable {...getTableProps()}>
+                        <thead>
+                            {headerGroups.map(headerGroup => (
 
-                            <TaskTableRow {...headerGroup.getHeaderGroupProps()}>
-                                <th></th>
-                                {headerGroup.headers.map((column, key) => {
-                                    return (
-                                        <TaskTableHeader 
-                                        {...column.getHeaderProps(column.getSortByToggleProps())} key={key}
-                                        >
-                                            {column.render('Header')}
-                                            {column.isSorted ? (column.isSortedDesc ? " ▼" : " ▲") : " "}
-                                        </TaskTableHeader>
-                                    );
-                                })
-                                }
-                            </TaskTableRow>
-                        ))}
-                    </thead>
+                                <TaskTableRow {...headerGroup.getHeaderGroupProps()}>
+                                    <th></th>
+                                    {headerGroup.headers.map((column, key) => {
+                                        return (
+                                            <TaskTableHeader
+                                                {...column.getHeaderProps(column.getSortByToggleProps())} key={key}
+                                            >
+                                                {column.render('Header')}
+                                                {column.isSorted ? (column.isSortedDesc ? " ▼" : " ▲") : " "}
+                                            </TaskTableHeader>
+                                        );
+                                    })
+                                    }
+                                </TaskTableRow>
+                            ))}
+                        </thead>
 
-                    <Droppable droppableId="Task Summaries">
-                        {(provided) => (
-                            <tbody {...getTableBodyProps()} {...provided.droppableProps} ref={provided.innerRef}>
-                                {rows.map((row, key) => {
-                                    prepareRow(row)
-                                    return (
-                                        <Draggable key={key} draggableId={String(mutatedData[key].value) + String(key)} index={key}>
-                                            {provided => (
-                                                <TaskTableRow {...row.getRowProps()} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                        <Droppable droppableId="Task Summaries">
+                            {(provided) => (
+                                <tbody {...getTableBodyProps()} {...provided.droppableProps} ref={provided.innerRef}>
+                                    {page.map((row, key) => {
+                                        prepareRow(row)
+                                        return (
+                                            <Draggable key={key} draggableId={String(mutatedData[key].value) + String(key)} index={key}>
+                                                {provided => (
+                                                    <TaskTableRow {...row.getRowProps()} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
 
-                                                    <TaskTableData className="iconTd">
+                                                        <TaskTableData className="iconTd">
+                                                            {
+                                                                store_state.MasterConfigs.Globals[0].delete_mode ?
+
+                                                                    <MdIcons.MdOutlineClose key={key} className="closeIcon" onClick={(e) => deleteTask(key)} />
+
+                                                                    : (mutatedData[key].status === "Completed" ?
+                                                                        <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
+                                                                        : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />)
+                                                            }
+                                                        </TaskTableData>
                                                         {
-                                                            state.MasterConfigs.Globals[0].delete_mode ?
+                                                            row.cells.map((tableHeader, index) => {
+                                                                return (
+                                                                    <TaskTableData {...tableHeader.getCellProps()} key={index}
+                                                                        data-content={
+                                                                            tableHeader.column.Header.toString().toLowerCase().trim() === "due" ?
+                                                                                FormatDue(tableHeader.value) :
+                                                                                tableHeader.value.toLowerCase().trim()
+                                                                        }>
+                                                                        <span>
+                                                                            {
+                                                                                tableHeader.render('Cell')
+                                                                            }
+                                                                        </span>
 
-                                                                <MdIcons.MdOutlineClose key={key} className="closeIcon" onClick={(e) => deleteTask(key)} />
-
-                                                                : (mutatedData[key].status === "Completed" ?
-                                                                    <BiIcons.BiCheckboxChecked key={key} className="icon" onClick={(e) => completeTask(e, key)} />
-                                                                    : <BiIcons.BiCheckbox key={key} className="icon" onClick={(e) => completeTask(e, key)} />)
+                                                                    </TaskTableData>
+                                                                );
+                                                            })
                                                         }
-                                                    </TaskTableData>
-                                                    {
-                                                        row.cells.map((tableHeader, index) => {
-                                                            return (
-                                                                <TaskTableData {...tableHeader.getCellProps()} key={index}
-                                                                    data-content={
-                                                                        tableHeader.column.Header.toString().toLowerCase().trim() === "due" ?
-                                                                            FormatDue(tableHeader.value) :
-                                                                            tableHeader.value.toLowerCase().trim()
-                                                                    }>
-                                                                    <span>
-                                                                        {
-                                                                            tableHeader.render('Cell')
-                                                                        }
-                                                                    </span>
+                                                    </TaskTableRow>
+                                                )}
+                                            </Draggable>
+                                        );
+                                    })
+                                    }
+                                    {provided.placeholder}
+                                </tbody>
+                            )
+                            }
+                        </Droppable>
+                    </TaskTable>
+                </DragDropContext>
+                <PageButtonContainer>
+                    <PageButton onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+                        {'<<'}
+                    </PageButton>{' '}
+                    <PageButton onClick={() => previousPage()} disabled={!canPreviousPage}>
+                        Previous
+                    </PageButton>{' '}
+                    <PageButton onClick={() => nextPage()} disabled={!canNextPage}>
+                        Next
+                    </PageButton>{' '}
+                    <PageButton onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+                        {'>>'}
+                    </PageButton>{' '}
+                    <PageLabel>
+                        Page{' '}
+                        <strong>{pageIndex + 1} </strong>
+                        <strong> of </strong>
+                        <strong>{pageOptions.length}</strong>{' '}
+                    </PageLabel>
+                    <PageLabel>
+                        <p>|</p>
+                        <p>Go</p>
+                        <p>to</p>
+                        <p>page:</p>{' '}
+                        <GoToPage
+                            type='number'
+                            defaultValue={pageIndex + 1}
+                            onChange={e => {
+                                const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
+                                gotoPage(pageNumber)
+                            }}
+                            style={{ width: '50px' }}
+                        />
+                    </PageLabel>{' '}
+                    <ShowNPages
+                        value={pageSize}
+                        onChange={e => setPageSize(Number(e.target.value))}>
+                        {[5, 10, 25, 50].map(pageSize => (
+                            <option key={pageSize} value={pageSize}>
+                                Show {pageSize}
+                            </option>
+                        ))}
+                    </ShowNPages>
+                </PageButtonContainer>
+            </IconContext.Provider>
 
-                                                                </TaskTableData>
-                                                            );
-                                                        })
-                                                    }
-                                                </TaskTableRow>
-                                            )}
-                                        </Draggable>
-                                    );
-                                })
-                                }
-                                {provided.placeholder}
-                            </tbody>
-                        )
-                        }
-                    </Droppable>
-                </TaskTable>
-            </DragDropContext>
-        </IconContext.Provider>
+        </>
     );
 
 }
