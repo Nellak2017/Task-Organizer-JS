@@ -10,6 +10,7 @@ export const TaskTable = styled.table`
     border-collapse: collapse;
     background-color: rgba(44,49,56,1);
     padding: 0;
+    margin: 0;
 
     & th {
         background-color: rgba(54,59,66,1);
@@ -112,4 +113,65 @@ export const TaskTableData = styled.td`
         font-weight: bold;
         cursor: default;
     }
+`;
+export const PageButtonContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: sans-serif;
+
+    font-size: 1.7rem;
+    padding: 0;
+    min-height: 1.7rem;
+    background-color: rgba(44,49,56,1);
+    border: 1px solid black;
+    overflow-x:auto;
+    
+
+    fieldset {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    }
+
+    input, button, select {
+        font-size: inherit;
+        padding: 0.2rem;
+        margin: 0.2rem 0.2rem;
+        /* the following ensures they're all using the same box-model for rendering */
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+        border-radius: .25rem;
+    }
+
+    strong, p{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0.2rem;
+    }
+
+`;
+
+export const PageButton = styled.button`
+`;
+
+export const PageLabel = styled.span`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+`;
+
+export const GoToPage = styled.input`
+    
+`;
+
+export const ShowNPages = styled.select`
 `;
