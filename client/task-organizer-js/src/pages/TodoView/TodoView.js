@@ -34,11 +34,6 @@ const TodoView = () => {
     // Inject the initial data into our transformed Store data
     const StoreCopy = inject(plainConfigsToUsableConfigs(state.MasterConfigs.TodoView));
 
-    const dispatch = useDispatch();
-    
-    console.log("StoreCopy")
-    console.log(StoreCopy)
-
     // Mirror the State of the Store with InfoSummaryData updates
     const [InfoSummaryDataCopy, setInfoSummaryDataCopy] = useState(StoreCopy);
 
@@ -48,12 +43,14 @@ const TodoView = () => {
         let copy = InfoSummaryDataCopy;
         copy = inject(copy);
         setInfoSummaryDataCopy(copy.slice());
-    }, [dispatch]);
+
+        console.log("I just set the state of the InfoSummaryDataCopy")
+    }, [state.MasterData]);
     
     
     //console.log("Store state right now");
     //console.log(state.MasterData);
-    
+    /*
     store.subscribe(() => {
         
         //let copy = InfoSummaryDataCopy;
@@ -64,7 +61,7 @@ const TodoView = () => {
        console.log("It is: ");
        console.log(store.getState().MasterData);
     });
-    
+    */
 
     console.log("InfoSummaryDataCopy")
     console.log(InfoSummaryDataCopy)
@@ -77,7 +74,7 @@ return (
         <TodoViewSubNav />
         {InfoSummaryDataCopy.map((value, key) => {
             return (
-                <InfoSummary key={JSON.stringify(state.MasterConfigs) + key} MyComponent={value.component} Data={[value]} TableHeaders={[value.tableHeaders]} Name={"TodoView"} />
+                <InfoSummary key={JSON.stringify(InfoSummaryDataCopy) + key} MyComponent={value.component} Data={[value]} TableHeaders={[value.tableHeaders]} Name={"TodoView"} />
             );
         })
         }
