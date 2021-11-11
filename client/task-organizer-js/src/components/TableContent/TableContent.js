@@ -25,15 +25,10 @@ const TableContent = ({ data, tableHeaders, templates }) => {
 
     // Use the State of the Store
     const store_state = useSelector((state) => state);
-
     const dispatch = useDispatch();
 
     const [mutatedData, setMutatedData] = useState(data); // (2) [{task:.., due:...,...},{...}]
     const columns = useMemo(() => tableHeaders[0], [tableHeaders]); // (13) [{Header:"Task",accessor:"task"}}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-
-
-    console.log("Hey I am table content, my mutatedData is");
-    console.log(mutatedData);
 
     // Takes a copy of the input data and updates it with the SetMutatedData method to be value inside data
     // Ex: {'task': 'Github (20 contribs)'} -> (0,'task','Do the laundry') => {'task': 'Do the laundry'}
@@ -103,9 +98,6 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         updateMyData(index, "status", mutatedData[index].status !== "Completed" ? "Completed" : "Processing");
     };
 
-    // TODO: Only update the Data that needs to be updated, without losing Id and other pieces of data. 
-    // [...test.slice(0, 2), test[4], ...test.slice(3, 4), test[2], ...test.slice(4,-1)]; --> Swaps test[4] with test[2]
-    // [...test.slice(0, a), test[b], ...test.slice(a+1, b), test[a], ...test.slice(b,-1)]; --> Swaps test[b] with test[a] , a < b
     const handleOnDragEnd = (result) => {
         if (!result.destination) return;
         setMutatedData(old => {
@@ -123,10 +115,14 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     const updateTableDataToStore = () => { dispatch(todoViewUpdateTableData(mutatedData)); }
 
     // Listen for changes to mutatedData, when it changes I want you to dispatch the Update Table Event
+    // TODO: Make sure the page stays the same on update cell
+    // TODO: Make sure the default number of pages can vary based on the type of Table Summary passed in e.g. see 5 for organizerMain and see 10 for todoView
+    // TODO: Make sure that the show pages number stays constant until updated (instead of reverting to default on every mutated data update)
+    // TODO: Make sure only numbers that are valid are allowed to be entered into the goto page input
     // Note: THIS ACTUALLY WORKS! I am so glad I am celebrating!
     const testKeys = ["task", "due", "priority", "status", "weight", "order", "periodicity", "time_to_complete", "creation_date", "last_completion_date", "parent_thread", "pipelinable", "number_of_dependencies", "id", "completed"];
-    useEffect(() => {
-        if (JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(testKeys)) {
+    useEffect(() => { 
+        if (JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(testKeys)) { 
             updateTableDataToStore();
         }
     }, [mutatedData]);
