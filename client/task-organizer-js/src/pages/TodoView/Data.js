@@ -26,7 +26,7 @@ export const TableHeaderData = [
             updateMyData, // This is a custom function that we supplied to our table instance
         }) => {
             // We need to keep and update the state of the cell normally
-            const [selectedDate, handleDateChange] = React.useState(new moment(initialValue));
+            const [selectedDate, handleDateChange] = React.useState(new moment(initialValue)); //new moment('16:30, 8Aug2021', 'HH:mm, DMMMYYYY')
 
             // We'll only update the external data when the input is blurred
             const onBlur = () => { updateMyData(index, id, selectedDate) }

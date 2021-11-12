@@ -8,6 +8,7 @@
 // All views will derive from this list.
 import moment from 'moment';
 
+// TODO: make the date format like this "2021-08-08T10:30:0Z" in this file, then in the Cell function for each, format that into a moment object so it can be used and properly sorted
 export const masterData = [
     {
         'task': 'Github (20 contribs)',
