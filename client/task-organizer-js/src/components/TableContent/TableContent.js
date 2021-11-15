@@ -237,6 +237,12 @@ const TableContent = ({ data, tableHeaders, templates }) => {
                                 gotoPage(pageNumber)
                             }}
                             style={{ width: '50px' }}
+                            min="1"
+                            max={pageOptions.length}
+                            onBlur={ e => {
+                                const validation = Number(e.target.value) < 1 ? pageIndex + 1 : Number(e.target.value) > pageOptions.length ? pageIndex + 1 : Number(e.target.value)
+                                e.target.value = validation
+                            }}
                         />
                     </PageLabel>{' '}
                     <ShowNPages
