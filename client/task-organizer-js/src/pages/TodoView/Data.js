@@ -109,15 +109,16 @@ export const TableHeaderData = [
         }) => {
             // We need to keep and update the state of the cell normally
             const [value, setValue] = React.useState(initialValue)
+            const [temp, setTemp] = React.useState("0")
             const onChange = e => { setValue(e.target.value) }
 
             // We'll only update the external data when the input is blurred
-            const onBlur = () => { updateMyData(index, id, value) }
+            const onBlur = (e) => { setTemp(value < 1 ? "1" : value > 100 ? "100" : value) ; updateMyData(index, id, temp) }
 
             // If the initialValue is changed external, sync it up with our state
             React.useEffect(() => { setValue(initialValue) }, [initialValue])
 
-            return <StyledEditableCell type={"number"} min="1" max="100" value={value} onChange={onChange} onBlur={onBlur} />
+            return <StyledEditableCell type={"number"} min="1" max="100" id="yourid" value={value} onChange={onChange} onBlur={onBlur} />
         }
     },
     {
