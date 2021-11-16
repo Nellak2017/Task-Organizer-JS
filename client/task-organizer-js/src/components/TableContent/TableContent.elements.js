@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import { device } from "../../lib/CSS/device.js";
+
+
 // TODO: Add in Text highlighting when clicked first red, then yellow, then green, then none, then repeat etc.
 // TODO: Give option to edit the table values somehow??
 export const TaskTable = styled.table`
@@ -59,6 +62,13 @@ export const TaskTableHeader = styled.th`
     border-left: 2px solid rgba(68,76,86,.5);
 
     min-width: 10rem;
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        padding: 0;
+        font-size: 1rem;
+        height: 2rem;
+    }
 `;
 
 export const TaskTableData = styled.td`
@@ -113,6 +123,26 @@ export const TaskTableData = styled.td`
         font-weight: bold;
         cursor: default;
     }
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        font-size: 12px;
+        max-width: 5rem;
+        max-height: 1rem;
+        & input {
+            font-size: 12px;
+            max-width: 8rem;
+        }
+
+        & span {
+            max-width: 8rem;
+        }
+
+        & div {
+            min-width: 0 !important;
+            max-width: 8rem !important;
+        }
+    }
 `;
 export const PageButtonContainer = styled.div`
     display: flex;
@@ -121,13 +151,16 @@ export const PageButtonContainer = styled.div`
     justify-content: center;
     text-align: center;
     font-family: sans-serif;
+    position: sticky;
+    left: 0 !important;
 
     font-size: 1.7rem;
-    padding: 0;
+    padding: 0 1rem;
     min-height: 1.7rem;
     background-color: rgba(44,49,56,1);
     border: 1px solid black;
     
+    min-width: 50%;
     
 
     fieldset {
@@ -136,7 +169,16 @@ export const PageButtonContainer = styled.div`
     border-radius: 1rem;
     }
 
+    input:hover, button:hover, select:hover {
+        transition: 350ms;
+        color: #1a83ff !important;
+        cursor: pointer;
+    }
+
     input, button, select {
+        background-color: rgba(44,49,56,1);
+        color: white;
+        border: 1px solid rgba(44,49,56,1);
         font-size: inherit;
         padding: 0.2rem;
         margin: 0.2rem 0.2rem;
@@ -144,6 +186,7 @@ export const PageButtonContainer = styled.div`
         -webkit-box-sizing: content-box;
         box-sizing: content-box;
         border-radius: .25rem;
+        text-align: center;
     }
 
     strong, p{
@@ -153,6 +196,41 @@ export const PageButtonContainer = styled.div`
         justify-content: center;
         text-align: center;
         padding: 0.2rem;
+    }
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        font-size: 12px;
+        width: 100%;
+        max-height: 1rem;
+        padding: 0;
+        margin: 0;
+        
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+
+        & span { 
+            margin-left: .2rem;
+        }
+
+        & input {
+            width: 1rem !important;
+        }
+        & input, button, select {
+            font-size: inherit;
+            padding: .05rem;
+            margin: 0rem 0rem;
+            /* the following ensures they're all using the same box-model for rendering */
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            border-radius: .25rem;
+        }
+        & strong, p{
+            padding: 0.1rem;
+        }
     }
 
 `;
