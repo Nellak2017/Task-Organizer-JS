@@ -26,6 +26,7 @@ const TodoViewSubNav = () => {
     const dispatch = useDispatch();
 
     const [addPressed, setAddPressed] = useState(false);
+    const [delPressed, setDelPressed] = useState(false);
 
     const handleAddButtonClick = () => {setAddPressed(!addPressed);}
 
@@ -34,6 +35,7 @@ const TodoViewSubNav = () => {
     }
 
     const handleDeleteTaskClick = () => {
+        setDelPressed(!delPressed);
         dispatch(todoViewDeleteMode());
     }
 
@@ -53,7 +55,7 @@ const TodoViewSubNav = () => {
                         </SubNavAddPopUp>
                     </AddPopUpContainer>
 
-                    <SubNavDeleteTaskButton onClick={handleDeleteTaskClick}>Toggle Delete Task Mode</SubNavDeleteTaskButton>
+                    <SubNavDeleteTaskButton onClick={handleDeleteTaskClick}>Turn {!delPressed ? "On":"Off"} Delete Tasks</SubNavDeleteTaskButton>
                     
                 </SubNavAddContainer>
 
