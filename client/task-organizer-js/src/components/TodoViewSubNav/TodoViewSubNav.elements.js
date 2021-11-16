@@ -33,7 +33,7 @@ export const SubNavAddContainer = styled.section`
     justify-content: flex-start;
     align-items: center;
 
-    margin-left: 20rem;
+    margin-left: 12.5%;
 
     /* Mobiles - Extra Small <425dp - Portrait*/
     @media ${device.mobileMMax}{
