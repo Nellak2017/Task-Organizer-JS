@@ -21,7 +21,7 @@ import {
 
 const SideNav = () => {
 
-    const [sidebar, setSidebar] = useState(true);
+    const [sidebar, setSidebar] = useState(false);
 
     const showSidebar = () => setSidebar(!sidebar);
 
@@ -63,13 +63,13 @@ const SideNav = () => {
                         <NavLogo to='/'>
                             <NavIcon />
                             <LogoWords>Task Organizer</LogoWords>
-                        </NavLogo>
+                    </NavLogo>
                         {SidebarData.map((item, index) => {
                             return (
                                 <NavText key={index}>
                                     {item.icon}
                                     <MenuBars style={location.pathname === item.path ? { backgroundColor: '#1a83ff' } : {}} to={item.path}>
-                                        <span>{item.title}</span>
+                                       <span>{item.title}</span>
                                     </MenuBars>
                                 </NavText>
                             );

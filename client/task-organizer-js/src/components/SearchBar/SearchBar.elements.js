@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { device } from "../../lib/CSS/device.js";
+
 
 export const SearchInputs = styled.div`
     display: flex;
@@ -39,6 +41,11 @@ export const Search = styled.div`
 
     & .clearBtn {
         cursor: pointer;
+    }
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        display: none;
     }
 `;
 

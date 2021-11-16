@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { device } from "../../lib/CSS/device.js";
+
 export const SubNav = styled.nav`
     display: flex;
     flex-direction: row;
@@ -14,9 +16,14 @@ export const SubNav = styled.nav`
 
 
     height: 4rem;
-    width: 100%;
+    
     color: #f5f5f5;
     background-color: rgba(34,39,46,1);
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        justify-content: center;
+    }
 
 `;
 
@@ -26,7 +33,12 @@ export const SubNavAddContainer = styled.section`
     justify-content: flex-start;
     align-items: center;
 
-    margin-left: 20rem;
+    margin-left: 12.5%;
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        margin-left: 1rem;
+    }
 `;
 
 export const SubNavOptionsContainer = styled.section`
@@ -36,6 +48,11 @@ export const SubNavOptionsContainer = styled.section`
     align-items: center;
 
     padding-right: 1rem;
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        display: none;
+    }
 `;
 
 export const SubNavAddTaskButton = styled.button`
