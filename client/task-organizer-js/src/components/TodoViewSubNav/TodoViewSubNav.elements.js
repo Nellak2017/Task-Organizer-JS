@@ -12,6 +12,8 @@ export const SubNav = styled.nav`
     z-index: 950; 
 
     overflow: scroll;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
     min-width: 100%;
 
 
@@ -25,6 +27,9 @@ export const SubNav = styled.nav`
         justify-content: center;
     }
 
+    ::-webkit-scrollbar {
+        display: none; /* for Chrome, Safari, and Opera */  
+    }
 `;
 
 export const SubNavAddContainer = styled.section`
