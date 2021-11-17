@@ -154,6 +154,7 @@ export const NavMenu = styled.nav`
     border-radius: 1rem;
     border-right: 2px solid rgba(68,76,86,.5);
     border-bottom: 1px solid rgba(68,76,86,.5);
+    overflow: scroll;
 
     &.active{
         left: 0;
