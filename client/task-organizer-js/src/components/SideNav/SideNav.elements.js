@@ -14,7 +14,7 @@ export const OrganizerMainNav = styled.nav`
     top: 0;
     z-index: 997; 
     align-self: flex-start;
-    overflow: scroll;
+    overflow: visible;
     width: 100%;
    
     flex-grow: 0;
@@ -166,7 +166,7 @@ export const NavMenu = styled.nav`
     border-radius: 1rem;
     border-right: 2px solid rgba(68,76,86,.5);
     border-bottom: 1px solid rgba(68,76,86,.5);
-    overflow: scroll;
+    overflow-y: scroll;
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
 
@@ -182,7 +182,7 @@ export const NavMenu = styled.nav`
     /* Mobiles - Extra Small <425dp - Portrait*/
     @media ${device.mobileMMax}{
         width: 100%;
-        overflow: scroll;
+        overflow-x: scroll;
         -ms-overflow-style: none; /* for Internet Explorer, Edge */
         scrollbar-width: none; /* for Firefox */
 
