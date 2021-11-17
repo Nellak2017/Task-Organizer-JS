@@ -14,7 +14,7 @@ export const OrganizerMainNav = styled.nav`
     top: 0;
     z-index: 997; 
     align-self: flex-start;
-    overflow: visible;
+    overflow: scroll;
     width: 100%;
    
     flex-grow: 0;
