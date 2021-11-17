@@ -5,14 +5,13 @@ import {
     TaskGrid,
     TaskGridItem,
     ThreadName,
+    ThreadContentContainer,
     ThreadContent,
     TaskGridAdd
 } from './GridContent.elements.js';
 
 // TODO: Drag and Drop
-// TODO: Overflow hidden ellipsis
 // TODO: + Button to add a new Blank thread (Figure out how that will work)
-// TODO: Make the style look better (ask other for design help on this one)
 // TODO: Order the Threads by priority
 // TODO: Add Right Click Options
 
@@ -24,9 +23,9 @@ const GridContent = ({ data }) => {
                     
                     <TaskGridItem key={key} to={item.thread} data-content={item.priority}>
                         <ThreadName key={item.thread}>{item.thread}</ThreadName>
-                        <ThreadContent key={item.taskCount}><strong>{item.taskCount}</strong>{' Tasks '}</ThreadContent>
-                        <ThreadContent key={item.subThreadCount}><strong>{item.subThreadCount}</strong>{' Sub-Threads '}</ThreadContent>
-                        <ThreadContent key={item.priority}><strong>{item.priority}</strong>{' Priority '}</ThreadContent>
+                        <ThreadContentContainer><ThreadContent>{'Tasks'}</ThreadContent><ThreadContent><strong>{item.taskCount}</strong></ThreadContent></ThreadContentContainer>
+                        <ThreadContentContainer><ThreadContent>{'Sub-Threads'}</ThreadContent><ThreadContent><strong>{item.subThreadCount}</strong></ThreadContent></ThreadContentContainer>
+                        <ThreadContentContainer><ThreadContent>{'Priority'}</ThreadContent><ThreadContent><strong>{item.priority}</strong></ThreadContent></ThreadContentContainer>
                     </TaskGridItem>
                     
                 )

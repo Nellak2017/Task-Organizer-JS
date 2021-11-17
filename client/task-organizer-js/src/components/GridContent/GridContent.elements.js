@@ -17,12 +17,14 @@ export const TaskGridItem = styled(Link)`
     align-self: center;
     justify-self: center;
 
+    height: 100%;
+	width: 10rem;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    padding: 1rem;
-    padding-top: .5rem;
+    padding: 0 .5rem;
     border-radius: 1rem;
     color: #f5f5f5;
     font-size: 1.2rem;
@@ -48,6 +50,17 @@ export const ThreadName = styled.p`
     text-align: center;
     margin-bottom: .5rem;
     border-bottom: 2px solid black;
+
+    // Make sure that the text overflows with ...
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+`;
+
+export const ThreadContentContainer = styled.span`
+    display: flex;
+    justify-content: space-between; // make the number and word far apart
+    flex-direction: row;
 `;
 
 export const ThreadContent = styled.p`

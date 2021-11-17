@@ -14,7 +14,7 @@ export const OrganizerMainNav = styled.nav`
     top: 0;
     z-index: 997; 
     align-self: flex-start;
-    overflow: visible;
+    overflow: scroll;
     width: 100%;
    
     flex-grow: 0;
@@ -47,6 +47,11 @@ export const OrganizerMainNavElement = styled.li`
     list-style: none;
     height: 100%;
     color: white;
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        padding: 0;
+    }
 `;
 
 export const TabName = styled.span`
@@ -154,6 +159,7 @@ export const NavMenu = styled.nav`
     border-radius: 1rem;
     border-right: 2px solid rgba(68,76,86,.5);
     border-bottom: 1px solid rgba(68,76,86,.5);
+    overflow: scroll;
 
     &.active{
         left: 0;

@@ -18,7 +18,7 @@ export const Search = styled.div`
         padding: .75rem;
         margin-right: 1rem;
         height: 1.9rem;
-        width: 20rem;
+        width: 100%; // was 20rem
         color: #f5f5f5 !important;
     }
 
