@@ -143,6 +143,26 @@ export const TaskTableData = styled.td`
             max-width: 8rem !important;
         }
     }
+
+    /* Mobiles - Extra Small <425dp - landscape*/
+    @media (${device.mobileLMax}) and (${device.mobileS}) and (orientation : landscape) {
+        font-size: 12px;
+        max-width: 5rem;
+        max-height: 1rem;
+        & input {
+            font-size: 12px;
+            max-width: 8rem;
+        }
+
+        & span {
+            max-width: 8rem;
+        }
+
+        & div {
+            min-width: 0 !important;
+            max-width: 8rem !important;
+        }
+    }
 `;
 export const PageButtonContainer = styled.div`
     display: flex;
@@ -161,7 +181,7 @@ export const PageButtonContainer = styled.div`
     border: 1px solid black;
     
     min-width: 50%;
-    
+    overflow: scroll;
 
     fieldset {
     font-size: 1rem;
@@ -201,6 +221,146 @@ export const PageButtonContainer = styled.div`
     /* Mobiles - Extra Small <425dp - Portrait*/
     @media ${device.mobileMMax}{
         font-size: 12px;
+        width: 100%;
+        max-height: 1rem;
+        padding: 0;
+        margin: 0;
+        
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+
+        & span { 
+            margin-left: .2rem;
+        }
+
+        & input {
+            width: 1rem !important;
+        }
+        & input, button, select {
+            font-size: inherit;
+            padding: .05rem;
+            margin: 0rem 0rem;
+            /* the following ensures they're all using the same box-model for rendering */
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            border-radius: .25rem;
+        }
+        & strong, p{
+            padding: 0.1rem;
+        }
+    }
+
+    /* Mobiles - Extra Small <425dp - Landscape*/
+    @media ${device.tabletMMax} and (orientation : landscape){
+        font-size: 16px;
+        width: 100%;
+        max-height: 1rem;
+        padding: 0;
+        margin: 0;
+        
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+
+        & span { 
+            margin-left: .2rem;
+        }
+
+        & input {
+            width: 1rem !important;
+        }
+        & input, button, select {
+            font-size: inherit;
+            padding: .05rem;
+            margin: 0rem 0rem;
+            /* the following ensures they're all using the same box-model for rendering */
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            border-radius: .25rem;
+        }
+        & strong, p{
+            padding: 0.1rem;
+        }
+    }
+
+     /* Small Tablets - S / Medium 425dp<550dp - Portrait*/
+     @media ${device.mobileL} and ${device.tabletSMax}{
+        font-size: 12px;
+        width: 100%;
+        max-height: 1rem;
+        padding: 0;
+        margin: 0;
+        
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+
+        & span { 
+            margin-left: .2rem;
+        }
+
+        & input {
+            width: 1rem !important;
+        }
+        & input, button, select {
+            font-size: inherit;
+            padding: .05rem;
+            margin: 0rem 0rem;
+            /* the following ensures they're all using the same box-model for rendering */
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            border-radius: .25rem;
+        }
+        & strong, p{
+            padding: 0.1rem;
+        }
+    }
+
+    /* Regular Tablets - Medium 550dp<850dp - Portrait*/
+    @media ${device.tabletS} and ${device.tabletMMax}{
+        font-size: 16px;
+        width: 100%;
+        max-height: 1rem;
+        padding: 0;
+        margin: 0;
+        
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+
+        & span { 
+            margin-left: .2rem;
+        }
+
+        & input {
+            width: 1rem !important;
+        }
+        & input, button, select {
+            font-size: inherit;
+            padding: .05rem;
+            margin: 0rem 0rem;
+            /* the following ensures they're all using the same box-model for rendering */
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            border-radius: .25rem;
+        }
+        & strong, p{
+            padding: 0.1rem;
+        }
+    }
+
+    /* Laptops - Medium 850dp<1440dp - Portrait*/
+    @media ${device.tabletM} and ${device.laptopMax}{
+        font-size: 24px;
         width: 100%;
         max-height: 1rem;
         padding: 0;
