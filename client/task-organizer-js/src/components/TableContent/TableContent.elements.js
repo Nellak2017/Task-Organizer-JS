@@ -183,6 +183,13 @@ export const PageButtonContainer = styled.div`
     min-width: 50%;
     overflow: scroll;
 
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+
+    ::-webkit-scrollbar {
+        display: none; /* for Chrome, Safari, and Opera */
+    }
+
     fieldset {
     font-size: 1rem;
     padding: 0.5rem;

@@ -75,6 +75,8 @@ export const DataResult = styled.div`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow: hidden;
     overflow-y: auto;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
 
     &::-webkit-scrollbar { 
         width: 0 !important 
