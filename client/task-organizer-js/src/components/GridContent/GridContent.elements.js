@@ -50,6 +50,11 @@ export const ThreadName = styled.p`
     text-align: center;
     margin-bottom: .5rem;
     border-bottom: 2px solid black;
+
+    // Make sure that the text overflows with ...
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 `;
 
 export const ThreadContentContainer = styled.span`
