@@ -38,6 +38,7 @@ export const SubNavAddContainer = styled.section`
     /* Mobiles - Extra Small <425dp - Portrait*/
     @media ${device.mobileMMax}{
         margin-left: 1rem;
+
     }
 `;
 
@@ -63,12 +64,23 @@ export const SubNavAddTaskButton = styled.button`
     background-color: rgba(20,170,245,1);
     color: #f5f5f5;
     font-size: 1rem;
+    // Make sure that the text overflows with ...
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     &:hover {
         transition: 350ms;
         border: solid 2px #1a83ff ;
         cursor: pointer;
         background-color: #1a83ff;
+    }
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        width: 20vw;
+        padding: 0 .5rem;
+        font-size: .9rem;
     }
 `;
 
@@ -82,12 +94,23 @@ export const SubNavDeleteTaskButton = styled.button`
     font-size: 1rem;
 
     margin-left: 1rem;
+    // Make sure that the text overflows with ...
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     &:hover {
         transition: 350ms;
         border: solid 2px #1a83ff ;
         cursor: pointer;
         background-color: #1a83ff;
+    }
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        width: 40vw;
+        padding: 0 .5rem;
+        font-size: .9rem;
     }
 `;
 
