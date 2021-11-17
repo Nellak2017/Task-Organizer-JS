@@ -11,7 +11,7 @@ export const SubNav = styled.nav`
     top: 5.05rem;
     z-index: 950; 
 
-    overflow: visible;
+    overflow: scroll;
     min-width: 100%;
 
 
