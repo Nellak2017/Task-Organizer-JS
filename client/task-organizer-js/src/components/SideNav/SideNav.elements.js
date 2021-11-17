@@ -47,6 +47,11 @@ export const OrganizerMainNavElement = styled.li`
     list-style: none;
     height: 100%;
     color: white;
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        padding: 0;
+    }
 `;
 
 export const TabName = styled.span`
