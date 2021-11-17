@@ -11,9 +11,7 @@ import {
 } from './GridContent.elements.js';
 
 // TODO: Drag and Drop
-// TODO: Overflow hidden ellipsis
 // TODO: + Button to add a new Blank thread (Figure out how that will work)
-// TODO: Make the style look better (ask other for design help on this one)
 // TODO: Order the Threads by priority
 // TODO: Add Right Click Options
 
