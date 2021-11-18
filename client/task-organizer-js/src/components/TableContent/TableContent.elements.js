@@ -2,10 +2,13 @@ import styled from 'styled-components';
 
 import { device } from "../../lib/CSS/device.js";
 
-
 // TODO: Add in Text highlighting when clicked first red, then yellow, then green, then none, then repeat etc.
 // TODO: Give option to edit the table values somehow??
 export const TaskTable = styled.table`
+    padding: 1rem;
+    display: inline-block;
+    border-spacing: 0!important;
+
     z-index: 0 !important;
     color: #fff;
     text-align: left;
@@ -14,6 +17,33 @@ export const TaskTable = styled.table`
     background-color: rgba(44,49,56,1);
     padding: 0;
     margin: 0;
+
+    th,
+    td {
+      margin: 0;
+      padding: 0.5rem;
+      ${' ' /* In this example we use an absolutely position resizer,
+       so this is required. */}
+      position: relative;
+
+      .resizer {
+        display: inline-block;
+        background: blue;
+        width: 5px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateX(50%);
+        z-index: 1;
+        ${'' /* prevents from scrolling while dragging on touch devices */}
+        touch-action:none;
+
+        &.isResizing {
+          background: red;
+        }
+      }
+    }
 
     & th {
         background-color: rgba(54,59,66,1);
@@ -29,12 +59,11 @@ export const TaskTable = styled.table`
 
     & .iconTd {
         border-bottom: 0;
-        width: 1rem;
-        padding: .25rem;
+        width: 3rem;
     }
 
     & span {
-        padding: .5rem;
+        padding: .25rem;
         border-radius: 1rem;
     }
 
@@ -44,24 +73,17 @@ export const TaskTable = styled.table`
 
     & th:hover {
         background-color: rgba(64,69,76,1);
-    }
-
-    
-    
+    }    
 `;
 
 export const TaskTableRow = styled.tr`
-
-`;
-
-export const TaskTableHeader = styled.th`
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.4rem;
-    border-right: 2px solid rgba(68,76,86,.5);
-    border-left: 2px solid rgba(68,76,86,.5);
-
-    min-width: 10rem;
+    // added in for the block styling
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 2px solid rgba(68,76,86,.5);
+    height: 3rem;
+    // added in for the block styling
 
     /* Mobiles - Extra Small <425dp - Portrait*/
     @media ${device.mobileMMax}{
@@ -71,20 +93,78 @@ export const TaskTableHeader = styled.th`
     }
 `;
 
+export const ExtraTableHeader = styled.th`
+    border-right: 2px solid rgba(68,76,86,.5); 
+    height: 100%;
+    width: 3rem;
+    color: rgba(54,59,66,1);
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        padding: 0;
+        font-size: 1rem;
+        height: 2rem;
+    }
+
+    :hover {
+        color: rgba(64,69,76,1);
+    }
+`;
+
+export const TaskTableHeader = styled.th`
+
+    // added in for the block styling
+    display: flex !important;
+    flex-direction: row;
+    height: 100%;
+    width: 15rem; 
+    min-width: 2rem;
+    max-width: 20rem;
+    
+    
+    align-items: center;
+    justify-content: center;
+    // added in for the block styling
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+    border-right: 2px solid rgba(68,76,86,.5);
+    
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        padding: 0;
+        font-size: 1rem;
+        height: 2rem;
+        width: 13rem;
+    }
+`;
+
 export const TaskTableData = styled.td`
+    // added in for the block styling
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 15rem;
+    min-width: 3rem;
+    max-width: 20rem;
+    // added in for the block styling
+
     text-align: center;
     font-size: 1rem;
-    border-bottom: 2px solid rgba(68,76,86,.5);
-    border-right: 2px solid rgba(68,76,86,.5);
-    border-top: 2px solid rgba(68,76,86,.5);
-    
-    max-width: 20rem; 
-    max-height: 2rem;
+    border-right: 2px solid rgba(68,76,86,.5); 
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 
-    & input{font-size: 1rem; text-align: center;}
+    & input{
+        font-size: 1rem; 
+        text-align: center;
+        padding: 0;
+    }
 
     & input[type=number]::-webkit-inner-spin-button, 
       input[type=number]::-webkit-outer-spin-button {  
@@ -127,40 +207,38 @@ export const TaskTableData = styled.td`
     /* Mobiles - Extra Small <425dp - Portrait*/
     @media ${device.mobileMMax}{
         font-size: 12px;
-        max-width: 5rem;
-        max-height: 1rem;
+        width: 13rem;
+        
         & input {
             font-size: 12px;
-            max-width: 8rem;
+            width: 10rem;
         }
 
-        & span {
-            max-width: 8rem;
+        & select {
+            font-size: 12px;
         }
 
         & div {
-            min-width: 0 !important;
-            max-width: 8rem !important;
+            min-width: 0!important;
         }
     }
 
     /* Mobiles - Extra Small <425dp - landscape*/
     @media (${device.mobileLMax}) and (${device.mobileS}) and (orientation : landscape) {
         font-size: 12px;
-        max-width: 5rem;
-        max-height: 1rem;
+        width: 13rem;
+
         & input {
             font-size: 12px;
-            max-width: 8rem;
+            max-width: 10rem;
         }
 
-        & span {
-            max-width: 8rem;
+        & select {
+            font-size: 12px;
         }
 
         & div {
-            min-width: 0 !important;
-            max-width: 8rem !important;
+            min-width: 0!important;
         }
     }
 `;
