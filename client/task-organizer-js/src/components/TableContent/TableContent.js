@@ -1,9 +1,10 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { useTable, useSortBy, usePagination } from 'react-table';
+import { useTable, useSortBy, usePagination, useFlexLayout, useResizeColumns } from 'react-table';
 import {
     TaskTable,
     TaskTableRow,
+    ExtraTableHeader,
     TaskTableHeader,
     TaskTableData,
     PageButtonContainer,
@@ -64,7 +65,7 @@ const TableContent = ({ data, tableHeaders, templates }) => {
 
         return <StyledEditableCell value={value} onChange={onChange} onBlur={onBlur} />
     }
-    const defaultColumn = { Cell: EditableCell }
+    const defaultColumn = { Cell: EditableCell, minWidth: 30, width: 250, maxWidth: 500 }
 
     const {
         getTableProps,
@@ -80,6 +81,7 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         gotoPage,
         pageCount,
         setPageSize,
+        resetResizing,
         prepareRow
     } = useTable({
         columns,
@@ -89,7 +91,9 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         updateMyData: updateMyData,
     },
         useSortBy,
-        usePagination)
+        usePagination,
+        useFlexLayout,
+        useResizeColumns)
 
     const { pageIndex, pageSize } = state
 
@@ -121,8 +125,8 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     // TODO: Make sure only numbers that are valid are allowed to be entered into the goto page input
     // Note: THIS ACTUALLY WORKS! I am so glad I am celebrating!
     const testKeys = ["task", "due", "priority", "status", "weight", "order", "periodicity", "time_to_complete", "creation_date", "last_completion_date", "parent_thread", "pipelinable", "number_of_dependencies", "id", "completed"];
-    useEffect(() => { 
-        if (JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(testKeys)) { 
+    useEffect(() => {
+        if (JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(testKeys)) {
             updateTableDataToStore();
         }
     }, [mutatedData]);
@@ -136,7 +140,7 @@ const TableContent = ({ data, tableHeaders, templates }) => {
                             {headerGroups.map(headerGroup => (
 
                                 <TaskTableRow {...headerGroup.getHeaderGroupProps()}>
-                                    <th></th>
+                                    <ExtraTableHeader>{"Hello"}</ExtraTableHeader>
                                     {headerGroup.headers.map((column, key) => {
                                         return (
                                             <TaskTableHeader
@@ -144,6 +148,11 @@ const TableContent = ({ data, tableHeaders, templates }) => {
                                             >
                                                 {column.render('Header')}
                                                 {column.isSorted ? (column.isSortedDesc ? " ▼" : " ▲") : " "}
+                                                <div
+                                                    {...column.getResizerProps()}
+                                                    className={`resizer ${column.isResizing ? 'isResizing' : ''
+                                                        }`}
+                                                />
                                             </TaskTableHeader>
                                         );
                                     })
@@ -239,7 +248,7 @@ const TableContent = ({ data, tableHeaders, templates }) => {
                             style={{ width: '50px' }}
                             min="1"
                             max={pageOptions.length}
-                            onBlur={ e => {
+                            onBlur={e => {
                                 const validation = Number(e.target.value) < 1 ? pageIndex + 1 : Number(e.target.value) > pageOptions.length ? pageIndex + 1 : Number(e.target.value)
                                 e.target.value = validation
                             }}
