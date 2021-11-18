@@ -15,12 +15,18 @@ export const StyledEditableCell = styled.input`
 
 export const StyledDateTimePicker = styled(DateTimePicker)`
     width: 90%;
-    &.MuiInput-underline:before{
-        border-bottom: 0;
-    }
+    //&.MuiInput-underline:before{
+    //    border-bottom: 0;
+    //}
     &.MuiFormControl-root{
         vertical-align: middle;
         min-width: 14rem;
+    }
+    .MuiInput-underline:before{
+        content:none!important;
+    }
+    .MuiInput-underline:after{
+        content:none!important;
     }
 `;
 
