@@ -31,11 +31,13 @@ export const TableHeaderData = [
             // We'll only update the external data when the input is blurred
             const onBlur = () => { updateMyData(index, id, selectedDate) }
 
+            console.log(selectedDate.toISOString())
+
             return (
                 <MuiPickersUtilsProvider utils={MomentUtils} >
                     <StyledDateTimePicker
                         key={index}
-                        value={selectedDate}
+                        value={selectedDate.toISOString()}
                         onChange={handleDateChange}
                         onBlur={onBlur}
                         allowKeyboardControl={true}
@@ -67,7 +69,7 @@ export const TableHeaderData = [
                     onBlur={onBlur}>
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
-                    <option value="High">High</option>
+                    <option value="Serious">High</option>
                 </StyledSelect>
             )
         }
