@@ -20,7 +20,7 @@ import FormatDue from '../../lib/moment/FormatDue.js';
 import StyledEditableCell from '../Editable/Editable.elements.js';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { todoViewUpdateTableData } from "../../state/actions/TodoViewActions";
+import { todoViewCurrentPage, todoViewUpdateTableData } from "../../state/actions/TodoViewActions";
 
 const TableContent = ({ data, tableHeaders, templates }) => {
 
@@ -28,17 +28,14 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     const store_state = useSelector((state) => state);
     const dispatch = useDispatch();
 
-    const [c , setc] = useState(0); // use this to test out something...
     const [skipPageReset, setSkipPageReset] = useState(false);
 
     const [mutatedData, setMutatedData] = useState(data); // (2) [{task:.., due:...,...},{...}]
     const columns = useMemo(() => tableHeaders[0], [tableHeaders]); // (13) [{Header:"Task",accessor:"task"}}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 
-    console.log("skipPageReset at top of TableContent Code");
-    console.log(skipPageReset);
 
-    console.log("C value:");
-    console.log(c);
+    console.log("Store's CurrentPage");
+    console.log(store_state.MasterConfigs.Globals[0].current_page);
 
     // Takes a copy of the input data and updates it with the SetMutatedData method to be value inside data
     // Ex: {'task': 'Github (20 contribs)'} -> (0,'task','Do the laundry') => {'task': 'Do the laundry'}
@@ -98,7 +95,7 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         data: mutatedData,
         defaultColumn,
         autoResetPage: !skipPageReset,
-        initialState: { pageSize: 5},
+        initialState: { pageSize: 5, pageIndex: store_state.MasterConfigs.Globals[0].current_page },
         updateMyData: updateMyData,
     },
         useSortBy,
@@ -127,7 +124,10 @@ const TableContent = ({ data, tableHeaders, templates }) => {
 
     // Dispatch Method for when you want to update the table data to the store
     // call this when the user clicks off of the table
-    const updateTableDataToStore = () => { dispatch(todoViewUpdateTableData(mutatedData)); }
+    const updateTableDataToStore = () => { 
+        dispatch(todoViewCurrentPage(pageIndex));
+        dispatch(todoViewUpdateTableData(mutatedData)); 
+    }
 
     // Listen for changes to mutatedData, when it changes I want you to dispatch the Update Table Event
     // TODO: Make sure the page stays the same on update cell
@@ -137,10 +137,11 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     // Note: THIS ACTUALLY WORKS! I am so glad I am celebrating!
     const testKeys = ["task", "due", "priority", "status", "weight", "order", "periodicity", "time_to_complete", "creation_date", "last_completion_date", "parent_thread", "pipelinable", "number_of_dependencies", "id", "completed"];
     useEffect(() => {
-        setc(prev => (prev + 1) )
-        setSkipPageReset(true); // another attempt to keep the page constant on updates...
-        gotoPage(pageIndex); // yet another way I am trying to fix this annoying issue
+        //setc(prev => (prev + 1) )
+        //setSkipPageReset(true); // another attempt to keep the page constant on updates...
+        //gotoPage(pageIndex); // yet another way I am trying to fix this annoying issue
         if (JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(testKeys)) {
+            
             updateTableDataToStore();
         }
     }, [mutatedData]);
