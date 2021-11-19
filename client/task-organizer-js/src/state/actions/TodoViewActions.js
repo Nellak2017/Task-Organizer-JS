@@ -5,6 +5,9 @@ const TodoView_AddRow = 'TodoView/AddRow';
 const TodoView_UpdateTableData = 'TodoView/UpdateTableData';
 const TodoView_Delete_Mode = 'TodoView/DeleteMode';
 
+const TodoView_Current_Page = 'TodoView/CurrentPage';
+
+
 // Todo: Make this a bit more customizable by adding the custom templates provided by the user in the local JSON / Store
 export const todoViewAddTask = () => {
 
@@ -59,5 +62,14 @@ export const todoViewDeleteMode = () => {
         info: 'Toggle Delete Mode for the table component. When active, you will be able to delete rows.' 
     }
 };
+
+export const todoViewCurrentPage = (CurrentPage) => {
+    return {
+        type: TodoView_Current_Page,
+        info: 'Store Current Page in the Store so that the Component knows what page to load from' ,
+        item: CurrentPage
+    }
+};
+
 
 export default todoViewAddTask;
