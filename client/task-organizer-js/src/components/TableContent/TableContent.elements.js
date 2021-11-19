@@ -60,6 +60,7 @@ export const TaskTable = styled.table`
     & .iconTd {
         border-bottom: 0;
         width: 3rem;
+        padding: 0;
     }
 
     & span {
