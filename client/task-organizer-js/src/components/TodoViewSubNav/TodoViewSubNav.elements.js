@@ -11,7 +11,7 @@ export const SubNav = styled.nav`
     top: 5.05rem;
     z-index: 950; 
 
-    overflow: scroll;
+    overflow: visible; // Take a crash course on how to make popups
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
     min-width: 100%;
@@ -122,7 +122,7 @@ export const SubNavDeleteTaskButton = styled.button`
 export const SubNavAddPopUp = styled.div`
     position: absolute; // must be absolute so that you can have it below the profile picture
     top: 4rem;
-    left: 23rem; 
+    left: 12.5%; 
     width: 10rem;
     height: 4rem;
     border-radius: 1rem;
