@@ -7,7 +7,8 @@ export const masterConfigs =
 {
     Globals: [
         {
-            delete_mode: false
+            delete_mode: false,
+            current_page: 0
         }
     ]
     ,
