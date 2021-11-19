@@ -1,5 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { useTable, useSortBy, usePagination, useFlexLayout, useResizeColumns } from 'react-table';
 import {
@@ -29,15 +28,22 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     const store_state = useSelector((state) => state);
     const dispatch = useDispatch();
 
-    // The location of the Link. It will be used to determine when to update the table data.
-    const location = useLocation();
+    const [c , setc] = useState(0); // use this to test out something...
+    const [skipPageReset, setSkipPageReset] = useState(false);
 
     const [mutatedData, setMutatedData] = useState(data); // (2) [{task:.., due:...,...},{...}]
     const columns = useMemo(() => tableHeaders[0], [tableHeaders]); // (13) [{Header:"Task",accessor:"task"}}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 
+    console.log("skipPageReset at top of TableContent Code");
+    console.log(skipPageReset);
+
+    console.log("C value:");
+    console.log(c);
+
     // Takes a copy of the input data and updates it with the SetMutatedData method to be value inside data
     // Ex: {'task': 'Github (20 contribs)'} -> (0,'task','Do the laundry') => {'task': 'Do the laundry'}
     const updateMyData = (rowIndex, columnId, value) => {
+        setSkipPageReset(false); // another attempt to keep the page constant on updates...
         setMutatedData(old =>
             old.map((row, index) => {
                 if (index === rowIndex) {
@@ -91,7 +97,8 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         columns,
         data: mutatedData,
         defaultColumn,
-        initialState: { pageSize: 5 },
+        autoResetPage: !skipPageReset,
+        initialState: { pageSize: 5},
         updateMyData: updateMyData,
     },
         useSortBy,
@@ -130,10 +137,18 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     // Note: THIS ACTUALLY WORKS! I am so glad I am celebrating!
     const testKeys = ["task", "due", "priority", "status", "weight", "order", "periodicity", "time_to_complete", "creation_date", "last_completion_date", "parent_thread", "pipelinable", "number_of_dependencies", "id", "completed"];
     useEffect(() => {
+        setc(prev => (prev + 1) )
+        setSkipPageReset(true); // another attempt to keep the page constant on updates...
+        gotoPage(pageIndex); // yet another way I am trying to fix this annoying issue
         if (JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(testKeys)) {
             updateTableDataToStore();
         }
     }, [mutatedData]);
+
+    useEffect(() => {
+        console.log("mounted");
+    }, [])
+
 
     return (
         <>
