@@ -87,7 +87,10 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         columns,
         data: mutatedData,
         defaultColumn,
-        initialState: { pageSize: 5, pageIndex: store_state.MasterConfigs.Globals[0].current_page },
+        initialState: { 
+            // if it is organizerMain then pageSize is 5, else it is 10
+            pageSize: JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(["task", "due", "priority", "status", "periodicity"]) ? 5 : 10, 
+            pageIndex: store_state.MasterConfigs.Globals[0].current_page },
         updateMyData: updateMyData,
     },
         useSortBy,
