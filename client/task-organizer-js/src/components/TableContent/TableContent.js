@@ -28,19 +28,12 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     const store_state = useSelector((state) => state);
     const dispatch = useDispatch();
 
-    const [skipPageReset, setSkipPageReset] = useState(false);
-
     const [mutatedData, setMutatedData] = useState(data); // (2) [{task:.., due:...,...},{...}]
     const columns = useMemo(() => tableHeaders[0], [tableHeaders]); // (13) [{Header:"Task",accessor:"task"}}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-
-
-    console.log("Store's CurrentPage");
-    console.log(store_state.MasterConfigs.Globals[0].current_page);
 
     // Takes a copy of the input data and updates it with the SetMutatedData method to be value inside data
     // Ex: {'task': 'Github (20 contribs)'} -> (0,'task','Do the laundry') => {'task': 'Do the laundry'}
     const updateMyData = (rowIndex, columnId, value) => {
-        setSkipPageReset(false); // another attempt to keep the page constant on updates...
         setMutatedData(old =>
             old.map((row, index) => {
                 if (index === rowIndex) {
@@ -84,7 +77,7 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         canPreviousPage,
         canNextPage,
         pageOptions,
-        state,
+        state: { pageIndex, pageSize },
         gotoPage,
         pageCount,
         setPageSize,
@@ -94,7 +87,6 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         columns,
         data: mutatedData,
         defaultColumn,
-        autoResetPage: !skipPageReset,
         initialState: { pageSize: 5, pageIndex: store_state.MasterConfigs.Globals[0].current_page },
         updateMyData: updateMyData,
     },
@@ -102,8 +94,6 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         usePagination,
         useFlexLayout,
         useResizeColumns)
-
-    const { pageIndex, pageSize } = state
 
     const completeTask = (e, index) => {
         e.preventDefault();
@@ -130,26 +120,14 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     }
 
     // Listen for changes to mutatedData, when it changes I want you to dispatch the Update Table Event
-    // TODO: Make sure the page stays the same on update cell
     // TODO: Make sure the default number of pages can vary based on the type of Table Summary passed in e.g. see 5 for organizerMain and see 10 for todoView
     // TODO: Make sure that the show pages number stays constant until updated (instead of reverting to default on every mutated data update)
-    // TODO: Make sure only numbers that are valid are allowed to be entered into the goto page input
-    // Note: THIS ACTUALLY WORKS! I am so glad I am celebrating!
     const testKeys = ["task", "due", "priority", "status", "weight", "order", "periodicity", "time_to_complete", "creation_date", "last_completion_date", "parent_thread", "pipelinable", "number_of_dependencies", "id", "completed"];
     useEffect(() => {
-        //setc(prev => (prev + 1) )
-        //setSkipPageReset(true); // another attempt to keep the page constant on updates...
-        //gotoPage(pageIndex); // yet another way I am trying to fix this annoying issue
         if (JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(testKeys)) {
-            
             updateTableDataToStore();
         }
     }, [mutatedData]);
-
-    useEffect(() => {
-        console.log("mounted");
-    }, [])
-
 
     return (
         <>
@@ -238,11 +216,11 @@ const TableContent = ({ data, tableHeaders, templates }) => {
                     <PageButton onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
                         {'<<'}
                     </PageButton>{' '}
-                    <PageButton onClick={() => previousPage()} disabled={!canPreviousPage}>
-                        Previous
+                    <PageButton style={{marginLeft:"10px"}} onClick={() => previousPage()} disabled={!canPreviousPage}>
+                        {'<'}
                     </PageButton>{' '}
-                    <PageButton onClick={() => nextPage()} disabled={!canNextPage}>
-                        Next
+                    <PageButton style={{marginRight:"10px"}} onClick={() => nextPage()} disabled={!canNextPage}>
+                        {'>'}
                     </PageButton>{' '}
                     <PageButton onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
                         {'>>'}
