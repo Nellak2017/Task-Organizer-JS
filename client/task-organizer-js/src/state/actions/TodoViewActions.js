@@ -4,7 +4,6 @@ import moment from 'moment';
 const TodoView_AddRow = 'TodoView/AddRow';
 const TodoView_UpdateTableData = 'TodoView/UpdateTableData';
 const TodoView_Delete_Mode = 'TodoView/DeleteMode';
-
 const TodoView_Current_Page = 'TodoView/CurrentPage';
 
 
@@ -41,12 +40,6 @@ export const todoViewAddTask = () => {
     }
 };
 
-// This is the Action Creator for the updating the table data in /TodoView
-// I have not tested this to work, but I want to pass in TableData in the 
-// form of "mutatedData" (in TableContent.js) as the item.
-// This is so that the reducer can then simply update the store with that data.
-// Cross my fingers that this works!
-
 export const todoViewUpdateTableData = (TableData) => {
     return {
         type: TodoView_UpdateTableData, 
@@ -54,7 +47,6 @@ export const todoViewUpdateTableData = (TableData) => {
         item: TableData
     }
 };
-
 
 export const todoViewDeleteMode = () => {
     return {
