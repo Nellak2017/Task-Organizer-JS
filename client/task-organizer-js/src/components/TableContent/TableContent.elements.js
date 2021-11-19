@@ -176,7 +176,7 @@ export const TaskTableData = styled.td`
 
     &[data-content="low"] input{color: rgba(0,97,0,1); }
     &[data-content="medium"] input{color: rgba(156,114,88);}
-    &[data-content="high"] input{color: rgba(207,45,6); }
+    &[data-content="serious"] input{color: rgba(207,45,6); }
     &[data-content="open"] input{color: rgba(207,45,6); }
     &[data-content="waiting"] input{color: rgba(156,114,88); }
     &[data-content="completed"] input{color: rgba(0,97,0,1); }
@@ -189,7 +189,7 @@ export const TaskTableData = styled.td`
 
     &[data-content="low"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
     &[data-content="medium"] span{color: rgba(156,114,88); background-color:rgba(255,235,156);}
-    &[data-content="high"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
+    &[data-content="serious"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
     &[data-content="open"] span{color: rgba(207,45,6); background-color: rgba(255,199,206);}
     &[data-content="waiting"] span{color: rgba(156,114,88); background-color: rgba(255,235,156);}
     &[data-content="completed"] span{color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
