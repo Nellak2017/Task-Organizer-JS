@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { useTable, useSortBy, usePagination, useFlexLayout, useResizeColumns } from 'react-table';
 import {
@@ -27,6 +28,9 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     // Use the State of the Store
     const store_state = useSelector((state) => state);
     const dispatch = useDispatch();
+
+    // The location of the Link. It will be used to determine when to update the table data.
+    const location = useLocation();
 
     const [mutatedData, setMutatedData] = useState(data); // (2) [{task:.., due:...,...},{...}]
     const columns = useMemo(() => tableHeaders[0], [tableHeaders]); // (13) [{Header:"Task",accessor:"task"}}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
