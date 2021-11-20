@@ -10,7 +10,7 @@ export const TaskGrid = styled.section`
 
     & a[data-content="Low"] {color: rgba(0,97,0,1); background-color: rgba(198,239,206);}
     & a[data-content="Medium"] {color: rgba(156,114,88); background-color:rgba(255,235,156);}
-    & a[data-content="High"] {color: rgba(207,45,6); background-color: rgba(255,199,206);}    
+    & a[data-content="Serious"] {color: rgba(207,45,6); background-color: rgba(255,199,206);}    
 `;
 
 export const TaskGridItem = styled(Link)`
