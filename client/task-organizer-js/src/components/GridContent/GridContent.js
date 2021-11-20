@@ -25,7 +25,7 @@ const GridContent = ({ data }) => {
                         <ThreadName key={item.thread}>{item.thread}</ThreadName>
                         <ThreadContentContainer><ThreadContent>{'Tasks'}</ThreadContent><ThreadContent><strong>{item.taskCount}</strong></ThreadContent></ThreadContentContainer>
                         <ThreadContentContainer><ThreadContent>{'Sub-Threads'}</ThreadContent><ThreadContent><strong>{item.subThreadCount}</strong></ThreadContent></ThreadContentContainer>
-                        <ThreadContentContainer><ThreadContent>{'Priority'}</ThreadContent><ThreadContent><strong>{item.priority}</strong></ThreadContent></ThreadContentContainer>
+                        <ThreadContentContainer><ThreadContent>{'Priority'}</ThreadContent><ThreadContent><strong>{item.priority === "Serious" ? "High" : item.priority}</strong></ThreadContent></ThreadContentContainer>
                     </TaskGridItem>
                     
                 )
