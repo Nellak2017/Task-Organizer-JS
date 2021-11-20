@@ -8,3 +8,4 @@ export { default as GridContent } from './GridContent/GridContent';
 export { default as TodoViewSubNav} from './TodoViewSubNav/TodoViewSubNav';
 export { default as Editable} from './Editable/Editable';
 export { default as UnderConstruction} from './UnderConstruction/UnderConstruction';
+export { default as ThreadViewLarge } from './ThreadViewLarge/ThreadViewLarge';
