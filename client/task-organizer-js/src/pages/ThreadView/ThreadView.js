@@ -1,10 +1,10 @@
-import { SideNav, UnderConstruction } from "../../components";
+import { SideNav, ThreadViewLarge } from "../../components";
 
 const ThreadView = () => {
     return (
         <>
             <SideNav />
-            <UnderConstruction />
+            <ThreadViewLarge />
         </>
     );
 }
