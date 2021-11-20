@@ -13,7 +13,7 @@ export const masterData = [
     {
         'task': 'Github (20 contribs)',
         'due': new moment('16:30, 8Aug2021', 'HH:mm, DMMMYYYY'),
-        'priority': 'High',
+        'priority': 'Serious',
         'status': 'Processing',
         'weight': '100',
         'order': '1',
