@@ -225,7 +225,7 @@ export const PageButtonContainer = styled.div`
     left: 0 !important;
     font-size: 1.7rem;
     padding: 0 1rem;
-    min-height: 1.7rem;
+    min-height: 2rem;
     background-color: rgba(44,49,56,1);
     border: 1px solid black;
     
