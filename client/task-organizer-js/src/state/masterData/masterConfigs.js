@@ -43,7 +43,7 @@ export const masterConfigs =
     Settings: [],
     TodoView: [
         {
-            title: 'All Tasks - sorted by Priority',
+            title: 'All Tasks',
             icon: '',
             iconComponent: '',
             text: 'See All',
