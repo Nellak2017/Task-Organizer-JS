@@ -31,13 +31,11 @@ export const TableHeaderData = [
             // We'll only update the external data when the input is blurred
             const onBlur = () => { updateMyData(index, id, selectedDate) }
 
-            console.log(selectedDate.toISOString())
-
             return (
                 <MuiPickersUtilsProvider utils={MomentUtils} >
                     <StyledDateTimePicker
                         key={index}
-                        value={selectedDate.toISOString()}
+                        value={selectedDate}
                         onChange={handleDateChange}
                         onBlur={onBlur}
                         allowKeyboardControl={true}
@@ -341,6 +339,7 @@ export const TableHeaderData = [
 
 // This is dummy Table Content data that is supposed to be fetched
 // TODO: Add drop down for Parent Thread to choose any of the existing Threads to be the parent
+
 export const TableContentData = [
 
     {
