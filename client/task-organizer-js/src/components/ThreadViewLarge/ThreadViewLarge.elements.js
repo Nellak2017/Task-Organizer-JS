@@ -30,7 +30,6 @@ export const ThreadInfoContainer = styled.section`
     margin-bottom: 1rem;
     font-size: 1.5rem;
     border-bottom: 1px solid white;
-
     background-color: rgba(44,49,56,1);
 `;
 
