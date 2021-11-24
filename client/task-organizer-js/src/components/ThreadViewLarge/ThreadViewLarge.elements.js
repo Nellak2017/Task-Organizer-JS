@@ -119,5 +119,7 @@ export const TaskNameContainer = styled.section`
 `;
 
 // Contains the Pagination button < and >  
-export const PaginationButton = styled.button``;
+export const PaginationButton = styled.button`
+
+`;
 
