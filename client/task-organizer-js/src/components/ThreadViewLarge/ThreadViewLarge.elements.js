@@ -103,6 +103,7 @@ export const ThreadTitle = styled.title`
     font-size: 1.8rem;
     font-weight: bold;
     border-bottom: 1px solid white;
+    
 `;
 
 // Contains the Icon to complete the task
