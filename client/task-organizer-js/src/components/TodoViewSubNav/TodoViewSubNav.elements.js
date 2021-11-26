@@ -27,6 +27,7 @@ export const SubNav = styled.nav`
         justify-content: center;
     }
 
+
     ::-webkit-scrollbar {
         display: none; /* for Chrome, Safari, and Opera */  
     }
@@ -57,6 +58,12 @@ export const SubNavOptionsContainer = styled.section`
 
     /* Mobiles - Extra Small <425dp - Portrait*/
     @media ${device.mobileMMax}{
+        display: none;
+    }
+
+    /* Tablets and smaller - Medium <765dp - Portrait or Landscape*/
+    // If it is smaller than like a Tablet, Might as well hide the options
+    @media all and (max-width : 765px){
         display: none;
     }
 `;
