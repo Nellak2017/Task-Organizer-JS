@@ -62,10 +62,16 @@ const TodoViewSubNav = () => {
 
                 <SubNavOptionsContainer>
                     <SubNavOptionButton>
-                        Sort
+                        Sync
                     </SubNavOptionButton>
                     <SubNavOptionButton>
-                        Actions
+                        Print
+                    </SubNavOptionButton>
+                    <SubNavOptionButton>
+                        Import
+                    </SubNavOptionButton>
+                    <SubNavOptionButton>
+                        Export
                     </SubNavOptionButton>
                     <SubNavOptionButton>
                         Custom
