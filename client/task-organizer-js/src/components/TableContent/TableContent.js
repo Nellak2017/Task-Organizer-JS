@@ -141,7 +141,7 @@ const TableContent = ({ data, tableHeaders, templates }) => {
                             {headerGroups.map(headerGroup => (
 
                                 <TaskTableRow {...headerGroup.getHeaderGroupProps()}>
-                                    <ExtraTableHeader>{"Hello"}</ExtraTableHeader>
+                                    <ExtraTableHeader>{" "}</ExtraTableHeader>
                                     {headerGroup.headers.map((column, key) => {
                                         return (
                                             <TaskTableHeader
