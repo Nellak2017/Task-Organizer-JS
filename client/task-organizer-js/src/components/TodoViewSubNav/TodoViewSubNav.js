@@ -9,7 +9,11 @@ import {
     SubNavAddPopUp,
     AddPopUpContainer,
     AddPopUpInnerContainer,
-    AddPopUpButton
+    AddPopUpButton,
+    CustomMenu,
+    ToggleSwitchWrapper,
+    ToggleSwitchLabel,
+    ToggleSwitchBox
 } from './TodoViewSubNav.elements.js';
 import { useState} from 'react';
 import * as CgIcons from 'react-icons/cg';
@@ -27,6 +31,7 @@ const TodoViewSubNav = () => {
 
     const [addPressed, setAddPressed] = useState(false);
     const [delPressed, setDelPressed] = useState(false);
+    const [customPressed, setCustomPressed] = useState(false);
 
     const handleAddButtonClick = () => {setAddPressed(!addPressed);}
 
@@ -37,6 +42,10 @@ const TodoViewSubNav = () => {
     const handleDeleteTaskClick = () => {
         setDelPressed(!delPressed);
         dispatch(todoViewDeleteMode());
+    }
+
+    const handleCustomClick = () => {
+        setCustomPressed(!customPressed);
     }
 
     return (
@@ -73,10 +82,17 @@ const TodoViewSubNav = () => {
                     <SubNavOptionButton>
                         Export
                     </SubNavOptionButton>
-                    <SubNavOptionButton>
+                    <SubNavOptionButton onClick={handleCustomClick}>
                         Custom
                     </SubNavOptionButton>
                 </SubNavOptionsContainer>
+
+                <CustomMenu className={customPressed ? "active" : ""}>
+                    <ToggleSwitchWrapper>
+                        <ToggleSwitchBox id="checkbox" type="checkbox"/>
+                        <ToggleSwitchLabel htmlFor="checkbox"/>
+                    </ToggleSwitchWrapper>
+                </CustomMenu>
             </SubNav>
         </>
     );
