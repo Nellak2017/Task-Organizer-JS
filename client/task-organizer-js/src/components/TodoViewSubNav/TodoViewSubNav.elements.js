@@ -245,3 +245,108 @@ export const SubNavOptionButton = styled.button`
         border-radius: .5rem 0 0 .5rem;
     }
 `;
+
+// This is the vertical Custom options for the SubNav
+export const CustomMenu = styled.nav`
+    z-index: 999; 
+    background-color: rgba(16,21,34,1);
+    width: 240px;
+    height: 84%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 9.05rem;
+    right: -100%;
+    transition: 850ms;
+    border-radius: 1rem;
+    border-right: 2px solid rgba(68,76,86,.5);
+    border-bottom: 1px solid rgba(68,76,86,.5);
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+
+    ::-webkit-scrollbar {
+        display: none; /* for Chrome, Safari, and Opera */
+    }
+
+    &.active{
+        right: 0;
+        transition: 300ms;
+    }
+
+    /* Mobiles - Extra Small <425dp - Portrait*/
+    @media ${device.mobileMMax}{
+        width: 100%;
+        overflow-x: scroll;
+        -ms-overflow-style: none; /* for Internet Explorer, Edge */
+        scrollbar-width: none; /* for Firefox */
+
+        ::-webkit-scrollbar {
+            display: none; /* for Chrome, Safari, and Opera */
+        }
+    }
+`;
+
+// this is the Wrapper for the Toggle Switch button
+export const ToggleSwitchWrapper = styled.div`
+    // position: relative; // Not needed
+`;
+
+// this is the Toggle Switch button circle inside the button
+export const ToggleSwitchLabel = styled.label`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 42px;
+  height: 26px;
+  border-radius: 15px;
+  background: #bebebe;
+  cursor: pointer;
+  &::after {
+    content: "";
+    display: block;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    margin: 3px;
+    background: #ffffff;
+    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+  }
+`;
+
+// this is the Toggle Switch button, not circle inside
+export const ToggleSwitchBox = styled.input`
+  opacity: 0;
+  z-index: 1;
+  border-radius: 15px;
+  width: 42px;
+  height: 26px;
+  &:checked + ${ToggleSwitchLabel} {
+    //background: #4fbe79;
+    background-color: #1a83ff;
+    &::after {
+      content: "";
+      display: block;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      margin-left: 21px;
+      transition: 0.2s;
+    }
+  }
+
+`;
+
+
+
+
+
+
+
+
+
+
+
+
+
