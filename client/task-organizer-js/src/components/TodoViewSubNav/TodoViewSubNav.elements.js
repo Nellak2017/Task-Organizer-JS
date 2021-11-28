@@ -252,8 +252,10 @@ export const CustomMenu = styled.nav`
     background-color: rgba(16,21,34,1);
     width: 240px;
     height: 84%;
+    padding: 1rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     position: fixed;
     top: 9.05rem;
     right: -100%;
@@ -289,14 +291,14 @@ export const CustomMenu = styled.nav`
 
 // this is the Wrapper for the Toggle Switch button
 export const ToggleSwitchWrapper = styled.div`
-    // position: relative; // Not needed
+     //position: relative; // Not needed
 `;
 
 // this is the Toggle Switch button circle inside the button
 export const ToggleSwitchLabel = styled.label`
-  position: absolute;
-  top: 0;
-  left: 0;
+  //position: absolute;
+  //top: 0;
+  //left: 0;
   width: 42px;
   height: 26px;
   border-radius: 15px;
@@ -338,14 +340,68 @@ export const ToggleSwitchBox = styled.input`
 
 `;
 
+// This is the Custom Label and the Arrow Button Box at the top of the SideNav
+export const CustomLabelContainer = styled.title`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 
+    height: 2rem; // may need adjustments
+    width: 100%;
+`;
 
+// This is the Custom Label
+export const CustomLabel = styled.div`
+    font-size: 2rem;
+`;
 
+// This is the Arrow Box that holds the Arrow Icon button
+export const ArrowBox = styled.div`
+    font-size: 2rem;
+`;
 
+// This contains the Content
+export const ContentContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 1rem;
 
+    // give each Content Child some space
+    & *{
+        margin-top: 1rem;
+    }
+`;
 
+// This contains the individual settings that you can change in the Content box
+export const SettingContainer = styled.section`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+`;
 
+// This is the Custom SideNav Label Container that will have all the other labels aside from Custom
+export const Label = styled.p``;
 
+// This is the add template box
+export const AddTemplate = styled.button`
+    font-size: 10px;
+`;
+
+// This is the Template Content Box. It holds Subtitle and the Text area 
+export const TemplateContentBox = styled.div``;
+
+// This is the Template Subtitle
+export const TemplateSubtitle = styled.title``;
+
+// This is the Template Text area
+export const TemplateTextArea = styled.p``;
+
+// This is the General Text Area
+export const GeneralText = styled.p``;
 
 
 
