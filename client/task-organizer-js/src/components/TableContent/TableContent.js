@@ -19,8 +19,10 @@ import * as MdIcons from 'react-icons/md'; // MdOutlineClose
 import FormatDue from '../../lib/moment/FormatDue.js';
 import StyledEditableCell from '../Editable/Editable.elements.js';
 
+import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { todoViewCurrentPage, todoViewUpdateTableData } from "../../state/actions/TodoViewActions";
+import { AiOutlineConsoleSql } from 'react-icons/ai';
 
 const TableContent = ({ data, tableHeaders, templates }) => {
 
@@ -28,7 +30,26 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     const store_state = useSelector((state) => state);
     const dispatch = useDispatch();
 
-    const [mutatedData, setMutatedData] = useState(data); // (2) [{task:.., due:...,...},{...}]
+    // Define Default task for if mutatedData is ever initially empty
+    const defaultTask = [{
+        'task': 'Default task',
+        'due': new moment(),
+        'priority': 'Medium',
+        'status': 'Open',
+        'weight': '50',
+        'order': '1',
+        'periodicity': '1day',
+        'time_to_complete': '1 hours',
+        'creation_date': 'today',
+        'last_completion_date': 'never',
+        'parent_thread': 'None',
+        'pipelinable': 'No',
+        'number_of_dependencies': '0',
+        'id': '0',
+        'completed': false
+    }];
+
+    const [mutatedData, setMutatedData] = useState(data.length > 0 ? data : defaultTask); // (2) [{task:.., due:...,...},{...}]
     const columns = useMemo(() => tableHeaders[0], [tableHeaders]); // (13) [{Header:"Task",accessor:"task"}}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 
     // Takes a copy of the input data and updates it with the SetMutatedData method to be value inside data
@@ -113,7 +134,8 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         });
     }
 
-    const deleteTask = (rowIndex) => { setMutatedData(old => old.filter((row, index) => { return index !== rowIndex })); }
+    // if there is more than one item, filter out the one being deleted. else set Mutated data to be the default task
+    const deleteTask = (rowIndex) => { setMutatedData(old => old.length > 1 ? old.filter((row, index) => { return index !== rowIndex }) : defaultTask);}
 
     // Dispatch Method for when you want to update the table data to the store
     // call this when the user clicks off of the table
