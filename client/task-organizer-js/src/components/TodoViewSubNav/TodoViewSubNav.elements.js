@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 import { device } from "../../lib/CSS/device.js";
 
 export const SubNav = styled.nav`
@@ -18,9 +18,9 @@ export const SubNav = styled.nav`
 
 
     height: 4rem;
-    
-    color: #f5f5f5;
-    background-color: rgba(34,39,46,1);
+    border-bottom: 1px solid rgba(34,39,46,1);    
+    //color: #f5f5f5;
+    //background-color: rgba(34,39,46,1);
 
     /* Mobiles - Extra Small <425dp - Portrait*/
     @media ${device.mobileMMax}{
@@ -217,6 +217,7 @@ export const SubNavAddOptionsButton = styled.button`
         background-color: #1a83ff;
         font-size: 1rem;
         font-weight: bold;
+        color: #f5f5f5;
     }
 `;
 
@@ -226,7 +227,7 @@ export const SubNavOptionButton = styled.button`
     border: 0;
     border-right: solid 2px rgba(68,76,86,.5);
     background-color: transparent;
-    color: #f5f5f5;
+    //color: #f5f5f5;
 
     &:hover {
         transition: 350ms;
@@ -234,6 +235,7 @@ export const SubNavOptionButton = styled.button`
         background-color: #1a83ff;
         font-size: .9rem;
         font-weight: bold;
+        color: #f5f5f5;
     }
 
     &:last-child {
@@ -249,7 +251,7 @@ export const SubNavOptionButton = styled.button`
 // This is the vertical Custom options for the SubNav
 export const CustomMenu = styled.nav`
     z-index: 999; 
-    background-color: rgba(16,21,34,1);
+    //background-color: rgba(16,21,34,1);
     width: 240px;
     height: 84%;
     padding: 1rem;
@@ -260,8 +262,8 @@ export const CustomMenu = styled.nav`
     top: 9.05rem;
     right: -100%;
     transition: 850ms;
-    border-radius: 1rem;
-    border-right: 2px solid rgba(68,76,86,.5);
+    border-radius: 1rem 0 0 1rem ;
+    border-left: 2px solid rgba(68,76,86,.5);
     border-bottom: 1px solid rgba(68,76,86,.5);
     overflow-y: scroll;
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
@@ -291,14 +293,14 @@ export const CustomMenu = styled.nav`
 
 // this is the Wrapper for the Toggle Switch button
 export const ToggleSwitchWrapper = styled.div`
-     //position: relative; // Not needed
+     position: relative; 
 `;
 
 // this is the Toggle Switch button circle inside the button
 export const ToggleSwitchLabel = styled.label`
-  //position: absolute;
-  //top: 0;
-  //left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 42px;
   height: 26px;
   border-radius: 15px;
@@ -323,7 +325,7 @@ export const ToggleSwitchBox = styled.input`
   z-index: 1;
   border-radius: 15px;
   width: 42px;
-  height: 26px;
+  height: 22px;
   &:checked + ${ToggleSwitchLabel} {
     //background: #4fbe79;
     background-color: #1a83ff;
@@ -359,6 +361,12 @@ export const CustomLabel = styled.div`
 // This is the Arrow Box that holds the Arrow Icon button
 export const ArrowBox = styled.div`
     font-size: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: inherit !important;
+    padding: inherit !important;
 `;
 
 // This contains the Content
@@ -368,11 +376,7 @@ export const ContentContainer = styled.div`
     align-items: center;
     justify-content: flex-start;
     margin-top: 1rem;
-
-    // give each Content Child some space
-    & *{
-        margin-top: 1rem;
-    }
+    width: 100%;
 `;
 
 // This contains the individual settings that you can change in the Content box
@@ -381,27 +385,67 @@ export const SettingContainer = styled.section`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+
+    border: 1px solid #fff;
+    border-radius: .5rem;
+    padding: .5rem;
+`;
+
+// This contains the Label for the Settings you can change
+export const LabelContainer = styled.section`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 `;
 
 // This is the Custom SideNav Label Container that will have all the other labels aside from Custom
-export const Label = styled.p``;
+export const Label = styled.p`
+    font-size: 1.5rem;
+`;
 
-// This is the add template box
-export const AddTemplate = styled.button`
+// This is the add template Link
+export const AddTemplate = styled(Link)`
     font-size: 10px;
+    background-color: transparent;
+    //color: #fff;
+    border: 0 solid red;
+    margin: inherit !important;
+    padding: inherit !important;
 `;
 
 // This is the Template Content Box. It holds Subtitle and the Text area 
-export const TemplateContentBox = styled.div``;
+export const TemplateContentBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 1rem;
+    padding: 1rem .5rem .5rem 1rem;
+    margin-top: 1rem;
+`;
 
 // This is the Template Subtitle
-export const TemplateSubtitle = styled.title``;
+export const TemplateSubtitle = styled.div`
+    //color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+`;
 
 // This is the Template Text area
-export const TemplateTextArea = styled.p``;
+export const TemplateTextArea = styled.p`
+    //color: #fff;
+    font-size: 1rem;
+    margin-top: 1rem;
+`;
 
 // This is the General Text Area
-export const GeneralText = styled.p``;
+export const GeneralText = styled.div`
+`;
 
 
 
