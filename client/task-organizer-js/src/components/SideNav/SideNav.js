@@ -69,7 +69,7 @@ const SideNav = () => {
                                 <NavText key={index}>
                                     {item.icon}
                                     <MenuBars style={location.pathname === item.path ? { backgroundColor: '#1a83ff'} : {}} to={item.path}>
-                                       <span>{item.title}</span>
+                                       <span style={location.pathname === item.path ? { color: 'white'} : {}}>{item.title}</span>
                                     </MenuBars>
                                 </NavText>
                             );
