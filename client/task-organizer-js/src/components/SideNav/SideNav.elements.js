@@ -24,7 +24,7 @@ export const OrganizerMainNav = styled.nav`
     min-height: 80px;
     justify-content: space-between;
     align-items: center;
-    color: #f5f5f5;
+    //color: #f5f5f5;
     border-radius: 1rem;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -88,10 +88,14 @@ export const MenuBars = styled(Link)`
     margin-left: 1rem;
     font-size: 2rem;
     background: none;
-    color: #f5f5f5;
+    //color: #f5f5f5;
 
     & span {
-        color: #f5f5f5;
+        //color: #f5f5f5;
+    }
+
+    &:hover span{
+        color: white;
     }
 
     /* Mobiles - Extra Small <425dp - Portrait*/
@@ -103,7 +107,7 @@ export const MenuBars = styled(Link)`
 // This is the container for the logo and the logo text
 export const NavLogo = styled(Link)`
     //color: white;
-    background-color: rgba(34,39,46,1);
+   //background-color: rgba(34,39,46,1);
     
     cursor: pointer;
     text-decoration: none;
@@ -130,7 +134,7 @@ export const NavLogo = styled(Link)`
 // This is the Logo for my App 
 export const NavIcon = styled(GridOnIcon)`
     font-size: 3rem !important; 
-    color: #f5f5f5;
+    //color: #f5f5f5;
     margin-left: 1rem;
     margin-bottom: 0rem;
     /* Mobiles - Extra Small <425dp - Portrait*/
@@ -144,7 +148,7 @@ export const LogoWords = styled.span`
     margin-left: 2.5rem;
     font-size: 1.5rem;
     background: none;
-    color: #f5f5f5;
+    //color: #f5f5f5;
     padding-top: .5rem;
 
      /* Mobiles - Extra Small <425dp - Portrait*/
@@ -159,7 +163,7 @@ export const LogoWords = styled.span`
 // This is the vertical nav bar
 export const NavMenu = styled.nav`
     z-index: 999; 
-    background-color: rgba(16,21,34,1);
+    //background-color: rgba(16,21,34,1);
     width: 240px;
     height: 100vh;
     display: flex;
@@ -209,14 +213,14 @@ export const NavText = styled.li`
     padding: .5rem 0px .5rem 1.4rem;
     list-style: none;
     height: 60px;
-    color: white;
+    //color: white;
     border: 1px solid rgba(68,76,86,.5);
     border-right: 0;
     border-top: 0;
 
     & a {
         text-decoration: none;
-        color: #f5f5f5;
+        //color: #f5f5f5;
         font-size: 18px;
         width: 95%;
         height: 100%;
@@ -228,6 +232,7 @@ export const NavText = styled.li`
 
     & a:hover {
         background-color: #1a83ff;
+        color: white;
     }
 
     /* Mobiles - Extra Small <425dp - Portrait*/
