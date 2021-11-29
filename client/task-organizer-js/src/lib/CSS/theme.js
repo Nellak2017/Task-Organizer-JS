@@ -2,7 +2,7 @@
 
 // This is the Light theme
 export const LightTheme = {
-    body: '#fff',
+    body: 'rgba(230,230,230,1)',
     nav: '#fff',
     fontColor: '#000'
 };
