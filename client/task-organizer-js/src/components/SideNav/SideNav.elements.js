@@ -20,7 +20,7 @@ export const OrganizerMainNav = styled.nav`
     flex-grow: 0;
     flex-shrink: 0;
 
-    background-color: rgba(34,39,46,1);
+    //background-color: rgba(34,39,46,1);
     min-height: 80px;
     justify-content: space-between;
     align-items: center;
@@ -53,7 +53,8 @@ export const OrganizerMainNavElement = styled.li`
     padding: .5rem 0px .5rem 1.4rem;
     list-style: none;
     height: 100%;
-    color: white;
+    //color: white;
+
 
     /* Mobiles - Extra Small <425dp - Portrait*/
     @media ${device.mobileMMax}{
@@ -65,7 +66,7 @@ export const TabName = styled.span`
     margin-left: 2.5rem;
     font-size: 1.5rem;
     background: none;
-    color: #f5f5f5;
+    //color: #f5f5f5;
     padding-top: .5rem;
     margin-bottom: 1rem; 
     font-size: 2rem;
@@ -87,7 +88,11 @@ export const MenuBars = styled(Link)`
     margin-left: 1rem;
     font-size: 2rem;
     background: none;
-    color: #f5f5f5 ;
+    color: #f5f5f5;
+
+    & span {
+        color: #f5f5f5;
+    }
 
     /* Mobiles - Extra Small <425dp - Portrait*/
     @media ${device.mobileMMax}{
@@ -97,7 +102,7 @@ export const MenuBars = styled(Link)`
 
 // This is the container for the logo and the logo text
 export const NavLogo = styled(Link)`
-    color: white;
+    //color: white;
     background-color: rgba(34,39,46,1);
     
     cursor: pointer;
@@ -163,7 +168,7 @@ export const NavMenu = styled.nav`
     top: 0;
     left: -100%;
     transition: 850ms;
-    border-radius: 1rem;
+    border-radius: 0 1rem 1rem 0;
     border-right: 2px solid rgba(68,76,86,.5);
     border-bottom: 1px solid rgba(68,76,86,.5);
     overflow-y: scroll;
