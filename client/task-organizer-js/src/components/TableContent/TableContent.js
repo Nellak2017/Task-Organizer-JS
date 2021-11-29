@@ -108,10 +108,11 @@ const TableContent = ({ data, tableHeaders, templates }) => {
         columns,
         data: mutatedData,
         defaultColumn,
-        initialState: { 
+        initialState: {
             // if it is organizerMain then pageSize is 5, else it is 10
-            pageSize: JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(["task", "due", "priority", "status", "periodicity"]) ? 5 : 10, 
-            pageIndex: store_state.MasterConfigs.Globals[0].current_page },
+            pageSize: JSON.stringify(Object.keys(mutatedData[0])) === JSON.stringify(["task", "due", "priority", "status", "periodicity"]) ? 5 : 10,
+            pageIndex: store_state.MasterConfigs.Globals[0].current_page
+        },
         updateMyData: updateMyData,
     },
         useSortBy,
@@ -135,13 +136,13 @@ const TableContent = ({ data, tableHeaders, templates }) => {
     }
 
     // if there is more than one item, filter out the one being deleted. else set Mutated data to be the default task
-    const deleteTask = (rowIndex) => { setMutatedData(old => old.length > 1 ? old.filter((row, index) => { return index !== rowIndex }) : defaultTask);}
+    const deleteTask = (rowIndex) => { setMutatedData(old => old.length > 1 ? old.filter((row, index) => { return index !== rowIndex }) : defaultTask); }
 
     // Dispatch Method for when you want to update the table data to the store
     // call this when the user clicks off of the table
-    const updateTableDataToStore = () => { 
+    const updateTableDataToStore = () => {
         dispatch(todoViewCurrentPage(pageIndex));
-        dispatch(todoViewUpdateTableData(mutatedData)); 
+        dispatch(todoViewUpdateTableData(mutatedData));
     }
 
     // Listen for changes to mutatedData, when it changes I want you to dispatch the Update Table Event
@@ -241,10 +242,10 @@ const TableContent = ({ data, tableHeaders, templates }) => {
                     <PageButton onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
                         {'<<'}
                     </PageButton>{' '}
-                    <PageButton style={{marginLeft:"10px"}} onClick={() => previousPage()} disabled={!canPreviousPage}>
+                    <PageButton style={{ marginLeft: "10px" }} onClick={() => previousPage()} disabled={!canPreviousPage}>
                         {'<'}
                     </PageButton>{' '}
-                    <PageButton style={{marginRight:"10px"}} onClick={() => nextPage()} disabled={!canNextPage}>
+                    <PageButton style={{ marginRight: "10px" }} onClick={() => nextPage()} disabled={!canNextPage}>
                         {'>'}
                     </PageButton>{' '}
                     <PageButton onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
