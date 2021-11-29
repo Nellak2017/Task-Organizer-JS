@@ -35,7 +35,7 @@ const SideNav = () => {
 
     return (
         
-            <IconContext.Provider value={{ color: '#fff', size: '3rem' }}>
+            <IconContext.Provider value={{ size: '3rem' }}>
                 <OrganizerMainNav>
                     <OrganizerMainNavElementContainer>
                         <OrganizerMainNavElement>
@@ -68,7 +68,7 @@ const SideNav = () => {
                             return (
                                 <NavText key={index}>
                                     {item.icon}
-                                    <MenuBars style={location.pathname === item.path ? { backgroundColor: '#1a83ff' } : {}} to={item.path}>
+                                    <MenuBars style={location.pathname === item.path ? { backgroundColor: '#1a83ff'} : {}} to={item.path}>
                                        <span>{item.title}</span>
                                     </MenuBars>
                                 </NavText>
