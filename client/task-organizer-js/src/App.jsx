@@ -17,6 +17,10 @@ import Trackers from './pages/Trackers/Trackers';
 import ScrollToTop from './components/ScrollToTop';
 import { Provider } from 'react-redux';
 import { store } from './state/store';
+import { ThemeProvider } from "styled-components";
+import { LightTheme, DarkTheme } from "./lib/CSS/theme.js";
+import { createContext, useState } from 'react';
+import { ThemeContext } from './contexts.js';
 
 const App = () => {
 
@@ -27,28 +31,33 @@ const App = () => {
     Redux Store -> DB (On page change)
     DB -> Master JSON (On page change)
     */
-
+  const [themeState, setThemeState] = useState("Dark"); // Default to Dark theme
+  
   return (
     <MuiPickersUtilsProvider utils={MomentUtils} >
       <Router>
-        <Provider store={store}>
-          <GlobalStyle />
-          <ScrollToTop />
-          <Switch>
-            <Route path="/" exact component={HomePage} ></Route>
-            <Route path="/Calendars" exact component={Calendars}></Route>
-            <Route path="/Gantts" exact component={Gantts}></Route>
-            <Route path="/OrganizerMain" exact component={OrganizerMain}></Route>
-            <Route path="/Settings" exact component={Settings}></Route>
-            <Route path="/Stats" exact component={Stats}></Route>
-            <Route path="/Templates" exact component={Templates}></Route>
-            <Route path="/ThreadView" exact component={ThreadView}></Route>
-            <Route path="/Timelines" exact component={Timelines}></Route>
-            <Route path="/TodoView" exact component={TodoView}></Route>
-            <Route path="/PlanningAssistant" exact component={PlanningAssistant}></Route>
-            <Route path="/Trackers" exact component={Trackers}></Route>
-          </Switch>
-        </Provider>
+        <ThemeProvider theme={themeState === "Light" ? LightTheme : DarkTheme}>
+          <Provider store={store}>
+            <ThemeContext.Provider value={{themeState,setThemeState}}>
+              <GlobalStyle />
+              <ScrollToTop />
+              <Switch>
+                <Route path="/" exact component={HomePage} ></Route>
+                <Route path="/Calendars" exact component={Calendars}></Route>
+                <Route path="/Gantts" exact component={Gantts}></Route>
+                <Route path="/OrganizerMain" exact component={OrganizerMain}></Route>
+                <Route path="/Settings" exact component={Settings}></Route>
+                <Route path="/Stats" exact component={Stats}></Route>
+                <Route path="/Templates" exact component={Templates}></Route>
+                <Route path="/ThreadView" exact component={ThreadView}></Route>
+                <Route path="/Timelines" exact component={Timelines}></Route>
+                <Route path="/TodoView" exact component={TodoView}></Route>
+                <Route path="/PlanningAssistant" exact component={PlanningAssistant}></Route>
+                <Route path="/Trackers" exact component={Trackers}></Route>
+              </Switch>
+            </ThemeContext.Provider>
+          </Provider>
+        </ThemeProvider>
       </Router>
     </MuiPickersUtilsProvider>
   );
