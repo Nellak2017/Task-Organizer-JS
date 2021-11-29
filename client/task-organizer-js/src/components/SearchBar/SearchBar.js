@@ -39,7 +39,7 @@ const SearchBar = ({ placeholder, data }) => {
     };
 
     return (
-        <IconContext.Provider value={{ color: '#fff', size: '2rem' }}>
+        <IconContext.Provider value={{ size: '2rem' }}>
             <Search>
                 <SearchInputs>
                     <SearchIconClassContainer className="icon" >
