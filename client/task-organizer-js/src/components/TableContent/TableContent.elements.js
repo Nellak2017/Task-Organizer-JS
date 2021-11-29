@@ -57,6 +57,7 @@ export const TaskTable = styled.table`
     & span {
         padding: .25rem;
         border-radius: 1rem;
+        color: white;
     }
     & td:hover {
         background-color: rgba(64,69,76,1);
@@ -260,6 +261,7 @@ export const PageButtonContainer = styled.div`
         text-align: center;
     }
     strong, p{
+        color: white;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -438,7 +440,7 @@ export const PageLabel = styled.span`
     align-items: center;
     justify-content: center;
     text-align: center;
-    
+    color: white;
 `;
 
 export const GoToPage = styled.input`
