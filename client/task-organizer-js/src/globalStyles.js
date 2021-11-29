@@ -17,12 +17,27 @@ body {
     padding: 0;
     margin: 0;
     overflow: visible;
-    background-color: rgba(16,21,34,1);
+    background-color: ${props => props.theme.body};//rgba(16,21,34,1);
+    color: ${props => props.theme.fontColor};
+}
+
+nav {
+    color: ${props => props.theme.fontColor};
+    background-color: ${props => props.theme.nav};
+}
+
+p, input, button, li, a, span {
+    color: ${props => props.theme.fontColor};
+}
+
+.inheritBorder {
+    border-color: ${props => props.theme.fontColor};
 }
 
 .icon {
     padding: 0 !important;
     margin: 0 !important;
+    color: ${props => props.theme.fontColor};
 }
 
 .icon:hover {
