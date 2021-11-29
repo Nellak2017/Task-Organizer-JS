@@ -72,7 +72,7 @@ export const SummaryDropDownItem = styled.span`
 export const SummaryLink = styled(Link)`
     // let us see about styling!
     text-decoration: none;
-    color: #f5f5f5;
+    //color: #f5f5f5;
     &:hover {
         transition: 350ms;
         color: #1a83ff !important;
