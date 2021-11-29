@@ -31,7 +31,7 @@ p, input, button, li, a, span {
 }
 
 .inheritBorder {
-    border-color: ${props => props.theme.fontColor};
+    border-color: ${props => props.theme.fontColor}!important;
 }
 
 .icon {
