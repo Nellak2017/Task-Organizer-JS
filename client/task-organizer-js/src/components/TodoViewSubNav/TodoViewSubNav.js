@@ -19,6 +19,7 @@ import {
     ArrowBox,
     ContentContainer,
     SettingContainer,
+    LabelContainer,
     Label,
     AddTemplate,
     TemplateContentBox,
@@ -26,17 +27,18 @@ import {
     TemplateTextArea,
     GeneralText
 } from './TodoViewSubNav.elements.js';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import * as CgIcons from 'react-icons/cg';
 import * as RiIcons from 'react-icons/ri';
 import { IconContext } from 'react-icons/lib';
 import * as GoIcons from 'react-icons/go';
 import * as AiIcons from 'react-icons/ai';
-// AiOutlineArrowRight
 
 import { todoViewAddTask, todoViewDeleteMode } from "../../state/actions/TodoViewActions";
 
 import { useDispatch } from 'react-redux';
+
+import { ThemeContext } from '../../contexts.js';
 
 const TodoViewSubNav = () => {
 
@@ -45,6 +47,7 @@ const TodoViewSubNav = () => {
     const [addPressed, setAddPressed] = useState(false);
     const [delPressed, setDelPressed] = useState(false);
     const [customPressed, setCustomPressed] = useState(false);
+    const {themeState, setThemeState} = useContext(ThemeContext);
 
     const handleAddButtonClick = () => { setAddPressed(!addPressed); }
 
@@ -59,6 +62,10 @@ const TodoViewSubNav = () => {
 
     const handleCustomClick = () => {
         setCustomPressed(!customPressed);
+    }
+
+    const handleThemeClick = () => {
+        themeState === "Light" ? setThemeState("Dark") : setThemeState("Light");
     }
 
     return (
@@ -105,16 +112,16 @@ const TodoViewSubNav = () => {
                         <CustomLabel>
                             Custom
                         </CustomLabel>
-                        <ArrowBox>
+                        <ArrowBox onClick={handleCustomClick}>
                             <AiIcons.AiOutlineArrowRight className="icon"/>
                         </ArrowBox>
                     </CustomLabelContainer>
                     <ContentContainer>
-                        <SettingContainer>
+                        <LabelContainer>
                             <Label>Templates</Label>
-                            <AddTemplate>+ Add Template</AddTemplate>
-                        </SettingContainer>
-                        <TemplateContentBox>
+                            <AddTemplate className="icon" to="/Templates">+ Add Template</AddTemplate>
+                        </LabelContainer>
+                        <TemplateContentBox className="inheritBorder">
                             <TemplateSubtitle>
                                 No Templates Yet
                             </TemplateSubtitle>
@@ -124,14 +131,14 @@ const TodoViewSubNav = () => {
                         </TemplateContentBox>
                     </ContentContainer>
                     <ContentContainer>
-                        <SettingContainer>
+                        <LabelContainer>
                             <Label>Theme</Label>
-                        </SettingContainer>
+                        </LabelContainer>
                         <ContentContainer>
-                            <SettingContainer>
-                                (I am a setting box)
+                            <SettingContainer className="inheritBorder">
+                                <GeneralText>Light Theme</GeneralText>
                                 <ToggleSwitchWrapper>
-                                    <ToggleSwitchBox id="checkbox" type="checkbox" />
+                                    <ToggleSwitchBox id="checkbox" type="checkbox" onClick={handleThemeClick}/>
                                     <ToggleSwitchLabel htmlFor="checkbox" />
                                 </ToggleSwitchWrapper>
                             </SettingContainer>
