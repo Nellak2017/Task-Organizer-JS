@@ -38,6 +38,10 @@ export const ProfileName = styled.span`
 `;
 
 export const ProfilePopUpContainer = styled.div`
+    & p {
+        color: rgba(200,200,200,1);
+    }
+
     & .showMe {
         display: none; 
     }
