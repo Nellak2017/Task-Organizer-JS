@@ -25,7 +25,7 @@ const InfoSummary = ({ MyComponent, Data, TableHeaders }) => {
 
     return (
         <>
-            <IconContext.Provider value={{ color: '#fff', size: '1.5rem' }}>
+            <IconContext.Provider value={{ size: '1.5rem' }}>
                 {Data.map((item, key) => {
                     return (
                         <SummaryContainer key={key}>
