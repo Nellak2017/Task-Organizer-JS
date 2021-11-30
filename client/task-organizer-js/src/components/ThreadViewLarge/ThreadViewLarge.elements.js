@@ -119,7 +119,17 @@ export const TaskNameContainer = styled.section`
     margin-left: 1rem;
 `;
 
-// Contains the Pagination button < and >  
+// Contains the Pagination buttons at the bottom
+export const PaginationButtonContainer = styled.footer`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+`;
+
+
+// Contains a Pagination button < and >  
 export const PaginationButton = styled.button`
 
 `;
