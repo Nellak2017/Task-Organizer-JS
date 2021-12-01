@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { IconContext } from 'react-icons/lib';
+import { TableContent } from '../../components';
 import * as BiIcons from 'react-icons/bi'; // BiCheckbox
 import * as BsIcons from 'react-icons/bs'; // BsFillArrowLeftCircleFill and BsFillArrowRightCircleFill
 import {
@@ -34,13 +35,26 @@ Add Add Feature (That updates master) (TO update master this way, you must modif
 Add Delete Feature (That updates master)
 */
 
-export const ThreadViewLarge = ({ tasks }) => {
+export const ThreadViewLarge = ({ data, tableHeaders }) => {
     const [taskComplete, setTaskComplete] = useState(false);
 
     return (
         <>
             <IconContext.Provider value={{ color: '#fff', size: '2.5rem' }}>
                 <MainContainer>
+                    <ThreadBox>
+                        <TableContent data={data} tableHeaders={tableHeaders} />
+                    </ThreadBox>
+                </MainContainer>
+            </IconContext.Provider>
+        </>
+    );
+}
+
+export default ThreadViewLarge;
+
+/*
+<MainContainer>
                     <ThreadBox>
                         <ThreadTitle>
                             Domestic Thread
@@ -80,9 +94,4 @@ export const ThreadViewLarge = ({ tasks }) => {
                         </PaginationButtonContainer>
                     </ThreadBox>
                 </MainContainer>
-            </IconContext.Provider>
-        </>
-    );
-}
-
-export default ThreadViewLarge;
+*/
