@@ -113,6 +113,22 @@ export const plainConfigsToUsableConfigs = (plainConfigs) => {
 // -------------------------------- DATA TRANSFORMERS --------------------------------
 // -----------------------------------------------------------------------------------
 
+export const ThreadViewLargeTableSummary = (MasterData) => {
+    // These are the allowed table columns for OrganizerMain
+    const allowed = ['task', 'due', 'priority', 'status'];
+
+    return (
+        // For each Object in the Master Data, apply the filterObject function to filter out the items that are irrelevant to this page
+        MasterData.map((value, key) => {
+            return (
+                filterObject(value, allowed)
+            );
+        })
+    );  
+}
+
+
+
 export const OrganizerMainTableSummary = (MasterData) => {
     // These are the allowed table columns for OrganizerMain
     const allowed = ['task', 'due', 'priority', 'status', 'periodicity'];
