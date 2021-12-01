@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // is to center the ThreadBox using Flexbox
 export const MainContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 `;
@@ -15,10 +15,11 @@ export const ThreadBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    overflow: scroll;
     border: 1px solid white;
     color: white;
     padding: 0 1rem 1rem 1rem;
-    width: 50%;
+    width: 35%;
     background-color: rgba(34,39,46,1);
 `;
 // The Flex container that has page x of y, and see all button
