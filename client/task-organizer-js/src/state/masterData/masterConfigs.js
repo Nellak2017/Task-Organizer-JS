@@ -54,7 +54,19 @@ export const masterConfigs =
             component: "TableContent"
         },
     ],
-    Threads: [],
+    Threads: [
+        {
+            title: '',
+            icon: '',
+            iconComponent: '',
+            text: '',
+            link: '',
+            tableHeaders: ["task","status"],
+            data: '',
+            name: "ThreadViewLarge",
+            component: "TableContent"
+        }
+    ],
     Timelines: [],
     Calendars: [],
     Gantts: [],
