@@ -16,7 +16,7 @@ export const ThreadBox = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     overflow: scroll;
-    border: 1px solid white;
+    border: 2px solid white;
     color: white;
     padding: 0 1rem 1rem 1rem;
     width: 35%;
