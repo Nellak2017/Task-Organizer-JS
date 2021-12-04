@@ -22,7 +22,6 @@ export const ThreadBox = styled.div`
     width: 35%;
     background-color: rgba(34,39,46,1);
 `;
-
 // The Flex container that has page x of y, and see all button
 export const ThreadInfoContainer = styled.section`
     display: flex;
