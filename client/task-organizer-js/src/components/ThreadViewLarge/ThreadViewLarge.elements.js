@@ -8,7 +8,6 @@ export const MainContainer = styled.div`
     justify-content: center;
     align-items: center;
 `;
-
 // Contains the Thread Elements, the Page num, etc.
 // Will be Displayed centered in the Screen
 export const ThreadBox = styled.div`
