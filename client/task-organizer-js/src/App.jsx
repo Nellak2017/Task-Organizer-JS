@@ -42,7 +42,7 @@ const App = () => {
               <GlobalStyle />
               <ScrollToTop />
               <Switch>
-                <Route path="/" exact component={HomePage} ></Route>
+                <Route path="/" exact component={HomePage}></Route>
                 <Route path="/Calendars" exact component={Calendars}></Route>
                 <Route path="/Gantts" exact component={Gantts}></Route>
                 <Route path="/OrganizerMain" exact component={OrganizerMain}></Route>
